@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muammer Bozer - Hatırlatmalarım</title>
+<script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=zCkBEpFZ6QEOtJsw0KLiDDqB9ZERl-24Fd3lBZNmL7jndrtbvw7d2gekC-NYy1EyWDZkfdMF6SG4P8cl0m9cz5JnFeBlAjKshrQEAoH3c6be-y9-jTZJ0LbvJhRmIBRYe9N1TtFCYre2HCXaW36i8gxuN3zf_Ym-caSZrq3fNI_U_mqBMQ41YCai3YbS4Vq1sMeQwULleiQwZyaf-th7Z6kmEr0uWJu9xUqattABy2KeT6na2Jyh0ouJP5_Evx-yQm3r1oxw_-O9avhTJUOG6BLGrRAB-vSloHbgjG4lkdG-pSM0EqDflfaQgsXKz7HoMaL07wfD193cZc7YKAmqqw" charset="UTF-8"></script><style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:#f4f7fb;color:#263238;line-height:1.6}
+
+nav{background:white;box-shadow:0 3px 12px rgba(0,0,0,.12);position:sticky;top:0;z-index:1000}
+.nav-inner{width:92%;max-width:1200px;margin:auto;min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.site-title{
+    color:#1565c0;
+    font-size:21px;
+    font-weight:800;
+    line-height:1.1;
+    white-space:nowrap;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    margin-right:auto;
+}
+.site-title strong{font-weight:800}
+.site-title span{font-weight:600;font-size:15px}
+
+.container{width:92%;max-width:1200px;margin:30px auto}
+.hero{background:white;padding:35px;border-radius:18px;box-shadow:0 5px 20px rgba(0,0,0,.08);margin-bottom:30px}
+.hero h2{color:#1565c0;margin-bottom:15px;font-size:28px}
+.hero p{font-size:17px}
+.section-title{margin:25px 0 15px}
+
+.reminder-form{background:white;padding:25px;border-radius:16px;box-shadow:0 5px 15px rgba(0,0,0,.08);margin-bottom:30px}
+.form-group{margin-bottom:18px}.form-group label{display:block;font-weight:bold;margin-bottom:7px}
+.form-group input,.form-group textarea{
+    width:100%;
+    padding:13px;
+    border:1px solid #ccd6e0;
+    border-radius:8px;
+    font-size:15px;
+    font-family:Arial,Helvetica,sans-serif;
+    background:white;
+    color:#263238;
+    outline:none;
+}
+.form-group textarea{
+    resize:vertical;
+    min-height:90px;
+}
+.form-group input:focus,.form-group textarea:focus{
+    border-color:#1565c0;
+    box-shadow:0 0 0 2px rgba(21,101,192,.10);
+}
+.save-button{background:#1565c0;color:white;border:none;padding:13px 25px;border-radius:8px;cursor:pointer;font-size:16px;font-weight:bold;transition:.2s}
+.save-button:hover{background:#0d47a1}
+
+.reminder-list{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.reminder-card{background:white;border-radius:15px;padding:20px;box-shadow:0 5px 15px rgba(0,0,0,.08);display:flex;flex-direction:column;justify-content:space-between}
+.reminder-card h3{color:#1565c0;margin-bottom:12px;font-size:18px;display:flex;align-items:center;gap:8px}
+.reminder-card p{margin:7px 0;white-space:pre-wrap;word-break:break-word}
+.delete-button{margin-top:15px;border:none;background:#c62828;color:white;padding:9px 15px;border-radius:7px;cursor:pointer;font-weight:bold;align-self:flex-start;transition:.2s}
+.delete-button:hover{background:#b71c1c}
+.due-remaining{
+    color:#d32f2f;
+    font-weight:700;
+    margin-left:6px;
+}
+
+footer{background:#263238;color:white;text-align:center;padding:25px;margin-top:50px}
+
+@media(max-width:900px){.reminder-list{grid-template-columns:repeat(2,1fr)}}
+
+@media(max-width:700px){
+.nav-inner{width:94%;min-height:58px;padding:7px 0}
+.site-title{font-size:16px}
+.site-title span{font-size:13px}
+.container{width:94%;margin:20px auto}
+.reminder-list{grid-template-columns:1fr}
+.hero{padding:20px;border-radius:12px}
+.hero h2{font-size:22px}
+.hero p{font-size:15px}
+footer{font-size:13px;padding:20px 10px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+<div class="site-title"><strong>Muammer Bozer </strong><span>Öğrenme Köşesi</span></div>
+</div>
+</nav>
+
+<div class="container">
+<section class="page active">
+<div class="hero">
+    <h2>🔔 Hatırlatmalarım</h2>
+    <p>Unutmamak istediğiniz notlarınızı ve tarihlerini ekleyebilir, kalan sürenizi takip edebilir ve tamamladığınız hatırlatmaları silebilirsiniz.</p>
+</div>
+
+<!-- Hatırlatma Ekleme Formu -->
+<div class="reminder-form">
+    <div class="form-group">
+        <label for="hatirlatmaNotu">📌 Hatırlatma Notu</label>
+        <textarea id="hatirlatmaNotu" placeholder="Hatırlatma notunuzu buraya yazınız..."></textarea>
+    </div>
+    <div class="form-group">
+        <label for="hatirlatmaTarihi">📅 Hatırlatma Tarihi</label>
+        <input type="date" id="hatirlatmaTarihi">
+    </div>
+    <button class="save-button" onClick="saveReminder()">💾 Hatırlatmayı Kaydet</button>
+</div>
+
+<h2 class="section-title">Kaydedilen Hatırlatmalar</h2>
+<div id="reminderList" class="reminder-list"></div>
+</section>
+</div>
+
+<footer>
+    <p>© 2026 Muammer Bozer - Öğrenme Köşesi</p>
+    <p>Kişisel Hatırlatıcı • Notlar • Takip</p>
+</footer>
+
+<script>
+function saveReminder(){
+    let n = document.getElementById("hatirlatmaNotu").value.trim(),
+        t = document.getElementById("hatirlatmaTarihi").value;
+    
+    if(!n || !t){
+        alert("Lütfen hem hatırlatma notunu hem de tarihini doldurunuz.");
+        return;
+    }
+    
+    let list = JSON.parse(localStorage.getItem("muammerBozerHatirlatmalar")) || [];
+    list.push({id: Date.now(), not: n, tarih: t});
+    localStorage.setItem("muammerBozerHatirlatmalar", JSON.stringify(list));
+    
+    document.getElementById("hatirlatmaNotu").value = "";
+    document.getElementById("hatirlatmaTarihi").value = "";
+    
+    displayReminders();
+    alert("Hatırlatma başarıyla kaydedildi.");
+}
+
+function displayReminders(){
+    let l = document.getElementById("reminderList"),
+        list = JSON.parse(localStorage.getItem("muammerBozerHatirlatmalar")) || [];
+    
+    l.innerHTML = "";
+    
+    if(!list.length){
+        l.innerHTML = '<div class="reminder-card" style="grid-column: 1 / -1;"><h3>📭 Henüz hatırlatma yok</h3><p>Yukarıdaki formu kullanarak ilk hatırlatmanızı ekleyebilirsiniz.</p></div>';
+        return;
+    }
+    
+    // Tarihe göre sıralama (en yakın tarih en üstte)
+    list.sort((a,b) => new Date(a.tarih) - new Date(b.tarih));
+    
+    list.forEach(x => {
+        let c = document.createElement("div");
+        c.className = "reminder-card";
+        c.innerHTML = `
+            <div>
+                <h3>📌 Hatırlatma</h3>
+                <p><strong>📝 Not:</strong> ${escapeHTML(x.not)}</p>
+                <p><strong>📅 Tarih:</strong> ${formatDate(x.tarih)}
+                <span class="due-remaining">(${getRemainingTime(x.tarih)})</span></p>
+            </div>
+            <button class="delete-button" onclick="deleteReminder(${x.id})">🗑️ Sil</button>`;
+        l.appendChild(c);
+    });
+}
+
+function deleteReminder(id){
+    const confirmed = confirm("Bu hatırlatmayı silmek istediğinizden emin misiniz?");
+    if(!confirmed) return;
+
+    let list = JSON.parse(localStorage.getItem("muammerBozerHatirlatmalar")) || [];
+    list = list.filter(x => x.id !== id);
+    localStorage.setItem("muammerBozerHatirlatmalar", JSON.stringify(list));
+    displayReminders();
+}
+
+function getRemainingTime(dateString){
+    const parts = dateString.split("-");
+    if(parts.length !== 3) return "";
+
+    const dueDate = new Date(
+        Number(parts[0]),
+        Number(parts[1]) - 1,
+        Number(parts[2]),
+        23, 59, 59
+    );
+
+    const now = new Date();
+    let diff = dueDate.getTime() - now.getTime();
+
+    if(diff <= 0) return "Tarihi geçti";
+
+    const minute = 60 * 1000;
+    const hour = 60 * minute;
+    const day = 24 * hour;
+
+    if(diff >= day){
+        const days = Math.ceil(diff / day);
+        return days + " gün kaldı";
+    }
+
+    const hours = Math.floor(diff / hour);
+    if(hours >= 1){
+        const minutes = Math.floor((diff % hour) / minute);
+        if(minutes > 0) return hours + " saat " + minutes + " dakika kaldı";
+        return hours + " saat kaldı";
+    }
+
+    const minutes = Math.ceil(diff / minute);
+    return minutes + " dakika kaldı";
+}
+
+function formatDate(s){let p=s.split("-");return p.length===3?p[2]+"."+p[1]+"."+p[0]:s}
+function escapeHTML(t){let d=document.createElement("div");d.textContent=t;return d.innerHTML}
+
+document.addEventListener("DOMContentLoaded", displayReminders);
+</script>
+</body>
+</html>
