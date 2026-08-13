@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muammer Bozer - Öğrenme Köşesi</title>
+<script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=4zG5KHEevnSLqcsuAPBaat2TGHL_LK8Qh4Z4fEaJuQjvpUiRVQjqQ2CakaFbCqVqcrgfcwU1UVzfINtsNd6pF1Yol06LPZoRy_YO48ZxAkITJ4DbnuHq9YuSK9XcEn7OdLgCeRmkhWOYXP2_Mwzbe-C6Xmh5WBP5mZqGNb7SO1AJFK7_8IoIDzy60q3IlcBqYKseIExIrY27jDLccqXPFl50kLBFI2c-qkiYqr94peyPBWKZ5paY9ChHZlAORwavmUr-iVun1ivCiG8VS_ijnKVPr1ruj328o778Xyf1fuIKHSguan5IMR-4TvMhUVY1ylnFieHJAqV5R5gDgsrDjA" charset="UTF-8"></script><style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:#f4f7fb;color:#263238;line-height:1.6}
+
+nav{background:white;box-shadow:0 3px 12px rgba(0,0,0,.12);position:sticky;top:0;z-index:1000}
+.nav-inner{width:92%;max-width:1200px;margin:auto;min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.site-title{
+    color:#1565c0;
+    font-size:21px;
+    font-weight:800;
+    line-height:1.1;
+    white-space:nowrap;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    margin-right:auto;
+}
+.site-title strong{font-weight:800}
+.site-title span{font-weight:600;font-size:15px}
+nav ul{display:flex;justify-content:flex-end;align-items:center;list-style:none;flex-wrap:wrap}
+nav li{margin:0}
+nav button{border:none;background:transparent;padding:14px 20px;font-size:15px;font-weight:bold;cursor:pointer;color:#263238;transition:.3s}
+nav button:hover,nav button.active{background:#1565c0;color:white;border-radius:8px}
+.mobile-menu-button{
+    display:none;
+    width:44px;
+    height:44px;
+    padding:0;
+    background:#1565c0;
+    color:white;
+    border:none;
+    border-radius:7px;
+    font-size:25px;
+    font-weight:bold;
+    line-height:44px;
+    text-align:center;
+    cursor:pointer;
+    flex:0 0 44px;
+}
+
+.container{width:92%;max-width:1200px;margin:30px auto}
+.page{display:none;animation:fadeIn .4s ease}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.hero{background:white;padding:35px;border-radius:18px;box-shadow:0 5px 20px rgba(0,0,0,.08);margin-bottom:30px}
+.hero h2{color:#1565c0;margin-bottom:15px;font-size:28px}
+.hero p{font-size:17px}
+.section-title{margin:25px 0 15px}
+.info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.info-card{background:white;padding:25px;border-radius:15px;text-decoration:none;color:#263238;box-shadow:0 5px 15px rgba(0,0,0,.08);transition:.3s;display:block}
+.info-card:hover{transform:translateY(-6px);box-shadow:0 10px 25px rgba(0,0,0,.15)}
+.info-card .icon{font-size:35px;margin-bottom:10px}.info-card h3{color:#1565c0;margin-bottom:8px}
+
+.slider-wrapper{
+    overflow:hidden;
+    width:100%;
+    margin-top:20px;
+    background:white;
+    padding:25px 18px;
+    border-radius:18px;
+    position:relative;
+}
+.slider-track{
+    display:flex;
+    gap:22px;
+    width:max-content;
+    animation:scrollLeft 20s linear infinite;
+}
+.slider-wrapper:hover .slider-track{
+    animation-play-state: paused;
+}
+@keyframes scrollLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.slide-card{width:250px;min-height:220px;background:linear-gradient(135deg,#1565c0,#42a5f5);color:white;border-radius:15px;padding:22px;text-decoration:none;display:flex;flex-direction:column;justify-content:center;flex-shrink:0}
+
+.lessons{display:flex;flex-direction:column;gap:12px}
+.lesson-box{background:white;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.08);overflow:hidden}
+.lesson-title{padding:20px;cursor:pointer;font-weight:bold;font-size:17px;display:flex;justify-content:space-between;align-items:center}
+.lesson-title:hover{background:#eef5ff}
+.lesson-content{display:none;padding:20px;border-top:1px solid #e5e5e5;background:#fafcff}
+.lesson-box.open .lesson-content{display:block}.lesson-box.open .arrow{transform:rotate(180deg)}.arrow{transition:.3s}
+.lesson-link{color:#1565c0;font-weight:600;text-decoration:underline;text-decoration-color:#90caf9;text-underline-offset:3px}
+.lesson-link:hover{color:#0d47a1;text-decoration-color:#1565c0}
+.assignment-form{background:white;padding:25px;border-radius:16px;box-shadow:0 5px 15px rgba(0,0,0,.08);margin-bottom:30px}
+.form-group{margin-bottom:18px}.form-group label{display:block;font-weight:bold;margin-bottom:7px}
+.form-group input,.form-group select{
+    width:100%;
+    padding:13px;
+    border:1px solid #ccd6e0;
+    border-radius:8px;
+    font-size:15px;
+    font-family:Arial,Helvetica,sans-serif;
+    background:white;
+    color:#263238;
+    outline:none;
+    appearance:auto;
+}
+.form-group input:focus,.form-group select:focus{
+    border-color:#1565c0;
+    box-shadow:0 0 0 2px rgba(21,101,192,.10);
+}
+.save-button{background:#2e7d32;color:white;border:none;padding:13px 25px;border-radius:8px;cursor:pointer;font-size:16px;font-weight:bold}
+.assignment-list{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.assignment-card{background:white;border-radius:15px;padding:20px;box-shadow:0 5px 15px rgba(0,0,0,.08)}
+.assignment-card h3{color:#1565c0;margin-bottom:12px}.assignment-card p{margin:7px 0}
+.delete-button{margin-top:15px;border:none;background:#c62828;color:white;padding:9px 15px;border-radius:7px;cursor:pointer}
+.due-remaining{
+    color:#d32f2f;
+    font-weight:700;
+    margin-left:6px;
+}
+
+.document-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.document-card{background:white;padding:25px;border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,.08)}
+.document-card h3{color:#1565c0;margin-bottom:10px}.document-card a{display:inline-block;margin-top:10px;background:#1565c0;color:white;text-decoration:none;padding:9px 15px;border-radius:7px}
+footer{background:#263238;color:white;text-align:center;padding:25px;margin-top:50px}
+
+@media(max-width:900px){.info-grid{grid-template-columns:repeat(2,1fr)}.assignment-list,.document-grid{grid-template-columns:repeat(2,1fr)}}
+
+@media(max-width:700px){
+.nav-inner{
+    width:94%;
+    min-height:58px;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:0;
+    padding:7px 0;
+    position:relative;
+}
+.site-title{
+    font-size:16px;
+    line-height:1.05;
+    white-space:nowrap;
+    flex:0 0 auto;
+    margin-right:0;
+}
+.site-title span{
+    font-size:13px;
+    margin-top:2px;
+}
+.mobile-menu-button{
+    display:block;
+    margin-left:auto;
+    width:42px;
+    height:42px;
+    flex:0 0 42px;
+    border-radius:6px;
+    font-size:24px;
+    line-height:42px;
+    padding:0;
+}
+nav ul{
+    display:none;
+    flex-direction:column;
+    width:100%;
+    flex-basis:100%;
+    order:3;
+    background:white;
+    border-radius:10px;
+    margin:7px 0 0;
+    box-shadow:0 3px 10px rgba(0,0,0,.10);
+    overflow:hidden;
+}
+nav ul.mobile-open{display:flex}
+nav li{width:100%}
+nav ul button{
+    width:100%;
+    padding:12px;
+    font-size:14px;
+    text-align:center;
+    border-radius:0
+}
+.container{width:94%;margin:20px auto}
+.info-grid,.assignment-list,.document-grid{grid-template-columns:1fr}
+.hero{padding:20px;border-radius:12px}
+.hero h2{font-size:22px}
+.hero p{font-size:15px}
+.lesson-title{padding:16px;font-size:15px}
+.lesson-content{padding:16px;font-size:14px}
+.slide-card{width:230px;min-height:230px;padding:22px}
+footer{font-size:13px;padding:20px 10px}
+}
+.stil2 {font-weight: bold; color: #0000FF;}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+<div class="site-title"><strong>Muammer Bozer </strong><span>Öğrenme Köşesi</span></div>
+<button class="mobile-menu-button" onClick="toggleMobileMenu()">☰</button>
+<ul id="mainMenu">
+<li><button class="menu-button active" onClick="showPage('anasayfa',this)">🏠 Anasayfa</button></li>
+<li><button class="menu-button" onClick="showPage('dersler',this)">📚 Dersler</button></li>
+<li><button class="menu-button" onClick="showPage('odevler',this)">📝 Ödevler</button></li>
+<li><button class="menu-button" onClick="showPage('dokumanlar',this)">📁 Dokümanlar</button></li>
+<li><button class="menu-button" onClick="showPage('planlar',this)">📅 Planlar</button></li>
+</ul>
+</div>
+</nav>
+
+<div class="container">
+<section id="anasayfa" class="page active">
+<div class="hero"><h2>Hoş Geldiniz 👋</h2><p>Muammer Bozer Öğrenme Köşesi; ders içeriklerine, eğitim materyallerine, ödevlere ve dokümanlara kolayca ulaşabilmek için hazırlanmış kişisel bir öğrenme alanıdır.</p><br><p>Yukarıdaki menüyü kullanarak derslere, ödevlere ve dokümanlara ulaşabilirsiniz.</p></div>
+<h2 class="section-title">Haftanın Ödevleri</h2><div class="info-grid">
+
+
+<p><a href="" class="info-card" onClick="showPageByName('');return false"><span class="stil2">5. Sınıf Din Kültürü ve Ahlak Bilgisi:</span> <br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</br></a></p>
+<p><a href="" class="info-card" onClick="showPageByName('');return false"><span class="stil2">6. Sınıf Din Kültürü ve Ahlak Bilgisi:</span> <br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</br></a></p>
+<p><a href="" class="info-card" onClick="showPageByName('');return false"><span class="stil2">7. Sınıf Din Kültürü ve Ahlak Bilgisi:</span> <br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</br></a></p>
+<p><a href="" class="info-card" onClick="showPageByName('');return false"><span class="stil2">8. Sınıf Din Kültürü ve Ahlak Bilgisi:</span> <br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</br></a></p>
+<p><a href="" class="info-card" onClick="showPageByName('');return false"><span class="stil2">5. Sınıf Din Kültürü ve Ahlak Bilgisi:</span> <br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</br></a></p>
+<p><a href="" class="info-card" onClick="showPageByName('');return false"><span class="stil2">6. Sınıf Din Kültürü ve Ahlak Bilgisi:</span> <br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</br></a></p>
+<p><a href="" class="info-card" onClick="showPageByName('');return false"><span class="stil2">7. Sınıf Din Kültürü ve Ahlak Bilgisi:</span> <br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</br></a></p>
+<p><a href="" class="info-card" onClick="showPageByName('');return false"><span class="stil2">8. Sınıf Din Kültürü ve Ahlak Bilgisi:</span> <br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</br></a></p>
+
+
+</div>
+<h2 class="section-title">Öne Çıkan Bağlantılar</h2>
+<div class="slider-wrapper">
+<div class="slider-track">
+<!-- Orijinal kartlar -->
+<a href="https://www.eba.gov.tr/" target="_blank" class="slide-card"><h3>🎓 EBA</h3><p>Eğitim içeriklerine ulaş.</p></a>
+<a href="https://www.meb.gov.tr/" target="_blank" class="slide-card"><h3>🏫 MEB</h3><p>Millî Eğitim Bakanlığı</p></a>
+<a href="https://wordwall.net/" target="_blank" class="slide-card"><h3>🎮 Wordwall</h3><p>Etkileşimli etkinlikler</p></a>
+<a href="https://www.canva.com/" target="_blank" class="slide-card"><h3>🎨 Canva</h3><p>Eğitim materyalleri hazırla.</p></a>
+<a href="https://notebooklm.google.com/" target="_blank" class="slide-card"><h3>🤖 NotebookLM</h3><p>Yapay zekâ destekli öğrenme.</p></a>
+
+<!-- Sonsuz döngü için klonlanmış kartlar -->
+<a href="https://www.eba.gov.tr/" target="_blank" class="slide-card"><h3>🎓 EBA</h3><p>Eğitim içeriklerine ulaş.</p></a>
+<a href="https://www.meb.gov.tr/" target="_blank" class="slide-card"><h3>🏫 MEB</h3><p>Millî Eğitim Bakanlığı</p></a>
+<a href="https://wordwall.net/" target="_blank" class="slide-card"><h3>🎮 Wordwall</h3><p>Etkileşimli etkinlikler</p></a>
+<a href="https://www.canva.com/" target="_blank" class="slide-card"><h3>🎨 Canva</h3><p>Eğitim materyalleri hazırla.</p></a>
+<a href="https://notebooklm.google.com/" target="_blank" class="slide-card"><h3>🤖 NotebookLM</h3><p>Yapay zekâ destekli öğrenme.</p></a>
+</div>
+</div>
+</section>
+
+<section id="dersler" class="page"><div class="hero"><h2>📚 Dersler</h2><p>Aşağıdaki başlıklara tıklayarak ders içeriklerini açabilirsiniz.</p></div>
+<div class="lessons">
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">3. HAFTA / 28 Eylül 2026<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="https://wordwall.net/tr/resource/116922054/5-1-1-%C3%A7engel-bulmaca" target="_blank" rel="noopener">5-1-1- ÇENGEL BULMACA (Evrendeki Mükemmel Düzen ve uyum)</a></p>
+<p><a class="lesson-link" href="https://wordwall.net/play/116810/512/531" target="_blank" rel="noopener">5-1-1- KARE BULMACA (Evrendeki Mükemmel Düzen ve uyum)</a></p>
+</div></div>
+
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">2. HAFTA / 21 Eylül 2026<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="https://wordwall.net/tr/resource/116922054/5-1-1-%C3%A7engel-bulmaca" target="_blank" rel="noopener">5-1-1- ÇENGEL BULMACA (Evrendeki Mükemmel Düzen ve uyum)</a></p>
+<p><a class="lesson-link" href="https://wordwall.net/play/116810/512/531" target="_blank" rel="noopener">5-1-1- KARE BULMACA (Evrendeki Mükemmel Düzen ve uyum)</a></p>
+</div></div>
+
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">1. HAFTA / 14 Eylül 2026<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="https://wordwall.net/tr/resource/116922054/5-1-1-%C3%A7engel-bulmaca" target="_blank" rel="noopener">5-1-1- ÇENGEL BULMACA (Evrendeki Mükemmel Düzen ve uyum)</a></p>
+<p><a class="lesson-link" href="https://wordwall.net/play/116810/512/531" target="_blank" rel="noopener">5-1-1- KARE BULMACA (Evrendeki Mükemmel Düzen ve uyum)</a></p>
+</div></div>
+</div>
+</section>
+
+<section id="planlar" class="page"><div class="hero"><h2>📅 Planlar</h2><p>Aşağıdaki haftalık plan başlıklarına tıklayarak içeriklerini açabilirsiniz.</p></div>
+<div class="lessons">
+
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">1. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">1. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">2. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">2. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">3. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">3. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">4. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">4. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">5. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">5. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">6. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">6. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">7. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">7. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">8. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">8. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">9. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">9. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">10. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">10. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">11. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">11. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">12. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">12. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">13. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">13. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">14. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">14. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">15. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">15. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">16. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">16. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">17. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">17. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">18. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">18. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">19. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">19. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">20. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">20. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">21. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">21. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">22. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">22. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">23. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">23. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">24. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">24. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">25. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">25. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">26. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">26. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">27. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">27. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">28. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">28. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">29. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">29. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">30. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">30. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">31. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">31. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">32. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">32. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">33. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">33. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">34. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">34. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">35. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">35. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">36. HAFTA PLANLARI<span class="arrow">▼</span></div><div class="lesson-content">
+<p><a class="lesson-link" href="#" target="_blank" rel="noopener">36. Hafta Ders Planı İçeriği ve Materyalleri</a></p>
+</div></div>
+</div>
+</section>
+
+<section id="odevler" class="page">
+<div class="hero"><h2>📝 Ödevlerim</h2><p>Yeni ödev ekleyebilir, kaydedilmiş ödevleri görebilir ve istediğiniz zaman silebilirsiniz.</p></div>
+<div class="assignment-form"><div class="form-group"><label for="dersAdi">Dersin Adı</label><select id="dersAdi" aria-label="Dersin Adı">
+<option value="">Ders seçiniz</option>
+<option>Matematik</option>
+<option>Türkçe</option>
+<option>Fen Bilimleri</option>
+<option>Sosyal Bilgiler</option>
+<option>Din Kültürü ve Ahlak Bilgisi</option>
+<option>İngilizce</option>
+<option>T.C. İnkılap Tarihi ve Atatürkçülük</option>
+<option>Bilişim Teknolojileri</option>
+<option>Kur'an-ı Kerim</option>
+<option>Temel Dini Bilgiler</option>
+<option>Peygamberimizin Hayatı</option>
+<option>Resim</option>
+<option>Müzik</option>
+<option>Diğer</option>
+</select></div>
+<div class="form-group"><label for="odevKonusu">Ödevin Konusu</label><input type="text" id="odevKonusu" placeholder="Ödev konusunu yazınız"></div>
+<div class="form-group"><label for="teslimTarihi">Son Teslim Tarihi</label><input type="date" id="teslimTarihi"></div>
+<button class="save-button" onClick="saveAssignment()">💾 Ödevi Kaydet</button>
+</div>
+<h2 class="section-title">Kaydedilen Ödevler</h2><div id="assignmentList" class="assignment-list"></div>
+</section>
+
+<section id="dokumanlar" class="page">
+<div class="hero"><h2>📁 Dokümanlar</h2><p>Eğitim dokümanları ve faydalı kaynaklar için hızlı erişim alanı.</p></div>
+<div class="document-grid">
+<div class="document-card"><p>📄 5. Sınıf Din Kültürü ve Ahlak Bilgisi Ders Kitabı</p><a href="https://cdnimage.eba.gov.tr/beta/538/2ef/5ab/d04/ab8/b94/ecd/992/f27/bc8/e5b/c55/8b9/06e/009/5382ef5abd04ab8b94ecd992f27bc8e5bc558b906e009.pdf">Aç</a></div>
+<div class="document-card"><p>📘 6. Sınıf Din Kültürü ve Ahlak Bilgisi Ders Kitabı</p><a href="https://cdnimage.eba.gov.tr/beta/347/9ef/c15/462/ff6/054/d25/9d9/ead/35b/0fe/d08/5b9/06e/037/3479efc15462ff6054d259d9ead35b0fed085b906e037.pdf">Aç</a></div>
+<div class="document-card"><p>📚 7. Sınıf Din Kültürü ve Ahlak Bilgisi Ders Kitabı</p><a href="https://cdnimage.eba.gov.tr/beta/836/9ef/5ab/d04/ab8/b94/ecd/992/f27/bc8/e5b/c55/8b9/06e/007/8369ef5abd04ab8b94ecd992f27bc8e5bc558b906e007.pdf">Aç</a></div>
+<div class="document-card"><p>📝 8. Sınıf Din Kültürü ve Ahlak Bilgisi Ders Kitabı</p><a href="https://cdnimage.eba.gov.tr/beta/291/6ef/5ab/d04/ab8/b94/ecd/992/f27/bc8/e5b/c55/8b9/06e/008/2916ef5abd04ab8b94ecd992f27bc8e5bc558b906e008.pdf">Aç</a></div>
+<div class="document-card"><h3>🎯 5. Kur'an-ı Kerim Ders Kitabı</h3><p>Sınıf içinde uygulanabilecek etkinlikler.</p><a href="#">Aç</a></div>
+<div class="document-card"><h3>🤖 6. Kur'an-ı Kerim Ders Kitabı</h3><p>Eğitimde yapay zekâ kullanımına yönelik kaynaklar.</p><a href="#">Aç</a></div>
+</div>
+</section>
+</div>
+
+<footer><p>© 2026 Muammer Bozer - Öğrenme Köşesi</p><p>Eğitim • Öğrenme • Teknoloji</p></footer>
+
+<script>
+function toggleMobileMenu(){document.getElementById("mainMenu").classList.toggle("mobile-open")}
+function showPage(pageId,button){
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+document.getElementById(pageId).classList.add("active");
+document.querySelectorAll(".menu-button").forEach(b=>b.classList.remove("active"));
+if(button)button.classList.add("active");
+document.getElementById("mainMenu").classList.remove("mobile-open");
+window.scrollTo({top:0,behavior:"smooth"});
+}
+function showPageByName(pageId){
+let b=null;document.querySelectorAll(".menu-button").forEach(x=>{let t=x.innerText.toLowerCase();if((pageId==="dersler"&&t.includes("dersler"))||(pageId==="planlar"&&t.includes("planlar"))||(pageId==="odevler"&&t.includes("ödevler"))||(pageId==="dokumanlar"&&t.includes("dokümanlar")))b=x});showPage(pageId,b)
+}
+function toggleLesson(element){
+    const currentBox = element.parentElement;
+    const allBoxes = document.querySelectorAll('.lesson-box');
+    
+    allBoxes.forEach(box => {
+        if (box !== currentBox) {
+            box.classList.remove('open');
+        }
+    });
+    
+    currentBox.classList.toggle('open');
+}
+function saveAssignment(){
+let d=document.getElementById("dersAdi").value.trim(),k=document.getElementById("odevKonusu").value.trim(),t=document.getElementById("teslimTarihi").value;
+if(!d||!k||!t){alert("Lütfen bütün alanları doldurunuz.");return}
+let a=JSON.parse(localStorage.getItem("muammerBozerOdevler"))||[];
+a.push({id:Date.now(),ders:d,konu:k,tarih:t});
+localStorage.setItem("muammerBozerOdevler",JSON.stringify(a));
+document.getElementById("dersAdi").value="";document.getElementById("odevKonusu").value="";document.getElementById("teslimTarihi").value="";
+displayAssignments();alert("Ödev başarıyla kaydedildi.")
+}
+function displayAssignments(){
+let l=document.getElementById("assignmentList"),a=JSON.parse(localStorage.getItem("muammerBozerOdevler"))||[];
+l.innerHTML="";
+if(!a.length){
+    l.innerHTML='<div class="assignment-card"><h3>📭 Henüz ödev yok</h3><p>Yukarıdaki formu kullanarak ilk ödevinizi ekleyebilirsiniz.</p></div>';
+    return;
+}
+a.forEach(x=>{
+    let c=document.createElement("div");
+    c.className="assignment-card";
+    c.innerHTML=`<h3>${escapeHTML(x.ders)}</h3>
+    <p><strong>📌 Konu:</strong> ${escapeHTML(x.konu)}</p>
+    <p><strong>📅 Son Teslim:</strong> ${formatDate(x.tarih)}
+    <span class="due-remaining">(${getRemainingTime(x.tarih)})</span></p>
+    <button class="delete-button" onclick="deleteAssignment(${x.id})">🗑️ Sil</button>`;
+    l.appendChild(c);
+})
+}
+function deleteAssignment(id){
+    const confirmed = confirm("Bu ödevi silmek istediğinizden emin misiniz?");
+    if(!confirmed) return;
+
+    let a=JSON.parse(localStorage.getItem("muammerBozerOdevler"))||[];
+    a=a.filter(x=>x.id!==id);
+    localStorage.setItem("muammerBozerOdevler",JSON.stringify(a));
+    displayAssignments();
+}
+function getRemainingTime(dateString){
+    const parts = dateString.split("-");
+    if(parts.length !== 3) return "";
+
+    const dueDate = new Date(
+        Number(parts[0]),
+        Number(parts[1]) - 1,
+        Number(parts[2]),
+        23, 59, 59
+    );
+
+    const now = new Date();
+    let diff = dueDate.getTime() - now.getTime();
+
+    if(diff <= 0) return "Teslim tarihi geçti";
+
+    const minute = 60 * 1000;
+    const hour = 60 * minute;
+    const day = 24 * hour;
+
+    if(diff >= day){
+        const days = Math.ceil(diff / day);
+        return "Teslime " + days + " gün kaldı";
+    }
+
+    const hours = Math.floor(diff / hour);
+    if(hours >= 1){
+        const minutes = Math.floor((diff % hour) / minute);
+        if(minutes > 0) return "Teslime " + hours + " saat " + minutes + " dakika kaldı";
+        return "Teslime " + hours + " saat kaldı";
+    }
+
+    const minutes = Math.ceil(diff / minute);
+    return "Teslime " + minutes + " dakika kaldı";
+}
+
+function formatDate(s){let p=s.split("-");return p.length===3?p[2]+"."+p[1]+"."+p[0]:s}
+function escapeHTML(t){let d=document.createElement("div");d.textContent=t;return d.innerHTML}
+document.addEventListener("DOMContentLoaded",displayAssignments)
+</script>
+</body>
+</html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Market Sipariş ve Toplam Hesaplayıcı</title>
+<script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=ucrbQUfLZ1M-SLGtwKyl1QWn9okWioDMrLsusdfDufKEgXrnywMnyzHy2V3S_RASsuWdKy5L6NzwD3yKIf4ZMP1v2dZUD74uYu3hNlbAOJVgdgJqLZG2wGczmW3COzbjnb-nDbdwR5mfW5rOAybRHdKOgcyvyk4SB7mcJ56Ts1a3T94N_aasTDBkZIPnf3JUWxqYGGTHdnpL1g0fPlPbgR2TxhHPyWVpmE8g6kfhKWzIMjlyPKJuqTLDC9pYVk85q5UeNaOsIsh7s6TyD1F_6RSMmQoWoLeg18YWEdbhnXv8g-mL4yKfLOA7FALveDU198P-XD-q40S0Th208HliDw" charset="UTF-8"></script><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background:#f4f7fb;
+    color:#263238;
+    line-height:1.5;
+    padding:12px;
+}
+.container{
+    max-width:800px;
+    margin:0 auto;
+    background:white;
+    padding:20px 16px;
+    border-radius:16px;
+    box-shadow:0 4px 16px rgba(0,0,0,.06);
+}
+h1{
+    color:#1565c0;
+    text-align:center;
+    margin-bottom:16px;
+    font-size:22px;
+    font-weight:800;
+}
+
+.top-bar{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    background:#eef5ff;
+    padding:14px;
+    border-radius:12px;
+    margin-bottom:20px;
+}
+.date-picker-group{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    width:100%;
+}
+.date-picker-group label{
+    font-weight:bold;
+    color:#1565c0;
+    font-size:14px;
+    white-space:nowrap;
+}
+.date-picker-group input{
+    padding:10px 12px;
+    border:1px solid #ccd6e0;
+    border-radius:8px;
+    font-size:15px;
+    outline:none;
+    background:white;
+    flex:1;
+    max-width:200px;
+    text-align:center;
+}
+
+.btn{
+    padding:12px 18px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+    font-size:15px;
+    transition:.2s;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    width:100%;
+    -webkit-tap-highlight-color: transparent;
+}
+.btn-primary{background:#1565c0;color:white}
+.btn-primary:active{background:#0d47a1}
+.btn-success{background:#2e7d32;color:white}
+.btn-success:active{background:#1b5e20}
+.btn-danger{background:#c62828;color:white}
+.btn-danger:active{background:#b71c1c}
+
+.form-card{
+    background:#fafcff;
+    border:1px solid #d0e1f9;
+    padding:16px;
+    border-radius:12px;
+    margin-bottom:20px;
+    display:none;
+    animation:fadeIn .3s ease;
+}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.form-row{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin-bottom:14px;
+}
+.form-group{width:100%}
+.form-group label{
+    display:block;
+    margin-bottom:6px;
+    font-weight:bold;
+    font-size:13px;
+    color:#37474f;
+}
+.form-group input{
+    width:100%;
+    padding:12px 14px;
+    border:1px solid #ccd6e0;
+    border-radius:8px;
+    font-size:16px;
+    outline:none;
+    background:white;
+}
+.form-group input:focus{
+    border-color:#1565c0;
+    box-shadow:0 0 0 2px rgba(21,101,192,.15);
+}
+
+.total-card{
+    background:linear-gradient(135deg, #1565c0, #1e88e5);
+    color:white;
+    padding:16px;
+    border-radius:12px;
+    text-align:center;
+    margin-bottom:20px;
+    box-shadow:0 4px 12px rgba(21,101,192,.2);
+}
+.total-card h2{
+    font-size:15px;
+    margin-bottom:4px;
+    font-weight:normal;
+    opacity:0.9;
+}
+.total-card .amount{
+    font-size:28px;
+    font-weight:bold;
+    letter-spacing:0.5px;
+}
+
+/* Mobil Uyumlu Liste Kart Görünümü */
+.order-cards-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-bottom:20px;
+}
+.order-item-card{
+    background:#fff;
+    border:1px solid #e2e8f0;
+    padding:14px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    box-shadow:0 2px 6px rgba(0,0,0,.03);
+}
+.order-info{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    overflow:hidden;
+}
+.order-title{
+    font-size:15px;
+    font-weight:bold;
+    color:#263238;
+    word-break:break-word;
+}
+.order-price{
+    font-size:16px;
+    font-weight:700;
+    color:#1565c0;
+}
+.delete-btn-single{
+    background:#ffebee;
+    color:#c62828;
+    border:none;
+    padding:8px 12px;
+    border-radius:8px;
+    font-weight:bold;
+    font-size:13px;
+    cursor:pointer;
+    flex-shrink:0;
+}
+.delete-btn-single:active{
+    background:#ffcdd2;
+}
+
+.actions-row{
+    margin-top:20px;
+}
+
+.empty-msg{
+    text-align:center;
+    color:#78909c;
+    padding:24px 12px;
+    font-style:italic;
+    background:#fafafa;
+    border-radius:10px;
+    border:1px dashed #cfd8dc;
+    font-size:14px;
+}
+
+@media(min-width: 600px){
+    body{padding:20px}
+    .container{padding:30px}
+    h1{font-size:26px;margin-bottom:20px}
+    .top-bar{flex-direction:row;justify-content:space-between;align-items:center}
+    .btn{width:auto}
+    .form-row{flex-direction:row}
+    .total-card .amount{font-size:32px}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🛒 Market Sipariş Listesi</h1>
+
+    <div class="top-bar">
+        <div class="date-picker-group">
+            <label for="listDate">📅 Liste Tarihi:</label>
+            <input type="date" id="listDate" onchange="saveDate()">
+        </div>
+        <button class="btn btn-primary" onclick="showOrderForm()">➕ Yeni Sipariş</button>
+    </div>
+
+    <!-- Sipariş Ekleme Formu -->
+    <div id="orderForm" class="form-card">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="orderName">Sipariş / Ürün Adı</label>
+                <input type="text" id="orderName" placeholder="Örn: Süt, Ekmek, Peynir">
+            </div>
+            <div class="form-group">
+                <label for="orderPrice">Tutar (TL)</label>
+                <input type="number" id="orderPrice" step="0.01" min="0" placeholder="0.00" inputmode="decimal">
+            </div>
+        </div>
+        <button class="btn btn-success" onclick="addOrder()">➕ Ekle</button>
+    </div>
+
+    <!-- Toplam Tutar Alanı -->
+    <div class="total-card">
+        <h2>Toplam Tutar</h2>
+        <div class="amount" id="totalAmount">0.00 TL</div>
+    </div>
+
+    <!-- Sipariş Listesi (Mobil Kart Görünümü) -->
+    <div id="orderList" class="order-cards-list"></div>
+    <div id="emptyMessage" class="empty-msg">Henüz listeye sipariş eklenmedi.</div>
+
+    <!-- Tümünü Sil Butonu -->
+    <div class="actions-row">
+        <button class="btn btn-danger" onclick="clearAllOrders()">🗑️ Bütün Listeyi Sil</button>
+    </div>
+</div>
+
+<script>
+let orders = JSON.parse(localStorage.getItem('marketOrders')) || [];
+let savedDate = localStorage.getItem('marketOrderDate') || new Date().toISOString().split('T')[0];
+
+document.getElementById('listDate').value = savedDate;
+
+function saveDate() {
+    const selectedDate = document.getElementById('listDate').value;
+    localStorage.setItem('marketOrderDate', selectedDate);
+}
+
+function showOrderForm() {
+    const form = document.getElementById('orderForm');
+    form.style.display = 'block';
+    document.getElementById('orderName').focus();
+}
+
+function addOrder() {
+    const nameInput = document.getElementById('orderName');
+    const priceInput = document.getElementById('orderPrice');
+
+    const name = nameInput.value.trim();
+    const price = parseFloat(priceInput.value);
+
+    if (!name) {
+        alert('Lütfen sipariş adını giriniz.');
+        nameInput.focus();
+        return;
+    }
+
+    if (isNaN(price) || price < 0) {
+        alert('Lütfen geçerli bir tutar giriniz.');
+        priceInput.focus();
+        return;
+    }
+
+    const newOrder = {
+        id: Date.now(),
+        name: name,
+        price: price
+    };
+
+    orders.unshift(newOrder);
+    saveAndRender();
+
+    nameInput.value = '';
+    priceInput.value = '';
+    nameInput.focus();
+}
+
+function deleteOrder(id) {
+    orders = orders.filter(item => item.id !== id);
+    saveAndRender();
+}
+
+function clearAllOrders() {
+    if (orders.length === 0) {
+        alert('Silinecek sipariş bulunmuyor.');
+        return;
+    }
+
+    const confirmed = confirm('Bütün sipariş listesini silmek istediğinizden emin misiniz?');
+    if (confirmed) {
+        orders = [];
+        saveAndRender();
+    }
+}
+
+function saveAndRender() {
+    localStorage.setItem('marketOrders', JSON.stringify(orders));
+    renderOrders();
+}
+
+function renderOrders() {
+    const container = document.getElementById('orderList');
+    const emptyMsg = document.getElementById('emptyMessage');
+    const totalEl = document.getElementById('totalAmount');
+
+    container.innerHTML = '';
+
+    let total = 0;
+
+    if (orders.length === 0) {
+        emptyMsg.style.display = 'block';
+    } else {
+        emptyMsg.style.display = 'none';
+
+        orders.forEach((item, index) => {
+            total += item.price;
+
+            const card = document.createElement('div');
+            card.className = 'order-item-card';
+            card.innerHTML = `
+                <div class="order-info">
+                    <div class="order-title">${index + 1}. ${escapeHTML(item.name)}</div>
+                    <div class="order-price">${item.price.toFixed(2)} TL</div>
+                </div>
+                <button class="delete-btn-single" onclick="deleteOrder(${item.id})">Sil</button>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    totalEl.textContent = total.toFixed(2) + ' TL';
+}
+
+function escapeHTML(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
+document.addEventListener('DOMContentLoaded', renderOrders);
+</script>
+
+</body>
+</html>
