@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makale Bağlantıları</title>
+    <script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=7UxNce28WjS-9eW8XqzWOb6qLzhMc6g9O1e_L75DxSetAejRkV4Q1PwJ0PinpEaeCq4Oui74sGpEeEILSgVnFIzsYwCAQmUCNdwIUFZnhJ3GrI90kckfa8dnI2KuTn9yFEArMvbyhEcJfAtRLl84DuP389pWNQ7vmy9ZUe6uj40hCMpP_j6RwpuTJLuTGUH8zFOGmWv8GPWamWYlrSikWXawWDV9-R3nl9dNnvFEHncgk77IEPUDvc5vZY92lJ4qyuUsqe_oENnlnez-Ra80XMZgaWTXQXRmm2Dmy0CKP7p5PpewghTyyBziiXY8KciglM-GJfN7m9ZM1XSgGU0YWg" charset="UTF-8"></script><style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .layout {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            width: 100%;
+            max-width: 1400px;
+        }
+
+        /* Giriş Kutucuğu (Sol Sidebar) */
+        .form-container {
+            background: #ffffff;
+            padding: 14px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            width: 260px;
+            flex-shrink: 0;
+            border: 1px solid #e0e0e0;
+            position: sticky;
+            top: 15px;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .form-container input:focus {
+            border-color: #007bff;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Izgara Yapısı - Form kutucuğunun yanında 5 sütun */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 14px;
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* Makale Kutucuğu */
+        .card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 12px;
+            min-height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+            word-break: break-word;
+        }
+
+        /* Makale İsmi (Yazı boyutu büyütüldü) */
+        .card-title {
+            font-size: 16px; /* Büyütüldü */
+            line-height: 1.4;
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 600;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .card-title:hover {
+            color: #007bff;
+        }
+
+        /* Butonlar Alanı - Üst ve Alt Satır Yapısı */
+        .card-buttons {
+            display: flex;
+            gap: 6px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 6px 2px;
+            font-size: 11px;
+            font-weight: 600;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color: white;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .btn-status {
+            flex: 1.5;
+        }
+
+        .btn-edit,
+        .btn-delete {
+            flex: 0.75;
+        }
+
+        /* Temel Buton Renkleri */
+        .btn-edit {
+            background-color: #ffc107;
+            color: #212529;
+        }
+
+        .btn-delete {
+            background-color: #dc3545;
+        }
+
+        /* Okuma Durumu Butonları */
+        .btn-status {
+            background-color: #e0e0e0; /* Pasif varsayılan durum: gri */
+            color: #666;
+            border: 1px solid #ccc;
+        }
+
+        /* Aktif "Tamamlandı" Butonu: Mavi */
+        .btn-status.active-read {
+            background-color: #007bff;
+            color: white;
+            border-color: #0056b3;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        /* RESPONSIVE BREAKPOINTS */
+        @media (max-width: 1100px) {
+            .grid-container { grid-template-columns: repeat(4, 1fr); }
+        }
+        @media (max-width: 900px) {
+            .layout {
+                flex-direction: column;
+            }
+            .form-container {
+                width: 100%;
+                max-width: 400px;
+                position: static;
+            }
+            .grid-container {
+                width: 100%;
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .grid-container { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .grid-container { grid-template-columns: repeat(2, 1fr); }
+        }
+        /* MOBİL UYUMLULUK: Tek sırada tek kutucuk */
+        @media (max-width: 500px) {
+            body {
+                padding: 10px;
+            }
+            .grid-container { 
+                grid-template-columns: 1fr;
+            }
+            .form-container {
+                max-width: 100%;
+                padding: 16px;
+            }
+            .form-container input {
+                font-size: 16px;
+                padding: 12px;
+            }
+            .form-container button {
+                padding: 12px;
+                font-size: 16px;
+            }
+            .card {
+                padding: 14px;
+                min-height: 150px;
+            }
+            .card-title {
+                font-size: 18px; /* Mobilde daha da belirginleştirildi */
+                line-height: 1.4;
+            }
+            .btn {
+                padding: 8px 4px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="layout">
+        <!-- Giriş Kutucuğu -->
+        <div class="form-container">
+            <input type="text" id="titleInput" placeholder="Makale İsmi Giriniz">
+            <input type="url" id="linkInput" placeholder="Makale Linki (https://...)">
+            <button id="saveBtn" onclick="saveArticle()">Kaydet</button>
+        </div>
+
+        <!-- Oluşturulan Kutucukların Listesi -->
+        <div class="grid-container" id="articleGrid"></div>
+    </div>
+
+    <script>
+        let editIndex = null;
+
+        document.addEventListener("DOMContentLoaded", loadArticles);
+
+        function getArticles() {
+            return JSON.parse(localStorage.getItem("articles")) || [];
+        }
+
+        function saveArticlesToStorage(articles) {
+            localStorage.setItem("articles", JSON.stringify(articles));
+        }
+
+        function saveArticle() {
+            const titleInput = document.getElementById("titleInput");
+            const linkInput = document.getElementById("linkInput");
+
+            const title = titleInput.value.trim();
+            let link = linkInput.value.trim();
+
+            if (!title || !link) {
+                alert("Lütfen hem başlık hem de link alanını doldurun.");
+                return;
+            }
+
+            if (!link.startsWith("http://") && !link.startsWith("https://")) {
+                link = "https://" + link;
+            }
+
+            let articles = getArticles();
+
+            if (editIndex !== null) {
+                // Var olanı düzenlerken mevcut status değerini koru
+                articles[editIndex].title = title;
+                articles[editIndex].link = link;
+                editIndex = null;
+                document.getElementById("saveBtn").innerText = "Kaydet";
+            } else {
+                // Yeni makale eklerken varsayılan status: null
+                articles.push({ title, link, status: null });
+            }
+
+            saveArticlesToStorage(articles);
+            titleInput.value = "";
+            linkInput.value = "";
+            renderArticles();
+        }
+
+        function toggleStatus(index, newStatus) {
+            let articles = getArticles();
+            // Eğer zaten seçili olan duruma tekrar basılırsa pasife al (null yap)
+            if (articles[index].status === newStatus) {
+                articles[index].status = null;
+            } else {
+                articles[index].status = newStatus;
+            }
+            saveArticlesToStorage(articles);
+            renderArticles();
+        }
+
+        function renderArticles() {
+            const grid = document.getElementById("articleGrid");
+            grid.innerHTML = "";
+            const articles = getArticles();
+
+            articles.forEach((item, index) => {
+                const card = document.createElement("div");
+                card.className = "card";
+
+                const isRead = item.status === 'read';
+
+                card.innerHTML = `
+                    <a href="${item.link}" target="_blank" class="card-title" title="${item.title}">${item.title}</a>
+                    <div class="card-buttons">
+                        <button class="btn btn-status ${isRead ? 'active-read' : ''}" onclick="toggleStatus(${index}, 'read')">Tamamlandı</button>
+                        <button class="btn btn-edit" onclick="editArticle(${index})">Düzenle</button>
+                        <button class="btn btn-delete" onclick="deleteArticle(${index})">Sil</button>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        function editArticle(index) {
+            const articles = getArticles();
+            document.getElementById("titleInput").value = articles[index].title;
+            document.getElementById("linkInput").value = articles[index].link;
+            
+            editIndex = index;
+            document.getElementById("saveBtn").innerText = "Güncelle";
+        }
+
+        function deleteArticle(index) {
+            let articles = getArticles();
+            articles.splice(index, 1);
+            saveArticlesToStorage(articles);
+            renderArticles();
+        }
+
+        function loadArticles() {
+            renderArticles();
+        }
+    </script>
+</body>
+</html>

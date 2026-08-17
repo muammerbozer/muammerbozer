@@ -55,20 +55,29 @@ nav{background:white;box-shadow:0 3px 12px rgba(0,0,0,.12);position:sticky;top:0
 .save-button{background:#1565c0;color:white;border:none;padding:13px 25px;border-radius:8px;cursor:pointer;font-size:16px;font-weight:bold;transition:.2s}
 .save-button:hover{background:#0d47a1}
 
-.reminder-list{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.reminder-card{background:white;border-radius:15px;padding:20px;box-shadow:0 5px 15px rgba(0,0,0,.08);display:flex;flex-direction:column;justify-content:space-between}
-.reminder-card h3{color:#1565c0;margin-bottom:12px;font-size:18px;display:flex;align-items:center;gap:8px}
-.reminder-card p{margin:7px 0;white-space:pre-wrap;word-break:break-word}
-.delete-button{margin-top:15px;border:none;background:#c62828;color:white;padding:9px 15px;border-radius:7px;cursor:pointer;font-weight:bold;align-self:flex-start;transition:.2s}
-.delete-button:hover{background:#b71c1c}
+.reminder-list{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.reminder-card{background:white;border-radius:10px;padding:12px 14px;box-shadow:0 4px 12px rgba(0,0,0,.08);display:flex;flex-direction:column;justify-content:space-between;font-size:13px}
+.reminder-card h3{color:#1565c0;margin-bottom:6px;font-size:15px;display:flex;align-items:center;gap:8px}
+.reminder-card p{margin:4px 0;white-space:pre-wrap;word-break:break-word}
+.reminder-actions{margin-top:8px;display:flex;gap:6px;align-items:center;justify-content:space-between}
+.action-button{border:none;padding:4px 9px;border-radius:5px;cursor:pointer;font-weight:bold;font-size:11px;line-height:1.4;transition:.2s;white-space:nowrap}
+.edit-button{background:#e3edf9;color:#1565c0}
+.edit-button:hover{background:#c9dcf3}
+.delete-button{background:#fbe4e4;color:#c62828}
+.delete-button:hover{background:#f5c6c6}
+.action-buttons-group{display:flex;gap:6px}
 .due-remaining{
-    color:#d32f2f;
     font-weight:700;
-    margin-left:6px;
+    font-size:11px;
+    color:#2e7d32;
+}
+.due-remaining.expired{
+    color:#d32f2f;
 }
 
 footer{background:#263238;color:white;text-align:center;padding:25px;margin-top:50px}
 
+@media(max-width:1100px){.reminder-list{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:900px){.reminder-list{grid-template-columns:repeat(2,1fr)}}
 
 @media(max-width:700px){
@@ -123,6 +132,8 @@ footer{font-size:13px;padding:20px 10px}
 </footer>
 
 <script>
+let editingId = null;
+
 function saveReminder(){
     let n = document.getElementById("hatirlatmaNotu").value.trim(),
         t = document.getElementById("hatirlatmaTarihi").value;
@@ -133,7 +144,15 @@ function saveReminder(){
     }
     
     let list = JSON.parse(localStorage.getItem("muammerBozerHatirlatmalar")) || [];
-    list.push({id: Date.now(), not: n, tarih: t});
+
+    if(editingId !== null){
+        list = list.map(x => x.id === editingId ? {...x, not: n, tarih: t} : x);
+        editingId = null;
+        document.querySelector(".save-button").textContent = "💾 Hatırlatmayı Kaydet";
+    } else {
+        list.push({id: Date.now(), not: n, tarih: t});
+    }
+
     localStorage.setItem("muammerBozerHatirlatmalar", JSON.stringify(list));
     
     document.getElementById("hatirlatmaNotu").value = "";
@@ -141,6 +160,19 @@ function saveReminder(){
     
     displayReminders();
     alert("Hatırlatma başarıyla kaydedildi.");
+}
+
+function editReminder(id){
+    let list = JSON.parse(localStorage.getItem("muammerBozerHatirlatmalar")) || [];
+    let item = list.find(x => x.id === id);
+    if(!item) return;
+
+    document.getElementById("hatirlatmaNotu").value = item.not;
+    document.getElementById("hatirlatmaTarihi").value = item.tarih;
+    editingId = id;
+    document.querySelector(".save-button").textContent = "💾 Güncelle";
+    document.getElementById("hatirlatmaNotu").focus();
+    document.querySelector(".reminder-form").scrollIntoView({behavior:"smooth", block:"center"});
 }
 
 function displayReminders(){
@@ -160,14 +192,20 @@ function displayReminders(){
     list.forEach(x => {
         let c = document.createElement("div");
         c.className = "reminder-card";
+        const remaining = getRemainingTime(x.tarih);
+        const expiredClass = remaining === "Tarihi geçti" ? " expired" : "";
         c.innerHTML = `
             <div>
-                <h3>📌 Hatırlatma</h3>
                 <p><strong>📝 Not:</strong> ${escapeHTML(x.not)}</p>
-                <p><strong>📅 Tarih:</strong> ${formatDate(x.tarih)}
-                <span class="due-remaining">(${getRemainingTime(x.tarih)})</span></p>
+                <p><strong>📅 Tarih:</strong> ${formatDate(x.tarih)}</p>
             </div>
-            <button class="delete-button" onclick="deleteReminder(${x.id})">🗑️ Sil</button>`;
+            <div class="reminder-actions">
+                <span class="due-remaining${expiredClass}">${remaining}</span>
+                <div class="action-buttons-group">
+                    <button class="action-button edit-button" onclick="editReminder(${x.id})">✏️ Düzenle</button>
+                    <button class="action-button delete-button" onclick="deleteReminder(${x.id})">🗑️ Sil</button>
+                </div>
+            </div>`;
         l.appendChild(c);
     });
 }
