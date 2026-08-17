@@ -57,6 +57,11 @@ nav button:hover,nav button.active{background:#1565c0;color:white;border-radius:
 .info-card{background:white;padding:25px;border-radius:15px;color:#263238;box-shadow:0 5px 15px rgba(0,0,0,.08);transition:.3s;display:block}
 .info-card:hover{transform:translateY(-6px);box-shadow:0 10px 25px rgba(0,0,0,.15)}
 .info-card .icon{font-size:35px;margin-bottom:10px}.info-card h3{color:#1565c0;margin-bottom:8px}
+.info-card.grade-5{border-left:5px solid #1565c0}
+.info-card.grade-6{border-left:5px solid #2e7d32}
+.info-card.grade-7{border-left:5px solid #ef6c00}
+.info-card.grade-8{border-left:5px solid #8e24aa}
+.card-symbol{font-size:18px;margin-right:4px}
 
 .slider-wrapper{
     overflow:hidden;
@@ -91,33 +96,127 @@ nav button:hover,nav button.active{background:#1565c0;color:white;border-radius:
 .lesson-box.open .lesson-content{display:block}.lesson-box.open .arrow{transform:rotate(180deg)}.arrow{transition:.3s}
 .lesson-link{color:#1565c0;font-weight:600;text-decoration:underline;text-decoration-color:#90caf9;text-underline-offset:3px}
 .lesson-link:hover{color:#0d47a1;text-decoration-color:#1565c0}
-.assignment-form{background:white;padding:25px;border-radius:16px;box-shadow:0 5px 15px rgba(0,0,0,.08);margin-bottom:30px}
-.form-group{margin-bottom:18px}.form-group label{display:block;font-weight:bold;margin-bottom:7px}
-.form-group input,.form-group select{
+
+/* ÖDEVLER - hatirlatma.html tasarimi */
+#odevler .assignment-layout{
+    display:flex;
+    align-items:flex-start;
+    gap:20px;
     width:100%;
-    padding:13px;
-    border:1px solid #ccd6e0;
+    max-width:1400px;
+}
+#odevler .assignment-form{
+    background:#fff;
+    padding:14px;
     border-radius:8px;
+    box-shadow:0 2px 6px rgba(0,0,0,.08);
+    width:260px;
+    flex-shrink:0;
+    border:1px solid #e0e0e0;
+    position:sticky;
+    top:15px;
+    margin-bottom:0;
+}
+#odevler .assignment-form .form-group{margin:0}
+#odevler .assignment-form .form-group label{display:none}
+#odevler .assignment-form input{
+    width:100%;
+    padding:10px 12px;
+    margin-bottom:10px;
+    border:1px solid #ccc;
+    border-radius:6px;
     font-size:15px;
-    font-family:Arial,Helvetica,sans-serif;
-    background:white;
-    color:#263238;
     outline:none;
-    appearance:auto;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
 }
-.form-group input:focus,.form-group select:focus{
-    border-color:#1565c0;
-    box-shadow:0 0 0 2px rgba(21,101,192,.10);
+#odevler .assignment-form input:focus{border-color:#007bff}
+#odevler .save-button{
+    width:100%;
+    padding:10px;
+    background:#007bff;
+    color:#fff;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:600;
 }
-.save-button{background:#2e7d32;color:white;border:none;padding:13px 25px;border-radius:8px;cursor:pointer;font-size:16px;font-weight:bold}
-.assignment-list{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.assignment-card{background:white;border-radius:15px;padding:20px;box-shadow:0 5px 15px rgba(0,0,0,.08)}
-.assignment-card h3{color:#1565c0;margin-bottom:12px}.assignment-card p{margin:7px 0}
-.delete-button{margin-top:15px;border:none;background:#c62828;color:white;padding:9px 15px;border-radius:7px;cursor:pointer}
-.due-remaining{
-    color:#d32f2f;
+#odevler .save-button:hover{background:#0056b3}
+#odevler .assignment-list{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:14px;
+    flex:1;
+    min-width:0;
+}
+#odevler .assignment-card{
+    background:#fff;
+    border:1px solid #e0e0e0;
+    border-radius:8px;
+    padding:12px;
+    min-height:140px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    box-shadow:0 2px 4px rgba(0,0,0,.04);
+    word-break:break-word;
+}
+#odevler .assignment-card .assignment-title{
+    font-size:12px;
+    line-height:1.4;
+    color:#1a1a1a;
+    font-weight:600;
+    display:-webkit-box;
+    -webkit-line-clamp:3;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+    margin-bottom:8px;
+}
+#odevler .assignment-card .assignment-date{
+    font-size:12px;
+    color:#555;
+    margin-bottom:4px;
+}
+#odevler .assignment-card .due-remaining{
+    font-size:12px;
     font-weight:700;
-    margin-left:6px;
+    color:#28a745;
+    margin:0 0 10px 0;
+}
+#odevler .assignment-card .due-remaining.expired{color:#dc3545}
+#odevler .card-buttons{display:flex;gap:6px}
+#odevler .card-buttons .btn{
+    flex:1;
+    padding:6px 2px;
+    font-size:11px;
+    font-weight:600;
+    border:none;
+    border-radius:4px;
+    cursor:pointer;
+    color:#fff;
+    text-align:center;
+    transition:all .2s ease;
+}
+#odevler .card-buttons .btn-status{flex:1.5;background:#e0e0e0;color:#666;border:1px solid #ccc}
+#odevler .card-buttons .btn-status.active-read{background:#007bff;color:#fff;border-color:#0056b3;box-shadow:inset 0 1px 3px rgba(0,0,0,.2)}
+#odevler .card-buttons .btn-edit{flex:.75;background:#ffc107;color:#212529}
+#odevler .card-buttons .btn-delete{flex:.75;background:#dc3545}
+@media(max-width:1100px){#odevler .assignment-list{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:900px){
+    #odevler .assignment-layout{flex-direction:column}
+    #odevler .assignment-form{width:100%;max-width:400px;position:static}
+    #odevler .assignment-list{width:100%;grid-template-columns:repeat(4,1fr)}
+}
+@media(max-width:768px){#odevler .assignment-list{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){#odevler .assignment-list{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){
+    #odevler .assignment-form{max-width:100%;padding:16px}
+    #odevler .assignment-form input{font-size:16px;padding:12px}
+    #odevler .save-button{padding:12px;font-size:16px}
+    #odevler .assignment-card{padding:14px;min-height:150px}
+    #odevler .assignment-card .assignment-title{font-size:14px}
+    #odevler .card-buttons .btn{padding:8px 4px;font-size:12px}
+    #odevler .assignment-list{grid-template-columns:1fr}
 }
 
 .document-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -204,7 +303,7 @@ footer{font-size:13px;padding:20px 10px}
 <nav>
 <div class="nav-inner"><div class="site-title"><strong><h2>Muammer Bozer</h2></strong><span>Öğrenme Köşesi</span></div><button class="mobile-menu-button" onClick="toggleMobileMenu()">☰</button>
 <ul id="mainMenu">
-<li><button class="menu-button active" onClick="showPage('anasayfa',this)">🏠 <h3>Anasayfa</h3></button></li>
+<li><button class="menu-button active" onClick="showPage('anasayfa',this)">🏠 Anasayfa</button></li>
 <li><button class="menu-button" onClick="showPage('dersler',this)">📚 Dersler</button></li>
 <li><button class="menu-button" onClick="showPage('odevler',this)">📝 Ödevler</button></li>
 <li><button class="menu-button" onClick="showPage('dokumanlar',this)">📁 Dokümanlar</button></li>
@@ -219,14 +318,14 @@ footer{font-size:13px;padding:20px 10px}
 
 <h2 class="section-title">Haftanın Ödevleri</h2><div class="info-grid">
 
-<div class="info-card"><span class="stil2">5. Sınıf Din Kültürü ve Ahlak Bilgisi:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
-<div class="info-card"><span class="stil2">6. Sınıf Din Kültürü ve Ahlak Bilgisi:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
-<div class="info-card"><span class="stil2">7. Sınıf Din Kültürü ve Ahlak Bilgisi:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
-<div class="info-card"><span class="stil2">8. Sınıf Din Kültürü ve Ahlak Bilgisi:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
-<div class="info-card"><span class="stil2">5. Sınıf Kur'an-ı Kerim:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
-<div class="info-card"><span class="stil2">6. Sınıf Kur'an-ı Kerim:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
-<div class="info-card"><span class="stil2">7. Sınıf Kur'an-ı Kerim:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
-<div class="info-card"><span class="stil2">8. Sınıf Kur'an-ı Kerim:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
+<div class="info-card grade-5"><span class="card-symbol">🕌</span><span class="stil2">5. Sınıf Din Kültürü ve Ahlak Bilgisi:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
+<div class="info-card grade-6"><span class="card-symbol">🕌</span><span class="stil2">6. Sınıf Din Kültürü ve Ahlak Bilgisi:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
+<div class="info-card grade-7"><span class="card-symbol">🕌</span><span class="stil2">7. Sınıf Din Kültürü ve Ahlak Bilgisi:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
+<div class="info-card grade-8"><span class="card-symbol">🕌</span><span class="stil2">8. Sınıf Din Kültürü ve Ahlak Bilgisi:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
+<div class="info-card grade-5"><span class="card-symbol">📖</span><span class="stil2">5. Sınıf Kur'an-ı Kerim:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
+<div class="info-card grade-6"><span class="card-symbol">📖</span><span class="stil2">6. Sınıf Kur'an-ı Kerim:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
+<div class="info-card grade-7"><span class="card-symbol">📖</span><span class="stil2">7. Sınıf Kur'an-ı Kerim:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
+<div class="info-card grade-8"><span class="card-symbol">📖</span><span class="stil2">8. Sınıf Kur'an-ı Kerim:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
 
 <!--2. Hafta
 <div class="info-card"><span class="stil2">5. Sınıf Din Kültürü ve Ahlak Bilgisi:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
@@ -359,30 +458,15 @@ footer{font-size:13px;padding:20px 10px}
 </section>
 
 <section id="odevler" class="page">
-<div class="hero"><h2>📝 Ödevlerim</h2><p>Yeni ödev ekleyebilir, kaydedilmiş ödevleri görebilir ve istediğiniz zaman silebilirsiniz.</p></div>
-<div class="assignment-form"><div class="form-group"><label for="dersAdi">Dersin Adı</label><select id="dersAdi" aria-label="Dersin Adı">
-<option value="">Ders seçiniz</option>
-<option>Din Kültürü ve Ahlak Bilgisi</option>
-<option>Kur'an-ı Kerim</option>
-<option>Peygamberimizin Hayatı</option>
-<option>Temel Dini Bilgiler</option>
-<option>Matematik</option>
-<option>Türkçe</option>
-<option>Fen Bilimleri</option>
-<option>Sosyal Bilgiler</option>
-<option>T.C. İnkılap Tarihi ve Atatürkçülük</option>
-<option>İngilizce</option>
-<option>Bilişim Teknolojileri</option>
-<option>Resim</option>
-<option>Müzik</option>
-<option>Beden Eğitimi ve Spor</option>
-<option>Diğer</option>
-</select></div>
-<div class="form-group"><label for="odevKonusu">Ödevin Konusu</label><input type="text" id="odevKonusu" placeholder="Ödev konusunu yazınız"></div>
-<div class="form-group"><label for="teslimTarihi">Son Teslim Tarihi</label><input type="date" id="teslimTarihi"></div>
-<button class="save-button" onClick="saveAssignment()">💾 Ödevi Kaydet</button>
+<div class="hero"><h2>📝 Ödevlerim</h2><p>Yeni ödev ekleyebilir, kaydedilmiş ödevleri görebilir, tamamlandı olarak işaretleyebilir, düzenleyebilir ve silebilirsiniz.</p></div>
+<div class="assignment-layout">
+    <div class="assignment-form">
+        <div class="form-group"><input type="text" id="odevKonusu" placeholder="Ödev Giriniz."></div>
+        <div class="form-group"><input type="date" id="teslimTarihi"></div>
+        <button id="saveAssignmentBtn" class="save-button" onClick="saveAssignment()">Kaydet</button>
+    </div>
+    <div id="assignmentList" class="assignment-list"></div>
 </div>
-<h2 class="section-title">Kaydedilen Ödevler</h2><div id="assignmentList" class="assignment-list"></div>
 </section>
 
 <section id="dokumanlar" class="page">
@@ -428,79 +512,112 @@ function toggleLesson(element){
     
     currentBox.classList.toggle('open');
 }
+let assignmentEditId = null;
+
+function getAssignments(){
+    return JSON.parse(localStorage.getItem("muammerBozerOdevler")) || [];
+}
+function saveAssignmentsToStorage(items){
+    localStorage.setItem("muammerBozerOdevler", JSON.stringify(items));
+}
 function saveAssignment(){
-let d=document.getElementById("dersAdi").value.trim(),k=document.getElementById("odevKonusu").value.trim(),t=document.getElementById("teslimTarihi").value;
-if(!d||!k||!t){alert("Lütfen bütün alanları doldurunuz.");return}
-let a=JSON.parse(localStorage.getItem("muammerBozerOdevler"))||[];
-a.push({id:Date.now(),ders:d,konu:k,tarih:t});
-localStorage.setItem("muammerBozerOdevler",JSON.stringify(a));
-document.getElementById("dersAdi").value="";document.getElementById("odevKonusu").value="";document.getElementById("teslimTarihi").value="";
-displayAssignments();alert("Ödev başarıyla kaydedildi.")
+    const titleInput=document.getElementById("odevKonusu");
+    const dateInput=document.getElementById("teslimTarihi");
+    const title=titleInput.value.trim(), date=dateInput.value;
+    if(!title || !date){
+        alert("Lütfen hem ödev metnini hem de tarihi doldurun.");
+        return;
+    }
+    let items=getAssignments();
+    if(assignmentEditId!==null){
+        items=items.map(x=>x.id===assignmentEditId ? {...x,title,date} : x);
+        assignmentEditId=null;
+        document.getElementById("saveAssignmentBtn").innerText="Kaydet";
+    }else{
+        items.push({id:Date.now(),title,date,status:null});
+    }
+    saveAssignmentsToStorage(items);
+    titleInput.value="";
+    dateInput.value="";
+    displayAssignments();
+}
+function toggleAssignmentStatus(id,newStatus){
+    let items=getAssignments();
+    items=items.map(x=>x.id!==id?x:{...x,status:x.status===newStatus?null:newStatus});
+    saveAssignmentsToStorage(items);
+    displayAssignments();
 }
 function displayAssignments(){
-let l=document.getElementById("assignmentList"),a=JSON.parse(localStorage.getItem("muammerBozerOdevler"))||[];
-l.innerHTML="";
-if(!a.length){
-    l.innerHTML='<div class="assignment-card"><h3>📭 Henüz ödev yok</h3><p>Yukarıdaki formu kullanarak ilk ödevinizi ekleyebilirsiniz.</p></div>';
-    return;
+    const list=document.getElementById("assignmentList");
+    list.innerHTML="";
+    let items=getAssignments();
+
+    // Eski index sürümündeki verileri yeni yapıya dönüştür.
+    items=items.map(x=>{
+        if(x.title) return x;
+        return {id:x.id||Date.now(),title:[x.ders,x.konu].filter(Boolean).join(": "),date:x.tarih,status:null};
+    }).filter(x=>x.title && x.date);
+    saveAssignmentsToStorage(items);
+
+    items.sort((a,b)=>new Date(a.date)-new Date(b.date));
+    if(!items.length){
+        list.innerHTML='<div class="assignment-card"><div><div class="assignment-title">📭 Henüz ödev yok</div><div class="assignment-date">Yukarıdaki kutuyu kullanarak ilk ödevinizi ekleyebilirsiniz.</div></div></div>';
+        return;
+    }
+    items.forEach(item=>{
+        const card=document.createElement("div");
+        card.className="assignment-card";
+        const remaining=getRemainingTime(item.date);
+        const expiredClass=remaining==="Teslim tarihi geçti"?" expired":"";
+        const isDone=item.status==="read";
+        card.innerHTML=`
+            <div>
+                <div class="assignment-title">${escapeHTML(item.title)}</div>
+                <div class="assignment-date">📅 Son Teslim: ${formatDate(item.date)}</div>
+                <div class="due-remaining${expiredClass}">${remaining}</div>
+            </div>
+            <div class="card-buttons">
+                <button class="btn btn-status ${isDone?'active-read':''}" onclick="toggleAssignmentStatus(${item.id},'read')">Tamamlandı</button>
+                <button class="btn btn-edit" onclick="editAssignment(${item.id})">Düzenle</button>
+                <button class="btn btn-delete" onclick="deleteAssignment(${item.id})">Sil</button>
+            </div>`;
+        list.appendChild(card);
+    });
 }
-a.forEach(x=>{
-    let c=document.createElement("div");
-    c.className="assignment-card";
-    c.innerHTML=`<h3>${escapeHTML(x.ders)}</h3>
-    <p><strong>📌 Konu:</strong> ${escapeHTML(x.konu)}</p>
-    <p><strong>📅 Son Teslim:</strong> ${formatDate(x.tarih)}
-    <span class="due-remaining">(${getRemainingTime(x.tarih)})</span></p>
-    <button class="delete-button" onclick="deleteAssignment(${x.id})">🗑️ Sil</button>`;
-    l.appendChild(c);
-})
+function editAssignment(id){
+    const item=getAssignments().find(x=>x.id===id);
+    if(!item) return;
+    document.getElementById("odevKonusu").value=item.title || [item.ders,item.konu].filter(Boolean).join(": ");
+    document.getElementById("teslimTarihi").value=item.date || item.tarih;
+    assignmentEditId=id;
+    document.getElementById("saveAssignmentBtn").innerText="Güncelle";
 }
 function deleteAssignment(id){
-    const confirmed = confirm("Bu ödevi silmek istediğinizden emin misiniz?");
-    if(!confirmed) return;
-
-    let a=JSON.parse(localStorage.getItem("muammerBozerOdevler"))||[];
-    a=a.filter(x=>x.id!==id);
-    localStorage.setItem("muammerBozerOdevler",JSON.stringify(a));
+    if(!confirm("Bu ödevi silmek istediğinizden emin misiniz?")) return;
+    let items=getAssignments().filter(x=>x.id!==id);
+    saveAssignmentsToStorage(items);
     displayAssignments();
 }
 function getRemainingTime(dateString){
-    const parts = dateString.split("-");
-    if(parts.length !== 3) return "";
-
-    const dueDate = new Date(
-        Number(parts[0]),
-        Number(parts[1]) - 1,
-        Number(parts[2]),
-        23, 59, 59
-    );
-
-    const now = new Date();
-    let diff = dueDate.getTime() - now.getTime();
-
-    if(diff <= 0) return "Teslim tarihi geçti";
-
-    const minute = 60 * 1000;
-    const hour = 60 * minute;
-    const day = 24 * hour;
-
-    if(diff >= day){
-        const days = Math.ceil(diff / day);
-        return "Teslime " + days + " gün kaldı";
+    if(!dateString) return "";
+    const parts=dateString.split("-");
+    if(parts.length!==3) return "";
+    const dueDate=new Date(Number(parts[0]),Number(parts[1])-1,Number(parts[2]),23,59,59);
+    const now=new Date();
+    const diff=dueDate.getTime()-now.getTime();
+    if(diff<=0) return "Teslim tarihi geçti";
+    const minute=60*1000, hour=60*minute, day=24*hour;
+    if(diff>=day){
+        return "Teslime " + Math.ceil(diff/day) + " gün kaldı";
     }
-
-    const hours = Math.floor(diff / hour);
-    if(hours >= 1){
-        const minutes = Math.floor((diff % hour) / minute);
-        if(minutes > 0) return "Teslime " + hours + " saat " + minutes + " dakika kaldı";
-        return "Teslime " + hours + " saat kaldı";
+    const hours=Math.floor(diff/hour);
+    if(hours>=1){
+        const minutes=Math.floor((diff%hour)/minute);
+        return minutes>0 ? "Teslime "+hours+" saat "+minutes+" dakika kaldı" : "Teslime "+hours+" saat kaldı";
     }
-
-    const minutes = Math.ceil(diff / minute);
-    return "Teslime " + minutes + " dakika kaldı";
+    return "Teslime " + Math.ceil(diff/minute) + " dakika kaldı";
 }
-
-function formatDate(s){let p=s.split("-");return p.length===3?p[2]+"."+p[1]+"."+p[0]:s}
+function formatDate(s){if(!s)return "";let p=s.split("-");return p.length===3?p[2]+"."+p[1]+"."+p[0]:s}
 function escapeHTML(t){let d=document.createElement("div");d.textContent=t;return d.innerHTML}
 document.addEventListener("DOMContentLoaded",displayAssignments)
 </script>
