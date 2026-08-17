@@ -1,265 +1,408 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Muammer Bozer - Hatırlatmalarım</title>
-<script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=zCkBEpFZ6QEOtJsw0KLiDDqB9ZERl-24Fd3lBZNmL7jndrtbvw7d2gekC-NYy1EyWDZkfdMF6SG4P8cl0m9cz5JnFeBlAjKshrQEAoH3c6be-y9-jTZJ0LbvJhRmIBRYe9N1TtFCYre2HCXaW36i8gxuN3zf_Ym-caSZrq3fNI_U_mqBMQ41YCai3YbS4Vq1sMeQwULleiQwZyaf-th7Z6kmEr0uWJu9xUqattABy2KeT6na2Jyh0ouJP5_Evx-yQm3r1oxw_-O9avhTJUOG6BLGrRAB-vSloHbgjG4lkdG-pSM0EqDflfaQgsXKz7HoMaL07wfD193cZc7YKAmqqw" charset="UTF-8"></script><style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Arial,Helvetica,sans-serif;background:#f4f7fb;color:#263238;line-height:1.6}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makale Bağlantıları</title>
+    <script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=7UxNce28WjS-9eW8XqzWOb6qLzhMc6g9O1e_L75DxSetAejRkV4Q1PwJ0PinpEaeCq4Oui74sGpEeEILSgVnFIzsYwCAQmUCNdwIUFZnhJ3GrI90kckfa8dnI2KuTn9yFEArMvbyhEcJfAtRLl84DuP389pWNQ7vmy9ZUe6uj40hCMpP_j6RwpuTJLuTGUH8zFOGmWv8GPWamWYlrSikWXawWDV9-R3nl9dNnvFEHncgk77IEPUDvc5vZY92lJ4qyuUsqe_oENnlnez-Ra80XMZgaWTXQXRmm2Dmy0CKP7p5PpewghTyyBziiXY8KciglM-GJfN7m9ZM1XSgGU0YWg" charset="UTF-8"></script><style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
 
-nav{background:white;box-shadow:0 3px 12px rgba(0,0,0,.12);position:sticky;top:0;z-index:1000}
-.nav-inner{width:92%;max-width:1200px;margin:auto;min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.site-title{
-    color:#1565c0;
-    font-size:21px;
-    font-weight:800;
-    line-height:1.1;
-    white-space:nowrap;
-    display:flex;
-    flex-direction:column;
-    align-items:flex-start;
-    margin-right:auto;
-}
-.site-title strong{font-weight:800}
-.site-title span{font-weight:600;font-size:15px}
+        body {
+            background-color: #f4f6f9;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+        }
 
-.container{width:92%;max-width:1200px;margin:30px auto}
-.hero{background:white;padding:35px;border-radius:18px;box-shadow:0 5px 20px rgba(0,0,0,.08);margin-bottom:30px}
-.hero h2{color:#1565c0;margin-bottom:15px;font-size:28px}
-.hero p{font-size:17px}
-.section-title{margin:25px 0 15px}
+        .layout {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            width: 100%;
+            max-width: 1400px;
+        }
 
-.reminder-form{background:white;padding:25px;border-radius:16px;box-shadow:0 5px 15px rgba(0,0,0,.08);margin-bottom:30px}
-.form-group{margin-bottom:18px}.form-group label{display:block;font-weight:bold;margin-bottom:7px}
-.form-group input,.form-group textarea{
-    width:100%;
-    padding:13px;
-    border:1px solid #ccd6e0;
-    border-radius:8px;
-    font-size:15px;
-    font-family:Arial,Helvetica,sans-serif;
-    background:white;
-    color:#263238;
-    outline:none;
-}
-.form-group textarea{
-    resize:vertical;
-    min-height:90px;
-}
-.form-group input:focus,.form-group textarea:focus{
-    border-color:#1565c0;
-    box-shadow:0 0 0 2px rgba(21,101,192,.10);
-}
-.save-button{background:#1565c0;color:white;border:none;padding:13px 25px;border-radius:8px;cursor:pointer;font-size:16px;font-weight:bold;transition:.2s}
-.save-button:hover{background:#0d47a1}
+        /* Giriş Kutucuğu (Sol Sidebar) */
+        .form-container {
+            background: #ffffff;
+            padding: 14px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            width: 260px;
+            flex-shrink: 0;
+            border: 1px solid #e0e0e0;
+            position: sticky;
+            top: 15px;
+        }
 
-.reminder-list{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.reminder-card{background:white;border-radius:10px;padding:12px 14px;box-shadow:0 4px 12px rgba(0,0,0,.08);display:flex;flex-direction:column;justify-content:space-between;font-size:13px}
-.reminder-card h3{color:#1565c0;margin-bottom:6px;font-size:15px;display:flex;align-items:center;gap:8px}
-.reminder-card p{margin:4px 0;white-space:pre-wrap;word-break:break-word}
-.reminder-actions{margin-top:8px;display:flex;gap:6px;align-items:center;justify-content:space-between}
-.action-button{border:none;padding:4px 9px;border-radius:5px;cursor:pointer;font-weight:bold;font-size:11px;line-height:1.4;transition:.2s;white-space:nowrap}
-.edit-button{background:#e3edf9;color:#1565c0}
-.edit-button:hover{background:#c9dcf3}
-.delete-button{background:#fbe4e4;color:#c62828}
-.delete-button:hover{background:#f5c6c6}
-.action-buttons-group{display:flex;gap:6px}
-.due-remaining{
-    font-weight:700;
-    font-size:11px;
-    color:#2e7d32;
-}
-.due-remaining.expired{
-    color:#d32f2f;
-}
+        .form-container input {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+            outline: none;
+        }
 
-footer{background:#263238;color:white;text-align:center;padding:25px;margin-top:50px}
+        .form-container input:focus {
+            border-color: #007bff;
+        }
 
-@media(max-width:1100px){.reminder-list{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:900px){.reminder-list{grid-template-columns:repeat(2,1fr)}}
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
 
-@media(max-width:700px){
-.nav-inner{width:94%;min-height:58px;padding:7px 0}
-.site-title{font-size:16px}
-.site-title span{font-size:13px}
-.container{width:94%;margin:20px auto}
-.reminder-list{grid-template-columns:1fr}
-.hero{padding:20px;border-radius:12px}
-.hero h2{font-size:22px}
-.hero p{font-size:15px}
-footer{font-size:13px;padding:20px 10px}
-}
-</style>
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Izgara Yapısı - Form kutucuğunun yanında 5 sütun */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 14px;
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* Makale Kutucuğu */
+        .card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 12px;
+            min-height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+            word-break: break-word;
+        }
+
+        /* Hatırlatma Metni */
+        .card-title {
+            font-size: 12px;
+            line-height: 1.4;
+            color: #1a1a1a;
+            font-weight: 600;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        /* Son Teslim Tarihi ve Kalan Süre */
+        .card-date {
+            font-size: 12px;
+            color: #555;
+            margin-bottom: 4px;
+        }
+
+        .due-remaining {
+            font-size: 12px;
+            font-weight: 700;
+            color: #28a745;
+            margin-bottom: 10px;
+        }
+
+        .due-remaining.expired {
+            color: #dc3545;
+        }
+
+        /* Butonlar Alanı - Üst ve Alt Satır Yapısı */
+        .card-buttons {
+            display: flex;
+            gap: 6px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 6px 2px;
+            font-size: 11px;
+            font-weight: 600;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color: white;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .btn-status {
+            flex: 1.5;
+        }
+
+        .btn-edit,
+        .btn-delete {
+            flex: 0.75;
+        }
+
+        /* Temel Buton Renkleri */
+        .btn-edit {
+            background-color: #ffc107;
+            color: #212529;
+        }
+
+        .btn-delete {
+            background-color: #dc3545;
+        }
+
+        /* Okuma Durumu Butonları */
+        .btn-status {
+            background-color: #e0e0e0; /* Pasif varsayılan durum: gri */
+            color: #666;
+            border: 1px solid #ccc;
+        }
+
+        /* Aktif "Tamamlandı" Butonu: Mavi */
+        .btn-status.active-read {
+            background-color: #007bff;
+            color: white;
+            border-color: #0056b3;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        /* RESPONSIVE BREAKPOINTS */
+        @media (max-width: 1100px) {
+            .grid-container { grid-template-columns: repeat(4, 1fr); }
+        }
+        @media (max-width: 900px) {
+            .layout {
+                flex-direction: column;
+            }
+            .form-container {
+                width: 100%;
+                max-width: 400px;
+                position: static;
+            }
+            .grid-container {
+                width: 100%;
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .grid-container { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .grid-container { grid-template-columns: repeat(2, 1fr); }
+        }
+        /* MOBİL UYUMLULUK: Tek sırada tek kutucuk */
+        @media (max-width: 500px) {
+            body {
+                padding: 10px;
+            }
+            .grid-container { 
+                grid-template-columns: 1fr;
+            }
+            .form-container {
+                max-width: 100%;
+                padding: 16px;
+            }
+            .form-container input {
+                font-size: 16px;
+                padding: 12px;
+            }
+            .form-container button {
+                padding: 12px;
+                font-size: 16px;
+            }
+            .card {
+                padding: 14px;
+                min-height: 150px;
+            }
+            .card-title {
+                font-size: 14px;
+                line-height: 1.4;
+            }
+            .btn {
+                padding: 8px 4px;
+                font-size: 12px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<nav>
-<div class="nav-inner">
-<div class="site-title"><strong>Muammer Bozer </strong><span>Öğrenme Köşesi</span></div>
-</div>
-</nav>
+    <div class="layout">
+        <!-- Giriş Kutucuğu -->
+        <div class="form-container">
+            <input type="text" id="titleInput" placeholder="Hatırlatma Giriniz.">
+            <input type="date" id="dateInput" placeholder="Tarih Giriniz.">
+            <button id="saveBtn" onclick="saveArticle()">Kaydet</button>
+        </div>
 
-<div class="container">
-<section class="page active">
-<div class="hero">
-    <h2>🔔 Hatırlatmalarım</h2>
-    <p>Unutmamak istediğiniz notlarınızı ve tarihlerini ekleyebilir, kalan sürenizi takip edebilir ve tamamladığınız hatırlatmaları silebilirsiniz.</p>
-</div>
-
-<!-- Hatırlatma Ekleme Formu -->
-<div class="reminder-form">
-    <div class="form-group">
-        <label for="hatirlatmaNotu">📌 Hatırlatma Notu</label>
-        <textarea id="hatirlatmaNotu" placeholder="Hatırlatma notunuzu buraya yazınız..."></textarea>
+        <!-- Oluşturulan Kutucukların Listesi -->
+        <div class="grid-container" id="articleGrid"></div>
     </div>
-    <div class="form-group">
-        <label for="hatirlatmaTarihi">📅 Hatırlatma Tarihi</label>
-        <input type="date" id="hatirlatmaTarihi">
-    </div>
-    <button class="save-button" onClick="saveReminder()">💾 Hatırlatmayı Kaydet</button>
-</div>
 
-<h2 class="section-title">Kaydedilen Hatırlatmalar</h2>
-<div id="reminderList" class="reminder-list"></div>
-</section>
-</div>
+    <script>
+        let editId = null;
 
-<footer>
-    <p>© 2026 Muammer Bozer - Öğrenme Köşesi</p>
-    <p>Kişisel Hatırlatıcı • Notlar • Takip</p>
-</footer>
+        document.addEventListener("DOMContentLoaded", loadArticles);
 
-<script>
-let editingId = null;
+        function getArticles() {
+            return JSON.parse(localStorage.getItem("articles")) || [];
+        }
 
-function saveReminder(){
-    let n = document.getElementById("hatirlatmaNotu").value.trim(),
-        t = document.getElementById("hatirlatmaTarihi").value;
-    
-    if(!n || !t){
-        alert("Lütfen hem hatırlatma notunu hem de tarihini doldurunuz.");
-        return;
-    }
-    
-    let list = JSON.parse(localStorage.getItem("muammerBozerHatirlatmalar")) || [];
+        function saveArticlesToStorage(articles) {
+            localStorage.setItem("articles", JSON.stringify(articles));
+        }
 
-    if(editingId !== null){
-        list = list.map(x => x.id === editingId ? {...x, not: n, tarih: t} : x);
-        editingId = null;
-        document.querySelector(".save-button").textContent = "💾 Hatırlatmayı Kaydet";
-    } else {
-        list.push({id: Date.now(), not: n, tarih: t});
-    }
+        function saveArticle() {
+            const titleInput = document.getElementById("titleInput");
+            const dateInput = document.getElementById("dateInput");
 
-    localStorage.setItem("muammerBozerHatirlatmalar", JSON.stringify(list));
-    
-    document.getElementById("hatirlatmaNotu").value = "";
-    document.getElementById("hatirlatmaTarihi").value = "";
-    
-    displayReminders();
-    alert("Hatırlatma başarıyla kaydedildi.");
-}
+            const title = titleInput.value.trim();
+            const date = dateInput.value;
 
-function editReminder(id){
-    let list = JSON.parse(localStorage.getItem("muammerBozerHatirlatmalar")) || [];
-    let item = list.find(x => x.id === id);
-    if(!item) return;
+            if (!title || !date) {
+                alert("Lütfen hem hatırlatma metnini hem de tarihi doldurun.");
+                return;
+            }
 
-    document.getElementById("hatirlatmaNotu").value = item.not;
-    document.getElementById("hatirlatmaTarihi").value = item.tarih;
-    editingId = id;
-    document.querySelector(".save-button").textContent = "💾 Güncelle";
-    document.getElementById("hatirlatmaNotu").focus();
-    document.querySelector(".reminder-form").scrollIntoView({behavior:"smooth", block:"center"});
-}
+            let articles = getArticles();
 
-function displayReminders(){
-    let l = document.getElementById("reminderList"),
-        list = JSON.parse(localStorage.getItem("muammerBozerHatirlatmalar")) || [];
-    
-    l.innerHTML = "";
-    
-    if(!list.length){
-        l.innerHTML = '<div class="reminder-card" style="grid-column: 1 / -1;"><h3>📭 Henüz hatırlatma yok</h3><p>Yukarıdaki formu kullanarak ilk hatırlatmanızı ekleyebilirsiniz.</p></div>';
-        return;
-    }
-    
-    // Tarihe göre sıralama (en yakın tarih en üstte)
-    list.sort((a,b) => new Date(a.tarih) - new Date(b.tarih));
-    
-    list.forEach(x => {
-        let c = document.createElement("div");
-        c.className = "reminder-card";
-        const remaining = getRemainingTime(x.tarih);
-        const expiredClass = remaining === "Tarihi geçti" ? " expired" : "";
-        c.innerHTML = `
-            <div>
-                <p><strong>📝 Not:</strong> ${escapeHTML(x.not)}</p>
-                <p><strong>📅 Tarih:</strong> ${formatDate(x.tarih)}</p>
-            </div>
-            <div class="reminder-actions">
-                <span class="due-remaining${expiredClass}">${remaining}</span>
-                <div class="action-buttons-group">
-                    <button class="action-button edit-button" onclick="editReminder(${x.id})">✏️ Düzenle</button>
-                    <button class="action-button delete-button" onclick="deleteReminder(${x.id})">🗑️ Sil</button>
-                </div>
-            </div>`;
-        l.appendChild(c);
-    });
-}
+            if (editId !== null) {
+                // Var olanı düzenlerken mevcut status değerini koru
+                articles = articles.map(a => a.id === editId ? { ...a, title, date } : a);
+                editId = null;
+                document.getElementById("saveBtn").innerText = "Kaydet";
+            } else {
+                // Yeni hatırlatma eklerken varsayılan status: null
+                articles.push({ id: Date.now(), title, date, status: null });
+            }
 
-function deleteReminder(id){
-    const confirmed = confirm("Bu hatırlatmayı silmek istediğinizden emin misiniz?");
-    if(!confirmed) return;
+            saveArticlesToStorage(articles);
+            titleInput.value = "";
+            dateInput.value = "";
+            renderArticles();
+        }
 
-    let list = JSON.parse(localStorage.getItem("muammerBozerHatirlatmalar")) || [];
-    list = list.filter(x => x.id !== id);
-    localStorage.setItem("muammerBozerHatirlatmalar", JSON.stringify(list));
-    displayReminders();
-}
+        function toggleStatus(id, newStatus) {
+            let articles = getArticles();
+            articles = articles.map(a => {
+                if (a.id !== id) return a;
+                // Eğer zaten seçili olan duruma tekrar basılırsa pasife al (null yap)
+                return { ...a, status: a.status === newStatus ? null : newStatus };
+            });
+            saveArticlesToStorage(articles);
+            renderArticles();
+        }
 
-function getRemainingTime(dateString){
-    const parts = dateString.split("-");
-    if(parts.length !== 3) return "";
+        function getRemainingTime(dateString) {
+            if (!dateString) return "";
+            const parts = dateString.split("-");
+            if (parts.length !== 3) return "";
 
-    const dueDate = new Date(
-        Number(parts[0]),
-        Number(parts[1]) - 1,
-        Number(parts[2]),
-        23, 59, 59
-    );
+            const dueDate = new Date(
+                Number(parts[0]),
+                Number(parts[1]) - 1,
+                Number(parts[2]),
+                23, 59, 59
+            );
 
-    const now = new Date();
-    let diff = dueDate.getTime() - now.getTime();
+            const now = new Date();
+            const diff = dueDate.getTime() - now.getTime();
 
-    if(diff <= 0) return "Tarihi geçti";
+            if (diff <= 0) return "Tarihi geçti";
 
-    const minute = 60 * 1000;
-    const hour = 60 * minute;
-    const day = 24 * hour;
+            const minute = 60 * 1000;
+            const hour = 60 * minute;
+            const day = 24 * hour;
 
-    if(diff >= day){
-        const days = Math.ceil(diff / day);
-        return days + " gün kaldı";
-    }
+            if (diff >= day) {
+                const days = Math.ceil(diff / day);
+                return days + " gün kaldı";
+            }
 
-    const hours = Math.floor(diff / hour);
-    if(hours >= 1){
-        const minutes = Math.floor((diff % hour) / minute);
-        if(minutes > 0) return hours + " saat " + minutes + " dakika kaldı";
-        return hours + " saat kaldı";
-    }
+            const hours = Math.floor(diff / hour);
+            if (hours >= 1) {
+                const minutes = Math.floor((diff % hour) / minute);
+                if (minutes > 0) return hours + " saat " + minutes + " dakika kaldı";
+                return hours + " saat kaldı";
+            }
 
-    const minutes = Math.ceil(diff / minute);
-    return minutes + " dakika kaldı";
-}
+            const minutes = Math.ceil(diff / minute);
+            return minutes + " dakika kaldı";
+        }
 
-function formatDate(s){let p=s.split("-");return p.length===3?p[2]+"."+p[1]+"."+p[0]:s}
-function escapeHTML(t){let d=document.createElement("div");d.textContent=t;return d.innerHTML}
+        function formatDate(s) {
+            if (!s) return "";
+            const p = s.split("-");
+            return p.length === 3 ? p[2] + "." + p[1] + "." + p[0] : s;
+        }
 
-document.addEventListener("DOMContentLoaded", displayReminders);
-</script>
+        function renderArticles() {
+            const grid = document.getElementById("articleGrid");
+            grid.innerHTML = "";
+            let articles = getArticles();
+
+            // Son teslim tarihine göre sırala (en yakın tarih en üstte)
+            articles.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+            articles.forEach((item) => {
+                const card = document.createElement("div");
+                card.className = "card";
+
+                const isRead = item.status === 'read';
+                const remaining = getRemainingTime(item.date);
+                const expiredClass = remaining === "Tarihi geçti" ? " expired" : "";
+
+                card.innerHTML = `
+                    <div>
+                        <div class="card-title">${item.title}</div>
+                        <div class="card-date">📅 Son Teslim: ${formatDate(item.date)}</div>
+                        <div class="due-remaining${expiredClass}">${remaining}</div>
+                    </div>
+                    <div class="card-buttons">
+                        <button class="btn btn-status ${isRead ? 'active-read' : ''}" onclick="toggleStatus(${item.id}, 'read')">Tamamlandı</button>
+                        <button class="btn btn-edit" onclick="editArticle(${item.id})">Düzenle</button>
+                        <button class="btn btn-delete" onclick="deleteArticle(${item.id})">Sil</button>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        function editArticle(id) {
+            const articles = getArticles();
+            const item = articles.find(a => a.id === id);
+            if (!item) return;
+
+            document.getElementById("titleInput").value = item.title;
+            document.getElementById("dateInput").value = item.date;
+
+            editId = id;
+            document.getElementById("saveBtn").innerText = "Güncelle";
+        }
+
+        function deleteArticle(id) {
+            let articles = getArticles();
+            articles = articles.filter(a => a.id !== id);
+            saveArticlesToStorage(articles);
+            renderArticles();
+        }
+
+        function loadArticles() {
+            renderArticles();
+        }
+    </script>
 </body>
 </html>
