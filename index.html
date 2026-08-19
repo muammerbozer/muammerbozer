@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Muammer Bozer - Öğrenme Köşesi</title>
-<script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=A2XF-rgSG8XjHcZnxh2wSHiIJeRGaCN4nx8nLzpY0yj7bcNn2xbRHJfNTOTJwnEwHpTYlRwkN_pJ82AM3Ux7OxNYiMNX0PWfsQUPEDIMsDPaoO-YgBtT7G5uoba_epRL0jhsNPOoiFPvsbnFAkpUjnsLI82b1UTEoIxVz0spl5osGjcyFDfv3YBrHr2icegHcyBsEwo9VfxbCC2Vhi-dDBsLFLvaM9TvX0YzovH1b6PMRntXgbECwaj5nbGlgKq5LEaNWQPX30MaHsNLwlLHaS_HiHwsuWoD_0J2XcwTD1FdLySrL5veUoDLhS5UWkJ4rluhdoG5s8DJkTsEyq7hcQ" charset="UTF-8"></script><style>
+<script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=uKjQofGq9H8ApX_qk0MYgwcoMp7DBxbNxckK4Ia-ZMmbh-KOxC2xqwRixC8xLwNtt_ebKUhYM9SAiuy1cd29wyo8BpNqdDmUWk8nPv7sdRbxyJgiBQNyHqJR_9e00BlugxEu112K3Peqx2X7m4dPjrYhDoIJ9YD01UcKR_Zl27WOaQQp1Zr-JYinPAL3buIm7JgOjy3iRxl1TkfP6uV8QL6tEvjhktSavkR5V_NRPcU7yIULSmBUvE2GmZzPUt3Wroz_R864UgAJxcWkZZkVz9v_WbxwDC-T06d7CWPMAq9w2Ak-CjCld23qOSPx_bYe-RsJnYDncB5DtxjK_bZ-xTNKUHAyK_usk-pX8QDyHpA" charset="UTF-8"></script><style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:Arial,Helvetica,sans-serif;background:#f4f7fb;color:#263238;line-height:1.6}
@@ -49,11 +49,11 @@ nav button:hover,nav button.active{background:#1565c0;color:white;border-radius:
 .page{display:none;animation:fadeIn .4s ease}
 .page.active{display:block}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.hero{background:white;padding:35px;border-radius:18px;box-shadow:0 5px 20px rgba(0,0,0,.08);margin-bottom:30px}
+.hero{background:white;padding:35px;border-radius:18px;box-shadow:0 5px 20px rgba(0,0,0,.08);margin-bottom:30px;width:100%}
 .hero h2{color:#1565c0;margin-bottom:15px;font-size:28px}
 .hero p{font-size:17px}
 .section-title{margin:25px 0 15px}
-.info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;width:100%}
 .info-card{background:white;padding:25px;border-radius:15px;color:#263238;box-shadow:0 5px 15px rgba(0,0,0,.08);transition:.3s;display:block}
 .info-card:hover{transform:translateY(-6px);box-shadow:0 10px 25px rgba(0,0,0,.15)}
 .info-card .icon{font-size:35px;margin-bottom:10px}.info-card h3{color:#1565c0;margin-bottom:8px}
@@ -88,8 +88,8 @@ nav button:hover,nav button.active{background:#1565c0;color:white;border-radius:
 
 .slide-card{width:250px;min-height:220px;background:linear-gradient(135deg,#1565c0,#42a5f5);color:white;border-radius:15px;padding:22px;text-decoration:none;display:flex;flex-direction:column;justify-content:center;flex-shrink:0}
 
-.lessons{display:flex;flex-direction:column;gap:12px}
-.lesson-box{background:white;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.08);overflow:hidden}
+.lessons{display:flex;flex-direction:column;gap:12px;width:100%}
+.lesson-box{background:white;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.08);overflow:hidden;width:100%}
 .lesson-title{padding:20px;cursor:pointer;font-weight:bold;font-size:17px;display:flex;justify-content:space-between;align-items:center}
 .lesson-title:hover{background:#eef5ff}
 .lesson-content{display:none;padding:20px;border-top:1px solid #e5e5e5;background:#fafcff}
@@ -97,13 +97,13 @@ nav button:hover,nav button.active{background:#1565c0;color:white;border-radius:
 .lesson-link{color:#1565c0;font-weight:600;text-decoration:underline;text-decoration-color:#90caf9;text-underline-offset:3px}
 .lesson-link:hover{color:#0d47a1;text-decoration-color:#1565c0}
 
-/* ÖDEVLER - hatirlatma.html tasarimi */
+/* ÖDEVLER - Hizalama düzenlemeleri */
 #odevler .assignment-layout{
     display:flex;
     align-items:flex-start;
     gap:20px;
     width:100%;
-    max-width:1400px;
+    max-width:100%;
 }
 #odevler .assignment-form{
     background:#fff;
@@ -148,6 +148,7 @@ nav button:hover,nav button.active{background:#1565c0;color:white;border-radius:
     gap:14px;
     flex:1;
     min-width:0;
+    width:100%;
 }
 #odevler .assignment-card{
     background:#fff;
@@ -201,30 +202,52 @@ nav button:hover,nav button.active{background:#1565c0;color:white;border-radius:
 #odevler .card-buttons .btn-status.active-read{background:#007bff;color:#fff;border-color:#0056b3;box-shadow:inset 0 1px 3px rgba(0,0,0,.2)}
 #odevler .card-buttons .btn-edit{flex:.75;background:#ffc107;color:#212529}
 #odevler .card-buttons .btn-delete{flex:.75;background:#dc3545}
+
+.document-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;width:100%}
+.document-card{
+    background:white;
+    padding:16px 18px;
+    border-radius:12px;
+    box-shadow:0 4px 12px rgba(0,0,0,.06);
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:stretch;
+}
+.document-card p{
+    font-size:14px;
+    font-weight:600;
+    margin-bottom:12px;
+    line-height:1.4;
+}
+.document-card a{
+    align-self:flex-end;
+    margin-top:auto;
+    background:#1565c0;
+    color:white;
+    text-decoration:none;
+    padding:6px 14px;
+    font-size:13px;
+    font-weight:600;
+    border-radius:6px;
+    transition:background .2s ease;
+}
+.document-card a:hover{
+    background:#0d47a1;
+}
+
+footer{background:#263238;color:white;text-align:center;padding:25px;margin-top:50px}
+
 @media(max-width:1100px){#odevler .assignment-list{grid-template-columns:repeat(4,1fr)}}
 @media(max-width:900px){
+    .info-grid{grid-template-columns:repeat(2,1fr)}
+    .document-grid{grid-template-columns:repeat(2,1fr)}
     #odevler .assignment-layout{flex-direction:column}
-    #odevler .assignment-form{width:100%;max-width:400px;position:static}
+    #odevler .assignment-form{width:100%;max-width:100%;position:static}
     #odevler .assignment-list{width:100%;grid-template-columns:repeat(4,1fr)}
 }
 @media(max-width:768px){#odevler .assignment-list{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:600px){#odevler .assignment-list{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:500px){
-    #odevler .assignment-form{max-width:100%;padding:16px}
-    #odevler .assignment-form input{font-size:16px;padding:12px}
-    #odevler .save-button{padding:12px;font-size:16px}
-    #odevler .assignment-card{padding:14px;min-height:150px}
-    #odevler .assignment-card .assignment-title{font-size:14px}
-    #odevler .card-buttons .btn{padding:8px 4px;font-size:12px}
-    #odevler .assignment-list{grid-template-columns:1fr}
-}
-
-.document-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.document-card{background:white;padding:25px;border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,.08)}
-.document-card h3{color:#1565c0;margin-bottom:10px}.document-card a{display:inline-block;margin-top:10px;background:#1565c0;color:white;text-decoration:none;padding:9px 15px;border-radius:7px}
-footer{background:#263238;color:white;text-align:center;padding:25px;margin-top:50px}
-
-@media(max-width:900px){.info-grid{grid-template-columns:repeat(2,1fr)}.assignment-list,.document-grid{grid-template-columns:repeat(2,1fr)}}
 
 @media(max-width:700px){
 .nav-inner{
@@ -291,8 +314,23 @@ nav ul button{
 .slide-card{width:230px;min-height:230px;padding:22px}
 footer{font-size:13px;padding:20px 10px}
 }
+
+@media(max-width:600px){#odevler .assignment-list{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){
+    #odevler .assignment-form{max-width:100%;padding:16px}
+    #odevler .assignment-form input{font-size:16px;padding:12px}
+    #odevler .save-button{padding:12px;font-size:16px}
+    #odevler .assignment-card{padding:14px;min-height:150px}
+    #odevler .assignment-card .assignment-title{font-size:14px}
+    #odevler .card-buttons .btn{padding:8px 4px;font-size:12px}
+    #odevler .assignment-list{grid-template-columns:1fr}
+}
+
 .stil2 {font-weight: bold; color: #0000FF;}
-.stil5 {font-weight: bold; color: #FF0000; }
+.stil3 {
+	color: #000000;
+	font-weight: bold;
+}
 </style>
 </head>
 <body>
@@ -310,9 +348,6 @@ footer{font-size:13px;padding:20px 10px}
 <div class="container"><section id="anasayfa" class="page active"><div class="hero">
 <h2>Hoş Geldiniz 👋</h2><p>Muammer Bozer Öğrenme Köşesi; ders içeriklerine, eğitim materyallerine, ödevlere ve dokümanlara kolayca ulaşabilmek için hazırlanmış kişisel bir öğrenme alanıdır.</p><br><p>Yukarıdaki menüyü kullanarak derslere, ödevlere ve dokümanlara ulaşabilirsiniz.</p></div>
 
-
-
-
 <h2 class="section-title">Haftanın Ödevleri</h2><div class="info-grid">
 
 <div class="info-card grade-5"><span class="card-symbol">🕌</span><span class="stil2">5. Sınıf Din Kültürü ve Ahlak Bilgisi:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
@@ -324,72 +359,100 @@ footer{font-size:13px;padding:20px 10px}
 <div class="info-card grade-7"><span class="card-symbol">📖</span><span class="stil2">7. Sınıf Kur'an-ı Kerim:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
 <div class="info-card grade-8"><span class="card-symbol">📖</span><span class="stil2">8. Sınıf Kur'an-ı Kerim:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
 
-<!--2. Hafta
-<div class="info-card"><span class="stil2">5. Sınıf Din Kültürü ve Ahlak Bilgisi:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
-<div class="info-card"><span class="stil2">6. Sınıf Din Kültürü ve Ahlak Bilgisi:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
-<div class="info-card"><span class="stil2">7. Sınıf Din Kültürü ve Ahlak Bilgisi:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
-<div class="info-card"><span class="stil2">8. Sınıf Din Kültürü ve Ahlak Bilgisi:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
-<div class="info-card"><span class="stil2">5. Sınıf Kur'an-ı Kerim:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
-<div class="info-card"><span class="stil2">6. Sınıf Kur'an-ı Kerim:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
-<div class="info-card"><span class="stil2">7. Sınıf Kur'an-ı Kerim:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
-<div class="info-card"><span class="stil2">8. Sınıf Kur'an-ı Kerim:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div> -->
-
-<!--3. Hafta
- <div class="info-card"><span class="stil2">5. Sınıf Din Kültürü ve Ahlak Bilgisi:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
-<div class="info-card"><span class="stil2">6. Sınıf Din Kültürü ve Ahlak Bilgisi:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
-<div class="info-card"><span class="stil2">7. Sınıf Din Kültürü ve Ahlak Bilgisi:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
-<div class="info-card"><span class="stil2">8. Sınıf Din Kültürü ve Ahlak Bilgisi:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
-<div class="info-card"><span class="stil2">5. Sınıf Kur'an-ı Kerim:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
-<div class="info-card"><span class="stil2">6. Sınıf Kur'an-ı Kerim:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
-<div class="info-card"><span class="stil2">7. Sınıf Kur'an-ı Kerim:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div>
-<div class="info-card"><span class="stil2">8. Sınıf Kur'an-ı Kerim:</span><br>1. Ünite 1. Konu: Kainattaki Mükemmel Uyum (Sayfa 12 ile 22 arası okunacak)</div> -->
-
 </div>
-
-
-
 
 <h2 class="section-title">Öne Çıkan Bağlantılar</h2><div class="slider-wrapper"><div class="slider-track">
 <!-- Orijinal kartlar -->
-<a href="https://www.eba.gov.tr/" target="_blank" class="slide-card"><h3>🎓 EBA</h3><p>Eğitim içeriklerine ulaş.</p></a>
-<a href="https://www.meb.gov.tr/" target="_blank" class="slide-card"><h3>🏫 MEB</h3><p>Millî Eğitim Bakanlığı</p></a>
+<a href="https://www.eba.gov.tr/" target="_blank" class="slide-card"><h3>🎓 EBA</h3><p>Eğitim içeriklerine ulaş. Eğitim içeriklerine ulaş. Eğitim içeriklerine ulaş. Eğitim içeriklerine ulaş. Eğitim içeriklerine ulaş. Eğitim içeriklerine ulaş.</p></a>
+<a href="https://www.meb.gov.tr/" target="_blank" class="slide-card"><h3>🏫 MEB</h3><p>Millî Eğitim Bakanlığı Millî Eğitim Bakanlığı Millî Eğitim Bakanlığı Millî Eğitim Bakanlığı Millî Eğitim Bakanlığı Millî Eğitim Bakanlığı Millî Eğitim Bakanlığı</p></a>
 <a href="https://wordwall.net/" target="_blank" class="slide-card"><h3>🎮 Wordwall</h3><p>Etkileşimli etkinlikler</p></a>
 <a href="https://www.canva.com/" target="_blank" class="slide-card"><h3>🎨 Canva</h3><p>Eğitim materyalleri hazırla.</p></a>
 <a href="https://notebooklm.google.com/" target="_blank" class="slide-card"><h3>🤖 NotebookLM</h3><p>Yapay zekâ destekli öğrenme.</p></a>
 
 <!-- Sonsuz döngü için klonlanmış kartlar -->
-<a href="https://www.eba.gov.tr/" target="_blank" class="slide-card"><h3>🎓 EBA</h3><p>Eğitim içeriklerine ulaş.</p></a>
-<a href="https://www.meb.gov.tr/" target="_blank" class="slide-card"><h3>🏫 MEB</h3><p>Millî Eğitim Bakanlığı</p></a>
+<a href="https://www.eba.gov.tr/" target="_blank" class="slide-card"><h3>🎓 EBA</h3><p>Eğitim içeriklerine ulaş. Eğitim içeriklerine ulaş. Eğitim içeriklerine ulaş. Eğitim içeriklerine ulaş. Eğitim içeriklerine ulaş. Eğitim içeriklerine ulaş.</p></a>
+<a href="https://www.meb.gov.tr/" target="_blank" class="slide-card"><h3>🏫 MEB</h3><p>Millî Eğitim Bakanlığı Millî Eğitim Bakanlığı Millî Eğitim Bakanlığı Millî Eğitim Bakanlığı Millî Eğitim Bakanlığı Millî Eğitim Bakanlığı Millî Eğitim Bakanlığı</p></a>
 <a href="https://wordwall.net/" target="_blank" class="slide-card"><h3>🎮 Wordwall</h3><p>Etkileşimli etkinlikler</p></a>
 <a href="https://www.canva.com/" target="_blank" class="slide-card"><h3>🎨 Canva</h3><p>Eğitim materyalleri hazırla.</p></a>
 <a href="https://notebooklm.google.com/" target="_blank" class="slide-card"><h3>🤖 NotebookLM</h3><p>Yapay zekâ destekli öğrenme.</p></a>
 </div></div></section>
 
-<!-- Sonsuz döngü için klonlanmış kartlar -->
+<section id="dersler" class="page"><div class="hero"><h2>📚 Dersler</h2><p>Aşağıdaki başlıklara tıklayarak ders içeriklerini açabilirsiniz.<br>Hafta içerisinde dersler işlenirken kullanılacak yapay zeka ders içerikleri, interaktif etkinlikler, çalışma kağıdı gibi dokümanların linkleri buradan yayımlanacaktır. İlgili hafta bağlantısını ziyaret ederek içeriklere ulaşabilirsiniz</p></div>
 
-<section id="dersler" class="page"><div class="hero"><h2>📚 Dersler</h2><p>Aşağıdaki başlıklara tıklayarak ders içeriklerini açabilirsiniz.<br>Hafta  içerisinde dersler işlenirken kullanılacak yapay zeka ders içerikleri, interaktif etkinlikler, çalışma kağıdı gibi dokümanların linkleri buradan yayımlanacaktır. İlgili hafta bağlantısını ziyaret ederek içeriklere ulaşabilirsiniz</p></div>
-
-
-
-<!-- <div class="lessons">
+<div class="lessons">
 <div class="lesson-box">
-<div class="lesson-title" onClick="toggleLesson(this)">3. HAFTA / 28 Eylül 2026<span class="arrow">▼</span></div><div class="lesson-content">
-<p><a class="lesson-link" href="https://wordwall.net/tr/resource/116922054/5-1-1-%C3%A7engel-bulmaca" target="_blank" rel="noopener">5-1-1- ÇENGEL BULMACA (Evrendeki Mükemmel Düzen ve uyum)</a></p>
-<p><a class="lesson-link" href="https://wordwall.net/play/116810/512/531" target="_blank" rel="noopener">5-1-1- KARE BULMACA (Evrendeki Mükemmel Düzen ve uyum)</a></p>
-</div></div> -->
-
-<!-- <div class="lesson-box">
-<div class="lesson-title" onClick="toggleLesson(this)">2. HAFTA / 21 Eylül 2026<span class="arrow">▼</span></div><div class="lesson-content">
-<p><a class="lesson-link" href="https://wordwall.net/tr/resource/116922054/5-1-1-%C3%A7engel-bulmaca" target="_blank" rel="noopener">5-1-1- ÇENGEL BULMACA (Evrendeki Mükemmel Düzen ve uyum)</a></p>
-<p><a class="lesson-link" href="https://wordwall.net/play/116810/512/531" target="_blank" rel="noopener">5-1-1- KARE BULMACA (Evrendeki Mükemmel Düzen ve uyum)</a></p>
-</div></div> -->
-
+<div class="lesson-title" onClick="toggleLesson(this)">36. HAFTA / 17 Mayıs 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>36. hafta ders içerikleri eklenecektir.</p></div></div>
 <div class="lesson-box">
-<div class="lesson-title" onClick="toggleLesson(this)">1. HAFTA / 14 Eylül 2026<span class="arrow">▼</span></div>
-<div class="lesson-content">
-
-<!-- 5. SINIF DİN KÜLTÜRÜ VE AHLAK BİLGİSİ -->
-<h3><span class="stil5">5. SINIF DİN KÜLTÜRÜ VE AHLAK BİLGİSİ</span></h3>
+<div class="lesson-title" onClick="toggleLesson(this)">35. HAFTA / 10 Mayıs 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>35. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">34. HAFTA / 3 Mayıs 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>34. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">33. HAFTA / 26 Nisan 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>33. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">32. HAFTA / 19 Nisan 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>32. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">31. HAFTA / 12 Nisan 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>31. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">30. HAFTA / 5 Nisan 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>30. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">29. HAFTA / 29 Mart 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>29. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">28. HAFTA / 22 Mart 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>28. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">27. HAFTA / 15 Mart 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>27. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">26. HAFTA / 8 Mart 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>26. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">25. HAFTA / 1 Mart 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>25. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">24. HAFTA / 22 Şubat 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>24. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">23. HAFTA / 15 Şubat 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>23. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">22. HAFTA / 8 Şubat 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>22. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">21. HAFTA / 1 Şubat 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>21. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">20. HAFTA / 25 Ocak 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>20. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">19. HAFTA / 18 Ocak 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>19. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">18. HAFTA / 11 Ocak 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>18. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">17. HAFTA / 4 Ocak 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>17. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">16. HAFTA / 28 Aralık 2026<span class="arrow">▼</span></div><div class="lesson-content"><p>16. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">15. HAFTA / 21 Aralık 2026<span class="arrow">▼</span></div><div class="lesson-content"><p>15. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">14. HAFTA / 14 Aralık 2026<span class="arrow">▼</span></div><div class="lesson-content"><p>14. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">13. HAFTA / 7 Aralık 2026<span class="arrow">▼</span></div><div class="lesson-content"><p>13. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">12. HAFTA / 30 Kasım 2026<span class="arrow">▼</span></div><div class="lesson-content"><p>12. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">11. HAFTA / 23 Kasım 2026<span class="arrow">▼</span></div><div class="lesson-content"><p>11. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">10. HAFTA / 16 Kasım 2026<span class="arrow">▼</span></div><div class="lesson-content"><p>10. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">9. HAFTA / 9 Kasım 2026<span class="arrow">▼</span></div><div class="lesson-content"><p>9. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">8. HAFTA / 2 Kasım 2026<span class="arrow">▼</span></div><div class="lesson-content"><p>8. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">7. HAFTA / 26 Ekim 2026<span class="arrow">▼</span></div><div class="lesson-content"><p>7. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">6. HAFTA / 19 Ekim 2026<span class="arrow">▼</span></div><div class="lesson-content"><p>6. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">5. HAFTA / 12 Ekim 2026<span class="arrow">▼</span></div><div class="lesson-content"><p>5. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">4. HAFTA / 5 Ekim 2026<span class="arrow">▼</span></div><div class="lesson-content"><p>4. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">3. HAFTA / 28 Eylül 2026<span class="arrow">▼</span></div><div class="lesson-content"><p>3. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">2. HAFTA / 21 Eylül 2026<span class="arrow">▼</span></div><div class="lesson-content"><p>2. hafta ders içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">1. HAFTA / 14 Eylül 2026<span class="arrow">▼</span></div><div class="lesson-content">
+<h3><span class="stil3">5. SINIF DİN KÜLTÜRÜ VE AHLAK BİLGİSİ</span></h3>
 <p><a href="https://notebook.google.com/notebook/1562d9ee-9998-4597-a1db-b3eb2cf8c64d/artifact/158baf13-4f32-4d1c-8ad1-c5cedd709a7d?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_" target="_blank" class="lesson-link">*** 5-1-1- VİDEO (Yapay Zeka Ders Anlatımı) (Evrendeki Mükemmel Düzen ve Uyum)</a></p>
 <p><a href="https://notebook.google.com/notebook/1562d9ee-9998-4597-a1db-b3eb2cf8c64d/artifact/ee21d13f-bd89-412b-99dc-23e48ca02620?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_" target="_blank" class="lesson-link">*** 5-1-1- SLAYT (Yapay Zeka Ders Anlatımı)(Evrendeki Mükemmel Düzen ve Uyum)</a></p>
 <p><a href="https://notebook.google.com/notebook/1562d9ee-9998-4597-a1db-b3eb2cf8c64d/artifact/0d61ee8e-0ccb-44e5-87e7-4ac97f6cdc36?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_" target="_blank" class="lesson-link">*** 5-1-1- ZİHİN HARİTASI (Yapay Zeka Ders Anlatımı)(Evrendeki Mükemmel Düzen ve Uyum)</a></p>
@@ -397,30 +460,86 @@ footer{font-size:13px;padding:20px 10px}
 <p><a href="https://notebook.google.com/notebook/1562d9ee-9998-4597-a1db-b3eb2cf8c64d/artifact/0d61ee8e-0ccb-44e5-87e7-4ac97f6cdc36?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_" target="_blank" class="lesson-link">*** 5-1-1- BİLGİ KARTI (Yapay Zeka Ders Anlatımı)(Evrendeki Mükemmel Düzen ve Uyum)</a></p>
 <p><a href="https://notebook.google.com/notebook/1562d9ee-9998-4597-a1db-b3eb2cf8c64d/artifact/10cf63d6-d48b-4794-b597-e602735feddd?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_" target="_blank" class="lesson-link">*** 5-1-1- SESLİ ÖZET (Yapay Zeka Ders Anlatımı)(Evrendeki Mükemmel Düzen ve Uyum)</a></p>
 <p><a href="https://notebook.google.com/notebook/1562d9ee-9998-4597-a1db-b3eb2cf8c64d/artifact/10cf63d6-d48b-4794-b597-e602735feddd?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_" target="_blank" class="lesson-link">*** 5-1-1- TEST (Yapay Zeka Ders Anlatımı)(Evrendeki Mükemmel Düzen ve Uyum)</a></p>
-
-<!-- 6. SINIF DİN KÜLTÜRÜ VE AHLAK BİLGİSİ -->
-<h3><span class="stil5">6. SINIF DİN KÜLTÜRÜ VE AHLAK BİLGİSİ</span></h3>
-<p><a href="https://notebook.google.com/notebook/1562d9ee-9998-4597-a1db-b3eb2cf8c64d/artifact/158baf13-4f32-4d1c-8ad1-c5cedd709a7d?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_" target="_blank" class="lesson-link">*** 5-1-1- VİDEO (Yapay Zeka Ders Anlatımı) (Evrendeki Mükemmel Düzen ve Uyum)</a></p>
-<p><a href="https://notebook.google.com/notebook/1562d9ee-9998-4597-a1db-b3eb2cf8c64d/artifact/ee21d13f-bd89-412b-99dc-23e48ca02620?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_" target="_blank" class="lesson-link">*** 5-1-1- SLAYT (Yapay Zeka Ders Anlatımı)(Evrendeki Mükemmel Düzen ve Uyum)</a></p>
-<p><a href="https://notebook.google.com/notebook/1562d9ee-9998-4597-a1db-b3eb2cf8c64d/artifact/0d61ee8e-0ccb-44e5-87e7-4ac97f6cdc36?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_" target="_blank" class="lesson-link">*** 5-1-1- ZİHİN HARİTASI (Yapay Zeka Ders Anlatımı)(Evrendeki Mükemmel Düzen ve Uyum)</a></p>
-<p><a href="https://notebook.google.com/notebook/1562d9ee-9998-4597-a1db-b3eb2cf8c64d/artifact/10cf63d6-d48b-4794-b597-e602735feddd?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_" target="_blank" class="lesson-link">*** 5-1-1- İNFOGRAFİK (Yapay Zeka Ders Anlatımı)(Evrendeki Mükemmel Düzen ve Uyum)</a></p>
-<p><a href="https://notebook.google.com/notebook/1562d9ee-9998-4597-a1db-b3eb2cf8c64d/artifact/0d61ee8e-0ccb-44e5-87e7-4ac97f6cdc36?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_" target="_blank" class="lesson-link">*** 5-1-1- BİLGİ KARTI (Yapay Zeka Ders Anlatımı)(Evrendeki Mükemmel Düzen ve Uyum)</a></p>
-<p><a href="https://notebook.google.com/notebook/1562d9ee-9998-4597-a1db-b3eb2cf8c64d/artifact/10cf63d6-d48b-4794-b597-e602735feddd?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_" target="_blank" class="lesson-link">*** 5-1-1- SESLİ ÖZET (Yapay Zeka Ders Anlatımı)(Evrendeki Mükemmel Düzen ve Uyum)</a></p>
-<p><a href="https://notebook.google.com/notebook/1562d9ee-9998-4597-a1db-b3eb2cf8c64d/artifact/10cf63d6-d48b-4794-b597-e602735feddd?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_" target="_blank" class="lesson-link">*** 5-1-1- TEST (Yapay Zeka Ders Anlatımı)(Evrendeki Mükemmel Düzen ve Uyum)</a></p>
-
-
-
 </div></div>
 </div>
 </section>
 
 <section id="planlar" class="page"><div class="hero"><h2>📅 Planlar</h2><p>Aşağıdaki haftalık plan başlıklarına tıklayarak içeriklerini açabilirsiniz.</p></div>
 <div class="lessons">
-
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">36. HAFTA / 17 Mayıs 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>36. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">35. HAFTA / 10 Mayıs 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>35. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">34. HAFTA / 3 Mayıs 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>34. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">33. HAFTA / 26 Nisan 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>33. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">32. HAFTA / 19 Nisan 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>32. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">31. HAFTA / 12 Nisan 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>31. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">30. HAFTA / 5 Nisan 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>30. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">29. HAFTA / 29 Mart 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>29. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">28. HAFTA / 22 Mart 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>28. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">27. HAFTA / 15 Mart 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>27. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">26. HAFTA / 8 Mart 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>26. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">25. HAFTA / 1 Mart 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>25. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">24. HAFTA / 22 Şubat 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>24. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">23. HAFTA / 15 Şubat 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>23. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">22. HAFTA / 8 Şubat 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>22. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">21. HAFTA / 1 Şubat 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>21. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">20. HAFTA / 25 Ocak 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>20. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">19. HAFTA / 18 Ocak 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>19. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">18. HAFTA / 11 Ocak 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>18. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">17. HAFTA / 4 Ocak 2027<span class="arrow">▼</span></div><div class="lesson-content"><p>17. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">16. HAFTA / 28 Aralık 2026<span class="arrow">▼</span></div><div class="lesson-content"><p>16. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">15. HAFTA / 21 Aralık 2026<span class="arrow">▼</span></div><div class="lesson-content"><p>15. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">14. HAFTA / 14 Aralık 2026<span class="arrow">▼</span></div><div class="lesson-content"><p>14. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">13. HAFTA / 7 Aralık 2026<span class="arrow">▼</span></div><div class="lesson-content"><p>13. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">12. HAFTA / 30 Kasım 2026<span class="arrow">▼</span></div><div class="lesson-content"><p>12. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">11. HAFTA / 23 Kasım 2026<span class="arrow">▼</span></div><div class="lesson-content"><p>11. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">10. HAFTA / 16 Kasım 2026<span class="arrow">▼</span></div><div class="lesson-content"><p>10. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">9. HAFTA / 9 Kasım 2026<span class="arrow">▼</span></div><div class="lesson-content"><p>9. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">8. HAFTA / 2 Kasım 2026<span class="arrow">▼</span></div><div class="lesson-content"><p>8. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">7. HAFTA / 26 Ekim 2026<span class="arrow">▼</span></div><div class="lesson-content"><p>7. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">6. HAFTA / 19 Ekim 2026<span class="arrow">▼</span></div><div class="lesson-content"><p>6. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">5. HAFTA / 12 Ekim 2026<span class="arrow">▼</span></div><div class="lesson-content"><p>5. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">4. HAFTA / 5 Ekim 2026<span class="arrow">▼</span></div><div class="lesson-content"><p>4. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">3. HAFTA / 28 Eylül 2026<span class="arrow">▼</span></div><div class="lesson-content"><p>3. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
+<div class="lesson-box">
+<div class="lesson-title" onClick="toggleLesson(this)">2. HAFTA / 21 Eylül 2026<span class="arrow">▼</span></div><div class="lesson-content"><p>2. hafta yıllık plan içerikleri eklenecektir.</p></div></div>
 <div class="lesson-box">
 <div class="lesson-title" onClick="toggleLesson(this)">1. HAFTA / 14 Eylül 2026<span class="arrow">▼</span></div><div class="lesson-content">
 <p><strong><u>5. Sınıf: Din Kültürü ve Ahlak Bilgisi</u></strong><br>
-<p>5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme<br>a) Evrendeki mükemmel düzene ilişkin gözlem yapar.<br>b) Evrendeki mükemmel düzenle ilgili örüntüler bulur.<br>c) Evrendeki mükemmel düzene dair genellemeler yapar.</p>
+5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme<br>a) Evrendeki mükemmel düzene ilişkin gözlem yapar.<br>b) Evrendeki mükemmel düzenle ilgili örüntüler bulur.<br>c) Evrendeki mükemmel düzene dair genellemeler yapar.</p>
 <p><strong><u>5. Sınıf: Kur'an-ı Kerim</u></strong><br>5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme<br>a) Evrendeki mükemmel düzene ilişkin gözlem yapar.<br>b) Evrendeki mükemmel düzenle ilgili örüntüler bulur.<br>c) Evrendeki mükemmel düzene dair genellemeler yapar.</p>
 <p><strong><u>6. Sınıf: Din Kültürü ve Ahlak Bilgisi</u></strong><br>
 5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme<br>a) Evrendeki mükemmel düzene ilişkin gözlem yapar.<br>b) Evrendeki mükemmel düzenle ilgili örüntüler bulur.<br>c) Evrendeki mükemmel düzene dair genellemeler yapar.</p>
@@ -432,41 +551,6 @@ footer{font-size:13px;padding:20px 10px}
 5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme<br>a) Evrendeki mükemmel düzene ilişkin gözlem yapar.<br>b) Evrendeki mükemmel düzenle ilgili örüntüler bulur.<br>c) Evrendeki mükemmel düzene dair genellemeler yapar.</p>
 <p><strong><u>8. Sınıf: Kur'an-ı Kerim</u></strong><br>5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme<br>a) Evrendeki mükemmel düzene ilişkin gözlem yapar.<br>b) Evrendeki mükemmel düzenle ilgili örüntüler bulur.<br>c) Evrendeki mükemmel düzene dair genellemeler yapar.</p>
 </div></div>
-
-<!-- <div class="lesson-box">
-<div class="lesson-title" onClick="toggleLesson(this)">2. HAFTA / 21 Eylül 2026<span class="arrow">▼</span></div><div class="lesson-content">
-<p><strong><u>5. Sınıf: Din Kültürü ve Ahlak Bilgisi</u></strong><br>
-5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme<br>a) Evrendeki mükemmel düzene ilişkin gözlem yapar.<br>b) Evrendeki mükemmel düzenle ilgili örüntüler bulur.<br>c) Evrendeki mükemmel düzene dair genellemeler yapar.</p>
-<p><strong><u>5. Sınıf: Kur'an-ı Kerim</u></strong><br>5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme<br>a) Evrendeki mükemmel düzene ilişkin gözlem yapar.<br>b) Evrendeki mükemmel düzenle ilgili örüntüler bulur.<br>c) Evrendeki mükemmel düzene dair genellemeler yapar.</p>
-<p><strong><u>6. Sınıf: Din Kültürü ve Ahlak Bilgisi</u></strong><br>
-5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme<br>a) Evrendeki mükemmel düzene ilişkin gözlem yapar.<br>b) Evrendeki mükemmel düzenle ilgili örüntüler bulur.<br>c) Evrendeki mükemmel düzene dair genellemeler yapar.</p>
-<p><strong><u>6. Sınıf: Kur'an-ı Kerim</u></strong><br>5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme<br>a) Evrendeki mükemmel düzene ilişkin gözlem yapar.<br>b) Evrendeki mükemmel düzenle ilgili örüntüler bulur.<br>c) Evrendeki mükemmel düzene dair genellemeler yapar.</p>
-<p><strong><u>7. Sınıf: Din Kültürü ve Ahlak Bilgisi</u></strong><br>
-5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme<br>a) Evrendeki mükemmel düzene ilişkin gözlem yapar.<br>b) Evrendeki mükemmel düzenle ilgili örüntüler bulur.<br>c) Evrendeki mükemmel düzene dair genellemeler yapar.</p>
-<p><strong><u>7. Sınıf: Kur'an-ı Kerim</u></strong><br>5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme<br>a) Evrendeki mükemmel düzene ilişkin gözlem yapar.<br>b) Evrendeki mükemmel düzenle ilgili örüntüler bulur.<br>c) Evrendeki mükemmel düzene dair genellemeler yapar.</p>
-<p><strong><u>8. Sınıf: Din Kültürü ve Ahlak Bilgisi</u></strong><br>
-5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme<br>a) Evrendeki mükemmel düzene ilişkin gözlem yapar.<br>b) Evrendeki mükemmel düzenle ilgili örüntüler bulur.<br>c) Evrendeki mükemmel düzene dair genellemeler yapar.</p>
-<p><strong><u>8. Sınıf: Kur'an-ı Kerim</u></strong><br>5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme<br>a) Evrendeki mükemmel düzene ilişkin gözlem yapar.<br>b) Evrendeki mükemmel düzenle ilgili örüntüler bulur.<br>c) Evrendeki mükemmel düzene dair genellemeler yapar.</p>
-</div></div> -->
-
-<!-- <div class="lesson-box">
-<div class="lesson-title" onClick="toggleLesson(this)">3. HAFTA / 28 Eylül 2026<span class="arrow">▼</span></div><div class="lesson-content">
-<p><strong><u>5. Sınıf: Din Kültürü ve Ahlak Bilgisi</u></strong><br>
-5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme<br>a) Evrendeki mükemmel düzene ilişkin gözlem yapar.<br>b) Evrendeki mükemmel düzenle ilgili örüntüler bulur.<br>c) Evrendeki mükemmel düzene dair genellemeler yapar.</p>
-<p><strong><u>5. Sınıf: Kur'an-ı Kerim</u></strong><br>5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme<br>a) Evrendeki mükemmel düzene ilişkin gözlem yapar.<br>b) Evrendeki mükemmel düzenle ilgili örüntüler bulur.<br>c) Evrendeki mükemmel düzene dair genellemeler yapar.</p>
-<p><strong><u>6. Sınıf: Din Kültürü ve Ahlak Bilgisi</u></strong><br>
-5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme<br>a) Evrendeki mükemmel düzene ilişkin gözlem yapar.<br>b) Evrendeki mükemmel düzenle ilgili örüntüler bulur.<br>c) Evrendeki mükemmel düzene dair genellemeler yapar.</p>
-<p><strong><u>6. Sınıf: Kur'an-ı Kerim</u></strong><br>5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme<br>a) Evrendeki mükemmel düzene ilişkin gözlem yapar.<br>b) Evrendeki mükemmel düzenle ilgili örüntüler bulur.<br>c) Evrendeki mükemmel düzene dair genellemeler yapar.</p>
-<p><strong><u>7. Sınıf: Din Kültürü ve Ahlak Bilgisi</u></strong><br>
-5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme<br>a) Evrendeki mükemmel düzene ilişkin gözlem yapar.<br>b) Evrendeki mükemmel düzenle ilgili örüntüler bulur.<br>c) Evrendeki mükemmel düzene dair genellemeler yapar.</p>
-<p><strong><u>7. Sınıf: Kur'an-ı Kerim</u></strong><br>5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme<br>a) Evrendeki mükemmel düzene ilişkin gözlem yapar.<br>b) Evrendeki mükemmel düzenle ilgili örüntüler bulur.<br>c) Evrendeki mükemmel düzene dair genellemeler yapar.</p>
-<p><strong><u>8. Sınıf: Din Kültürü ve Ahlak Bilgisi</u></strong><br>
-5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme<br>a) Evrendeki mükemmel düzene ilişkin gözlem yapar.<br>b) Evrendeki mükemmel düzenle ilgili örüntüler bulur.<br>c) Evrendeki mükemmel düzene dair genellemeler yapar.</p>
-<p><strong><u>8. Sınıf: Kur'an-ı Kerim</u></strong><br>5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme<br>a) Evrendeki mükemmel düzene ilişkin gözlem yapar.<br>b) Evrendeki mükemmel düzenle ilgili örüntüler bulur.<br>c) Evrendeki mükemmel düzene dair genellemeler yapar.</p>
-</div></div> -->
-
-
-
 </div>
 </section>
 
@@ -485,14 +569,14 @@ footer{font-size:13px;padding:20px 10px}
 <section id="dokumanlar" class="page">
 <div class="hero"><h2>📁 Dokümanlar</h2><p>Eğitim dokümanları ve faydalı kaynaklar için hızlı erişim alanı.</p></div>
 <div class="document-grid">
-<div class="document-card"><p>📄 5. Sınıf Din Kültürü ve Ahlak Bilgisi Ders Kitabı</p><a href="https://cdnimage.eba.gov.tr/beta/538/2ef/5ab/d04/ab8/b94/ecd/992/f27/bc8/e5b/c55/8b9/06e/009/5382ef5abd04ab8b94ecd992f27bc8e5bc558b906e009.pdf">Aç</a></div>
-<div class="document-card"><p>📘 6. Sınıf Din Kültürü ve Ahlak Bilgisi Ders Kitabı</p><a href="https://cdnimage.eba.gov.tr/beta/347/9ef/c15/462/ff6/054/d25/9d9/ead/35b/0fe/d08/5b9/06e/037/3479efc15462ff6054d259d9ead35b0fed085b906e037.pdf">Aç</a></div>
-<div class="document-card"><p>📚 7. Sınıf Din Kültürü ve Ahlak Bilgisi Ders Kitabı</p><a href="https://cdnimage.eba.gov.tr/beta/836/9ef/5ab/d04/ab8/b94/ecd/992/f27/bc8/e5b/c55/8b9/06e/007/8369ef5abd04ab8b94ecd992f27bc8e5bc558b906e007.pdf">Aç</a></div>
-<div class="document-card"><p>📝 8. Sınıf Din Kültürü ve Ahlak Bilgisi Ders Kitabı</p><a href="https://cdnimage.eba.gov.tr/beta/291/6ef/5ab/d04/ab8/b94/ecd/992/f27/bc8/e5b/c55/8b9/06e/008/2916ef5abd04ab8b94ecd992f27bc8e5bc558b906e008.pdf">Aç</a></div>
-<div class="document-card"><p>📄 5. Sınıf Kur'an-ı Kerim Ders Kitabı</p><a href="https://cdnimage.eba.gov.tr/beta/538/2ef/5ab/d04/ab8/b94/ecd/992/f27/bc8/e5b/c55/8b9/06e/009/5382ef5abd04ab8b94ecd992f27bc8e5bc558b906e009.pdf">Aç</a></div>
-<div class="document-card"><p>📘 6. Sınıf Kur'an-ı Kerim Ders Kitabı</p><a href="https://cdnimage.eba.gov.tr/beta/764/9ef/5ab/d04/ab8/b94/ecd/992/f27/bc8/e5b/c55/8b9/06e/010/7649ef5abd04ab8b94ecd992f27bc8e5bc558b906e010.pdf">Aç</a></div>
-<div class="document-card"><p>📚 7. Sınıf Kur'an-ı Kerim Ders Kitabı</p><a href="https://cdnimage.eba.gov.tr/beta/597/7ef/c15/462/ff6/054/d25/9d9/ead/35b/0fe/d08/5b9/06e/046/5977efc15462ff6054d259d9ead35b0fed085b906e046.pdf">Aç</a></div>
-<div class="document-card"><p>📝 8. Sınıf Kur'an-ı Kerim Ders Kitabı</p><a href="https://cdnimage.eba.gov.tr/beta/104/4ef/5ab/d04/ab8/b94/ecd/992/f27/bc8/e5b/c55/8b9/06e/011/1044ef5abd04ab8b94ecd992f27bc8e5bc558b906e011.pdf">Aç</a></div>
+<div class="document-card"><p>📄 5. Sınıf Din Kültürü ve Ahlak Bilgisi Ders Kitabı</p><a href="https://cdnimage.eba.gov.tr/beta/538/2ef/5ab/d04/ab8/b94/ecd/992/f27/bc8/e5b/c55/8b9/06e/009/5382ef5abd04ab8b94ecd992f27bc8e5bc558b906e009.pdf">İndir</a></div>
+<div class="document-card"><p>📘 6. Sınıf Din Kültürü ve Ahlak Bilgisi Ders Kitabı</p><a href="https://cdnimage.eba.gov.tr/beta/347/9ef/c15/462/ff6/054/d25/9d9/ead/35b/0fe/d08/5b9/06e/037/3479efc15462ff6054d259d9ead35b0fed085b906e037.pdf">İndir</a></div>
+<div class="document-card"><p>📚 7. Sınıf Din Kültürü ve Ahlak Bilgisi Ders Kitabı</p><a href="https://cdnimage.eba.gov.tr/beta/836/9ef/5ab/d04/ab8/b94/ecd/992/f27/bc8/e5b/c55/8b9/06e/007/8369ef5abd04ab8b94ecd992f27bc8e5bc558b906e007.pdf">İndir</a></div>
+<div class="document-card"><p>📝 8. Sınıf Din Kültürü ve Ahlak Bilgisi Ders Kitabı</p><a href="https://cdnimage.eba.gov.tr/beta/291/6ef/5ab/d04/ab8/b94/ecd/992/f27/bc8/e5b/c55/8b9/06e/008/2916ef5abd04ab8b94ecd992f27bc8e5bc558b906e008.pdf">İndir</a></div>
+<div class="document-card"><p>📄 5. Sınıf Kur'an-ı Kerim Ders Kitabı</p><a href="https://cdnimage.eba.gov.tr/beta/538/2ef/5ab/d04/ab8/b94/ecd/992/f27/bc8/e5b/c55/8b9/06e/009/5382ef5abd04ab8b94ecd992f27bc8e5bc558b906e009.pdf">İndir</a></div>
+<div class="document-card"><p>📘 6. Sınıf Kur'an-ı Kerim Ders Kitabı</p><a href="https://cdnimage.eba.gov.tr/beta/764/9ef/5ab/d04/ab8/b94/ecd/992/f27/bc8/e5b/c55/8b9/06e/010/7649ef5abd04ab8b94ecd992f27bc8e5bc558b906e010.pdf">İndir</a></div>
+<div class="document-card"><p>📚 7. Sınıf Kur'an-ı Kerim Ders Kitabı</p><a href="https://cdnimage.eba.gov.tr/beta/597/7ef/c15/462/ff6/054/d25/9d9/ead/35b/0fe/d08/5b9/06e/046/5977efc15462ff6054d259d9ead35b0fed085b906e046.pdf">İndir</a></div>
+<div class="document-card"><p>📝 8. Sınıf Kur'an-ı Kerim Ders Kitabı</p><a href="https://cdnimage.eba.gov.tr/beta/104/4ef/5ab/d04/ab8/b94/ecd/992/f27/bc8/e5b/c55/8b9/06e/011/1044ef5abd04ab8b94ecd992f27bc8e5bc558b906e011.pdf">İndir</a></div>
 
 </div>
 </section>
@@ -511,7 +595,7 @@ document.getElementById("mainMenu").classList.remove("mobile-open");
 window.scrollTo({top:0,behavior:"smooth"});
 }
 function showPageByName(pageId){
-let b=null;document.querySelectorAll(".menu-button").forEach(x=>{let t=x.innerText.toLowerCase();if((pageId==="dersler"&&t.includes("dersler"))||(pageId==="planlar"&&t.includes("planlar"))||(pageId==="odevler"&&t.includes("ödevler"))||(pageId==="dokumanlar"&&t.includes("dokümanlar")))b=x});showPage(pageId,b)
+let b=null;document.querySelectorAll(".menu-button").forEach(x=>{let t=x.innerText.toLowerCase();if((pageId==="dersler"&&t.includes("dersler"))||(pageId==="planlar"&&t.includes("planlar"))||(pageId==="odevler"&&t.includes("ödevler"))||(pageId==="dokumanlar"&&t.includes("dokümanlar")))b=x});showPage(pageId,pageId?b:null)
 }
 function toggleLesson(element){
     const currentBox = element.parentElement;
@@ -565,7 +649,6 @@ function displayAssignments(){
     list.innerHTML="";
     let items=getAssignments();
 
-    // Eski index sürümündeki verileri yeni yapıya dönüştür.
     items=items.map(x=>{
         if(x.title) return x;
         return {id:x.id||Date.now(),title:[x.ders,x.konu].filter(Boolean).join(": "),date:x.tarih,status:null};
