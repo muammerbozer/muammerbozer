@@ -371,6 +371,13 @@
             white-space: nowrap;
         }
 
+        .odev-kalan-sure {
+            font-size: 0.75rem;
+            color: #1565c0;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
         .odev-card.odev-tamamlandi {
             background-color: #e8f5e9;
             border-color: #a5d6a7;
@@ -531,6 +538,17 @@
             return sonTarih < bugun;
         }
 
+        function kalanSureMetni(odev) {
+            if (!odev.tarih || odev.tamamlandi || suresiGecti(odev)) return '';
+            const bugun = new Date();
+            bugun.setHours(0, 0, 0, 0);
+            const sonTarih = new Date(odev.tarih + 'T00:00:00');
+            const farkGun = Math.round((sonTarih - bugun) / (1000 * 60 * 60 * 24));
+            if (farkGun === 0) return 'Bugün son gün';
+            if (farkGun === 1) return '1 gün kaldı';
+            return `${farkGun} gün kaldı`;
+        }
+
         function odevleriCiz() {
             const odevler = odevleriYukle();
 
@@ -555,7 +573,7 @@
 
                 kart.innerHTML = `
                     <h3>${odev.konu}</h3>
-                    <p class="odev-tarih">📅 ${tarihFormatla(odev.tarih)}${odev.tamamlandi ? ' <span class="odev-durum">✔ Tamamlandı</span>' : ''}${suresiGecti(odev) ? ' <span class="odev-suresi-doldu">Süresi Doldu</span>' : ''}</p>
+                    <p class="odev-tarih">📅 ${tarihFormatla(odev.tarih)}${odev.tamamlandi ? ' <span class="odev-durum">✔ Tamamlandı</span>' : ''}${suresiGecti(odev) ? ' <span class="odev-suresi-doldu">Süresi Doldu</span>' : ''}${kalanSureMetni(odev) ? ` <span class="odev-kalan-sure">${kalanSureMetni(odev)}</span>` : ''}</p>
                     <div class="odev-buttons">
                         <button class="odev-btn odev-btn-tamamla" onclick="tamamlaOdev('${odev.id}')">${odev.tamamlandi ? 'Geri Al' : 'Tamamlandı'}</button>
                         <button class="odev-btn odev-btn-duzenle" onclick="duzenleOdev('${odev.id}')">Düzenle</button>
