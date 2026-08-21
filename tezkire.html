@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tezkire | Muammer Bozer Öğrenme Köşesi</title>
+    <script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=7UxNce28WjS-9eW8XqzWOb6qLzhMc6g9O1e_L75DxSetAejRkV4Q1PwJ0PinpEaeCq4Oui74sGpEeEILSgVnFIzsYwCAQmUCNdwIUFZnhJ3GrI90kckfa8dnI2KuTn9yFEArMvbyhEcJfAtRLl84DuP389pWNQ7vmy9ZUe6uj40hCMpP_j6RwpuTJLuTGUH8zFOGmWv8GPWamWYlrSikWXawWDV9-R3nl9dNnvFEHncgk77IEPUDvc5vZY92lJ4qyuUsqe_oENnlnez-Ra80XMZgaWTXQXRmm2Dmy0CKP7p5PpewghTyyBziiXY8KciglM-GJfN7m9ZM1XSgGU0YWg" charset="UTF-8"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        body {
+            line-height: 1.6;
+        }
+
+        /* Header / Banner */
+        .hero {
+            background: linear-gradient(135deg, #1b4332, #2d6a4f);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 5px solid #d8f3dc;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Hızlı Erişim Link Alanı */
+        .quick-nav {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            margin-top: -30px;
+            margin-bottom: 40px;
+        }
+
+        .quick-nav h2 {
+            font-size: 1.2rem;
+            color: #1b4332;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+        }
+
+        .nav-card {
+            display: block;
+            background-color: #e8f5e9;
+            color: #1b4332;
+            text-decoration: none;
+            padding: 14px;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            border: 1px solid #c8e6c9;
+        }
+
+        .nav-card:hover {
+            background-color: #2d6a4f;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .nav-card.active {
+            background-color: #1b4332;
+            color: white;
+        }
+
+        /* Bölüm Alanları */
+        .section {
+            background: white;
+            padding: 30px 25px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            scroll-margin-top: 20px;
+        }
+
+        .section h2 {
+            color: #1b4332;
+            border-bottom: 2px solid #52b788;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .section > p.intro {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        /* Tezkire Uygulaması: Sol Sidebar + Kart Izgarası */
+        .layout {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .form-container {
+            background: #fafafa;
+            padding: 16px;
+            border-radius: 8px;
+            width: 250px;
+            flex-shrink: 0;
+            border: 1px solid #c8e6c9;
+            position: sticky;
+            top: 15px;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 10px;
+            border: 1px solid #c8e6c9;
+            border-radius: 6px;
+            font-size: 15px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .form-container input:focus {
+            border-color: #2d6a4f;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #2d6a4f;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .form-container button:hover {
+            background-color: #1b4332;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .card {
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            word-break: break-word;
+        }
+
+        .card-title {
+            font-size: 12.5px;
+            line-height: 1.4;
+            min-height: calc(1.4em * 3);
+            color: #1b4332;
+            text-decoration: none;
+            font-weight: 400;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 0;
+        }
+
+        .card-title:hover {
+            color: #52b788;
+        }
+
+        .card-title.is-read {
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        .card-buttons {
+            display: flex;
+            gap: 6px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 6px 2px;
+            font-size: 9.5px;
+            font-weight: 600;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color: white;
+            text-align: center;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .btn-status {
+            flex: 1.5;
+            background-color: #e0e0e0;
+            color: #666;
+            border: 1px solid #ccc;
+        }
+
+        .btn-edit,
+        .btn-delete {
+            flex: 0.75;
+        }
+
+        .btn-edit {
+            background-color: #ffc107;
+            color: #212529;
+        }
+
+        .btn-delete {
+            background-color: #c0392b;
+        }
+
+        .btn-status.active-read {
+            background-color: #2d6a4f;
+            color: white;
+            border-color: #1b4332;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            background-color: #1b4332;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.85rem;
+        }
+
+        /* Mobil Uyumluluk */
+        @media (max-width: 900px) {
+            .layout {
+                flex-direction: column;
+            }
+            .form-container {
+                width: 100%;
+                position: static;
+            }
+            .grid-container {
+                width: 100%;
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 700px) {
+            .grid-container { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 1.5rem; }
+            .nav-grid { grid-template-columns: repeat(2, 1fr); }
+            .section { padding: 20px 15px; }
+        }
+        @media (max-width: 480px) {
+            .grid-container { grid-template-columns: 1fr; }
+            .card-title { font-size: 13.5px; min-height: calc(1.4em * 3); }
+            .btn { padding: 8px 4px; font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <h1>MUAMMER BOZER</h1>
+        <p>ÖĞRENME KÖŞESİ</p>
+    </header>
+
+    <div class="container">
+
+        <nav class="quick-nav">
+            <div class="nav-grid">
+                <a href="index.html" class="nav-card">Anasayfa</a>
+                <a href="dersler.html" class="nav-card">Dersler</a>
+                <a href="planlar.html" class="nav-card">Planlar</a>
+                <a href="odevler.html" class="nav-card">Ödevler</a>
+                <a href="dokumanlar.html" class="nav-card">Dokümanlar</a>
+                <a href="tezkire.html" class="nav-card active">Tezkire</a>
+            </div>
+        </nav>
+
+        <section id="tezkire" class="section">
+            <h2>Tezkire 📜</h2>
+            <p class="intro">Okuduğunuz makaleleri başlık ve linkleriyle kaydedebilir, tamamlandı olarak işaretleyebilir, düzenleyebilir veya silebilirsiniz.</p>
+
+            <div class="layout">
+                <!-- Giriş Kutucuğu -->
+                <div class="form-container">
+                    <input type="text" id="titleInput" placeholder="Makale İsmi Giriniz">
+                    <input type="url" id="linkInput" placeholder="Makale Linki (https://...)">
+                    <button id="saveBtn" onclick="saveArticle()">Kaydet</button>
+                </div>
+
+                <!-- Oluşturulan Kutucukların Listesi -->
+                <div class="grid-container" id="articleGrid"></div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Muammer Bozer Öğrenme Köşesi. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script>
+        let editIndex = null;
+
+        document.addEventListener("DOMContentLoaded", loadArticles);
+
+        function getArticles() {
+            return JSON.parse(localStorage.getItem("articles")) || [];
+        }
+
+        function saveArticlesToStorage(articles) {
+            localStorage.setItem("articles", JSON.stringify(articles));
+        }
+
+        function saveArticle() {
+            const titleInput = document.getElementById("titleInput");
+            const linkInput = document.getElementById("linkInput");
+
+            const title = titleInput.value.trim();
+            let link = linkInput.value.trim();
+
+            if (!title || !link) {
+                alert("Lütfen hem başlık hem de link alanını doldurun.");
+                return;
+            }
+
+            if (!link.startsWith("http://") && !link.startsWith("https://")) {
+                link = "https://" + link;
+            }
+
+            let articles = getArticles();
+
+            if (editIndex !== null) {
+                articles[editIndex].title = title;
+                articles[editIndex].link = link;
+                editIndex = null;
+                document.getElementById("saveBtn").innerText = "Kaydet";
+            } else {
+                articles.push({ title, link, status: null });
+            }
+
+            saveArticlesToStorage(articles);
+            titleInput.value = "";
+            linkInput.value = "";
+            renderArticles();
+        }
+
+        function toggleStatus(index, newStatus) {
+            let articles = getArticles();
+            if (articles[index].status === newStatus) {
+                articles[index].status = null;
+            } else {
+                articles[index].status = newStatus;
+            }
+            saveArticlesToStorage(articles);
+            renderArticles();
+        }
+
+        function renderArticles() {
+            const grid = document.getElementById("articleGrid");
+            grid.innerHTML = "";
+            const articles = getArticles();
+
+            articles.forEach((item, index) => {
+                const card = document.createElement("div");
+                card.className = "card";
+
+                const isRead = item.status === 'read';
+
+                card.innerHTML = `
+                    <a href="${item.link}" target="_blank" class="card-title${isRead ? ' is-read' : ''}" title="${item.title}">${item.title}</a>
+                    <div class="card-buttons">
+                        <button class="btn btn-status ${isRead ? 'active-read' : ''}" onclick="toggleStatus(${index}, 'read')">Okundu</button>
+                        <button class="btn btn-edit" onclick="editArticle(${index})">Düzenle</button>
+                        <button class="btn btn-delete" onclick="deleteArticle(${index})">Sil</button>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        function editArticle(index) {
+            const articles = getArticles();
+            document.getElementById("titleInput").value = articles[index].title;
+            document.getElementById("linkInput").value = articles[index].link;
+
+            editIndex = index;
+            document.getElementById("saveBtn").innerText = "Güncelle";
+        }
+
+        function deleteArticle(index) {
+            let articles = getArticles();
+            articles.splice(index, 1);
+            saveArticlesToStorage(articles);
+            renderArticles();
+        }
+
+        function loadArticles() {
+            renderArticles();
+        }
+    </script>
+</body>
+</html>
