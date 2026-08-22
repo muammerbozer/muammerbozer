@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tezkire | Muammer Bozer Öğrenme Köşesi</title>
-    <script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=7UxNce28WjS-9eW8XqzWOb6qLzhMc6g9O1e_L75DxSetAejRkV4Q1PwJ0PinpEaeCq4Oui74sGpEeEILSgVnFIzsYwCAQmUCNdwIUFZnhJ3GrI90kckfa8dnI2KuTn9yFEArMvbyhEcJfAtRLl84DuP389pWNQ7vmy9ZUe6uj40hCMpP_j6RwpuTJLuTGUH8zFOGmWv8GPWamWYlrSikWXawWDV9-R3nl9dNnvFEHncgk77IEPUDvc5vZY92lJ4qyuUsqe_oENnlnez-Ra80XMZgaWTXQXRmm2Dmy0CKP7p5PpewghTyyBziiXY8KciglM-GJfN7m9ZM1XSgGU0YWg" charset="UTF-8"></script>
+    <title>Tezkire | Muammer BOZER</title>
     <style>
         * {
             box-sizing: border-box;
@@ -48,7 +47,7 @@
             padding: 20px;
         }
 
-        /* Hızlı Erişim Link Alanı */
+        /* Hızlı Erişim Link Alanı (Menü yerine) */
         .quick-nav {
             background-color: white;
             padding: 20px;
@@ -112,6 +111,9 @@
             padding-bottom: 8px;
             margin-bottom: 15px;
             font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .section > p.intro {
@@ -119,144 +121,159 @@
             margin-bottom: 20px;
         }
 
-        /* Tezkire Uygulaması: Sol Sidebar + Kart Izgarası */
-        .layout {
-            display: flex;
-            align-items: flex-start;
+        /* Tezkire Alanı */
+        .tezkire-layout {
+            display: grid;
+            grid-template-columns: 300px 1fr;
             gap: 20px;
+            align-items: start;
         }
 
-        .form-container {
-            background: #fafafa;
-            padding: 16px;
-            border-radius: 8px;
-            width: 250px;
-            flex-shrink: 0;
-            border: 1px solid #c8e6c9;
+        .tezkire-form {
+            border: 1px solid #d8f3dc;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #fafffa;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
             position: sticky;
-            top: 15px;
+            top: 20px;
         }
 
-        .form-container input {
+        .tezkire-form input {
             width: 100%;
-            padding: 10px 12px;
-            margin-bottom: 10px;
+            padding: 12px 14px;
             border: 1px solid #c8e6c9;
-            border-radius: 6px;
-            font-size: 15px;
-            outline: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            color: #333;
             font-family: inherit;
         }
 
-        .form-container input:focus {
-            border-color: #2d6a4f;
+        .tezkire-form input:focus {
+            outline: none;
+            border-color: #52b788;
         }
 
-        .form-container button {
-            width: 100%;
-            padding: 10px;
-            background-color: #2d6a4f;
-            color: white;
+        .tezkire-form button {
+            padding: 13px;
             border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 15px;
-            font-weight: 600;
-            transition: background 0.2s;
-        }
-
-        .form-container button:hover {
-            background-color: #1b4332;
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 14px;
-            flex: 1;
-            min-width: 0;
-        }
-
-        .card {
-            background: #fafafa;
-            border: 1px solid #eee;
             border-radius: 8px;
-            padding: 12px;
+            background-color: #1b4332;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .tezkire-form button:hover {
+            background-color: #2d6a4f;
+        }
+
+        .tezkire-form .form-hint {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: -6px;
+        }
+
+        .tezkire-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
+            align-content: start;
+        }
+
+        .tezkire-card {
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 14px;
+            background-color: #fafafa;
             display: flex;
             flex-direction: column;
-            word-break: break-word;
+            justify-content: flex-start;
+            min-height: 140px;
         }
 
-        .card-title {
-            font-size: 12.5px;
-            line-height: 1.4;
-            min-height: calc(1.4em * 3);
-            color: #1b4332;
-            text-decoration: none;
+        .tezkire-card.okundu {
+            background-color: #f4f4f4;
+        }
+
+        .tezkire-text-link {
+            font-size: 0.75rem;
             font-weight: 400;
+            color: #333;
+            text-decoration: none;
+            line-height: 1.4;
+            margin-bottom: 6px;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
-            margin-bottom: 0;
         }
 
-        .card-title:hover {
-            color: #52b788;
+        .tezkire-text-link:hover {
+            text-decoration: underline;
+            color: #2d6a4f;
         }
 
-        .card-title.is-read {
+        .tezkire-card.okundu .tezkire-text-link {
             text-decoration: line-through;
-            color: #888;
+            color: #999;
         }
 
-        .card-buttons {
+        .tezkire-actions {
             display: flex;
             gap: 6px;
+            margin-top: 4px;
         }
 
-        .btn {
+        .tezkire-actions button {
             flex: 1;
-            padding: 6px 2px;
-            font-size: 9.5px;
-            font-weight: 600;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
+            padding: 8px 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
             cursor: pointer;
-            color: white;
-            text-align: center;
-            transition: all 0.2s ease;
-            white-space: nowrap;
+            transition: opacity 0.2s ease;
         }
 
-        .btn-status {
-            flex: 1.5;
+        .tezkire-actions button:hover {
+            opacity: 0.85;
+        }
+
+        .btn-okundu {
             background-color: #e0e0e0;
-            color: #666;
-            border: 1px solid #ccc;
+            color: #555;
         }
 
-        .btn-edit,
-        .btn-delete {
-            flex: 0.75;
-        }
-
-        .btn-edit {
-            background-color: #ffc107;
-            color: #212529;
-        }
-
-        .btn-delete {
-            background-color: #c0392b;
-        }
-
-        .btn-status.active-read {
-            background-color: #2d6a4f;
+        .btn-okundu.done {
+            background-color: #1b4332;
             color: white;
-            border-color: #1b4332;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
         }
 
+        .btn-duzenle {
+            background-color: #f4b400;
+            color: #4a3800;
+        }
+
+        .btn-sil {
+            background-color: #c0392b;
+            color: white;
+        }
+
+        .tezkire-empty {
+            grid-column: 1 / -1;
+            text-align: center;
+            color: #999;
+            padding: 30px;
+            border: 2px dashed #eee;
+            border-radius: 10px;
+        }
+
+        /* Footer */
         footer {
             background-color: #1b4332;
             color: white;
@@ -267,31 +284,25 @@
         }
 
         /* Mobil Uyumluluk */
-        @media (max-width: 900px) {
-            .layout {
-                flex-direction: column;
-            }
-            .form-container {
-                width: 100%;
-                position: static;
-            }
-            .grid-container {
-                width: 100%;
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
         @media (max-width: 700px) {
-            .grid-container { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 600px) {
             .hero h1 { font-size: 1.5rem; }
             .nav-grid { grid-template-columns: repeat(2, 1fr); }
             .section { padding: 20px 15px; }
+            .tezkire-layout {
+                grid-template-columns: 1fr;
+            }
+            .tezkire-form {
+                position: static;
+            }
+            .tezkire-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
-        @media (max-width: 480px) {
-            .grid-container { grid-template-columns: 1fr; }
-            .card-title { font-size: 13.5px; min-height: calc(1.4em * 3); }
-            .btn { padding: 8px 4px; font-size: 11px; }
+
+        @media (max-width: 420px) {
+            .tezkire-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -317,18 +328,19 @@
 
         <section id="tezkire" class="section">
             <h2>Tezkire 📜</h2>
-            <p class="intro">Okuduğunuz veya okumayı düşündüğünüz ve unutmadan not almak istediğiniz makale, web sayfası veya benzer bağlantılara  isin vererek linkleriyle kaydedebilir, tamamlandı olarak işaretleyebilir, düzenleyebilir veya silebilirsiniz.</p>
+            <p class="intro">Okuduğunuz veya okumayı düşündüğünüz ve unutmadan not almak istediğiniz makale, web sayfası veya benzer bağlantıları isim vererek kaydedebilir, tamamlandı olarak işaretleyebilir, düzenleyebilir veya silebilirsiniz.</p>
 
-            <div class="layout">
-                <!-- Giriş Kutucuğu -->
-                <div class="form-container">
-                    <input type="text" id="titleInput" placeholder="Makale İsmi Giriniz">
-                    <input type="url" id="linkInput" placeholder="Makale Linki (https://...)">
-                    <button id="saveBtn" onClick="saveArticle()">Kaydet</button>
+            <div class="tezkire-layout">
+                <form class="tezkire-form" id="tezkireForm">
+                    <input type="text" id="tezkireTitle" placeholder="Makale İsmi Giriniz">
+                    <input type="text" id="tezkireLink" placeholder="Makale Linki (https://...)">
+                    <div class="form-hint" id="formHint"></div>
+                    <button type="submit" id="tezkireSubmitBtn">Kaydet</button>
+                </form>
+
+                <div class="tezkire-grid" id="tezkireGrid">
+                    <!-- Kayıtlar buraya JS ile yazılacak -->
                 </div>
-
-                <!-- Oluşturulan Kutucukların Listesi -->
-                <div class="grid-container" id="articleGrid"></div>
             </div>
         </section>
 
@@ -339,79 +351,49 @@
     </footer>
 
     <script>
-        let editIndex = null;
+        const STORAGE_KEY = 'tezkireEntries';
+        let entries = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+        let editingId = null;
 
-        document.addEventListener("DOMContentLoaded", loadArticles);
+        const grid = document.getElementById('tezkireGrid');
+        const form = document.getElementById('tezkireForm');
+        const titleInput = document.getElementById('tezkireTitle');
+        const linkInput = document.getElementById('tezkireLink');
+        const submitBtn = document.getElementById('tezkireSubmitBtn');
+        const formHint = document.getElementById('formHint');
 
-        function getArticles() {
-            return JSON.parse(localStorage.getItem("articles")) || [];
+        function save() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
         }
 
-        function saveArticlesToStorage(articles) {
-            localStorage.setItem("articles", JSON.stringify(articles));
+        function normalizeLink(url) {
+            if (!url) return '';
+            if (!/^https?:\/\//i.test(url)) {
+                return 'https://' + url;
+            }
+            return url;
         }
 
-        function saveArticle() {
-            const titleInput = document.getElementById("titleInput");
-            const linkInput = document.getElementById("linkInput");
+        function render() {
+            grid.innerHTML = '';
 
-            const title = titleInput.value.trim();
-            let link = linkInput.value.trim();
-
-            if (!title || !link) {
-                alert("Lütfen hem başlık hem de link alanını doldurun.");
+            if (entries.length === 0) {
+                grid.innerHTML = '<div class="tezkire-empty">Henüz kayıtlı bir makale yok. Soldaki formu kullanarak ekleyebilirsiniz.</div>';
                 return;
             }
 
-            if (!link.startsWith("http://") && !link.startsWith("https://")) {
-                link = "https://" + link;
-            }
+            entries.forEach(entry => {
+                const card = document.createElement('div');
+                card.className = 'tezkire-card' + (entry.okundu ? ' okundu' : '');
 
-            let articles = getArticles();
-
-            if (editIndex !== null) {
-                articles[editIndex].title = title;
-                articles[editIndex].link = link;
-                editIndex = null;
-                document.getElementById("saveBtn").innerText = "Kaydet";
-            } else {
-                articles.push({ title, link, status: null });
-            }
-
-            saveArticlesToStorage(articles);
-            titleInput.value = "";
-            linkInput.value = "";
-            renderArticles();
-        }
-
-        function toggleStatus(index, newStatus) {
-            let articles = getArticles();
-            if (articles[index].status === newStatus) {
-                articles[index].status = null;
-            } else {
-                articles[index].status = newStatus;
-            }
-            saveArticlesToStorage(articles);
-            renderArticles();
-        }
-
-        function renderArticles() {
-            const grid = document.getElementById("articleGrid");
-            grid.innerHTML = "";
-            const articles = getArticles();
-
-            articles.forEach((item, index) => {
-                const card = document.createElement("div");
-                card.className = "card";
-
-                const isRead = item.status === 'read';
+                const displayText = entry.title ? entry.title : 'Başlıksız Not';
 
                 card.innerHTML = `
-                    <a href="${item.link}" target="_blank" class="card-title${isRead ? ' is-read' : ''}" title="${item.title}">${item.title}</a>
-                    <div class="card-buttons">
-                        <button class="btn btn-status ${isRead ? 'active-read' : ''}" onclick="toggleStatus(${index}, 'read')">Okundu</button>
-                        <button class="btn btn-edit" onclick="editArticle(${index})">Düzenle</button>
-                        <button class="btn btn-delete" onclick="deleteArticle(${index})">Sil</button>
+                    <a class="tezkire-text-link" href="${escapeHtml(entry.link)}" target="_blank" rel="noopener noreferrer">${escapeHtml(displayText)}</a>
+                    <div class="tezkire-actions">
+                        <button class="btn-okundu ${entry.okundu ? 'done' : ''}" data-action="okundu" data-id="${entry.id}">${entry.okundu ? 'Okundu' : 'Okundu'}</button>
+                        <button class="btn-duzenle" data-action="duzenle" data-id="${entry.id}">Düzenle</button>
+                        <button class="btn-sil" data-action="sil" data-id="${entry.id}">Sil</button>
                     </div>
                 `;
 
@@ -419,25 +401,77 @@
             });
         }
 
-        function editArticle(index) {
-            const articles = getArticles();
-            document.getElementById("titleInput").value = articles[index].title;
-            document.getElementById("linkInput").value = articles[index].link;
-
-            editIndex = index;
-            document.getElementById("saveBtn").innerText = "Güncelle";
+        function escapeHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str || '';
+            return div.innerHTML;
         }
 
-        function deleteArticle(index) {
-            let articles = getArticles();
-            articles.splice(index, 1);
-            saveArticlesToStorage(articles);
-            renderArticles();
-        }
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const title = titleInput.value.trim();
+            const link = normalizeLink(linkInput.value.trim());
 
-        function loadArticles() {
-            renderArticles();
-        }
+            if (!link) {
+                formHint.textContent = 'Lütfen bir link giriniz.';
+                formHint.style.color = '#c0392b';
+                return;
+            }
+
+            if (editingId !== null) {
+                const entry = entries.find(en => en.id === editingId);
+                if (entry) {
+                    entry.title = title;
+                    entry.link = link;
+                }
+                editingId = null;
+                submitBtn.textContent = 'Kaydet';
+            } else {
+                entries.unshift({
+                    id: Date.now(),
+                    title: title,
+                    link: link,
+                    okundu: false
+                });
+            }
+
+            save();
+            render();
+            form.reset();
+            formHint.textContent = '';
+        });
+
+        grid.addEventListener('click', function (e) {
+            const btn = e.target.closest('button');
+            if (!btn) return;
+
+            const id = Number(btn.dataset.id);
+            const action = btn.dataset.action;
+            const entry = entries.find(en => en.id === id);
+            if (!entry) return;
+
+            if (action === 'okundu') {
+                entry.okundu = !entry.okundu;
+                save();
+                render();
+            } else if (action === 'sil') {
+                if (confirm('Bu kaydı silmek istediğinize emin misiniz?')) {
+                    entries = entries.filter(en => en.id !== id);
+                    save();
+                    render();
+                }
+            } else if (action === 'duzenle') {
+                titleInput.value = entry.title || '';
+                linkInput.value = entry.link || '';
+                editingId = id;
+                submitBtn.textContent = 'Güncelle';
+                titleInput.focus();
+                window.scrollTo({ top: form.getBoundingClientRect().top + window.scrollY - 100, behavior: 'smooth' });
+            }
+        });
+
+        render();
     </script>
+
 </body>
 </html>
