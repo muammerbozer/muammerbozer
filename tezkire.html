@@ -143,10 +143,10 @@
 
         .tezkire-form input {
             width: 100%;
-            padding: 12px 14px;
+            padding: 14px;
             border: 1px solid #c8e6c9;
             border-radius: 8px;
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: #333;
             font-family: inherit;
         }
@@ -157,7 +157,8 @@
         }
 
         .tezkire-form button {
-            padding: 13px;
+            padding: 14px;
+            min-height: 46px;
             border: none;
             border-radius: 8px;
             background-color: #1b4332;
@@ -166,6 +167,7 @@
             font-size: 1rem;
             cursor: pointer;
             transition: background-color 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .tezkire-form button:hover {
@@ -233,11 +235,13 @@
             flex: 1;
             border: none;
             border-radius: 6px;
-            padding: 8px 6px;
+            padding: 10px 6px;
+            min-height: 40px;
             font-size: 0.8rem;
             font-weight: 700;
             cursor: pointer;
             transition: opacity 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .tezkire-actions button:hover {
@@ -285,24 +289,43 @@
 
         /* Mobil Uyumluluk */
         @media (max-width: 700px) {
+            .hero { padding: 30px 16px; }
             .hero h1 { font-size: 1.5rem; }
+            .hero p { font-size: 1rem; }
+            .container { padding: 15px; }
             .nav-grid { grid-template-columns: repeat(2, 1fr); }
+            .nav-card { padding: 12px; font-size: 0.9rem; }
             .section { padding: 20px 15px; }
+            .section h2 { font-size: 1.2rem; }
             .tezkire-layout {
                 grid-template-columns: 1fr;
+                gap: 15px;
             }
             .tezkire-form {
                 position: static;
+                padding: 16px;
             }
-            .tezkire-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .tezkire-grid { grid-template-columns: repeat(2, 1fr); }
+            .tezkire-card { min-height: 120px; }
         }
 
-        @media (max-width: 420px) {
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.3rem; }
+            .hero p { font-size: 0.9rem; }
+            .container { padding: 10px; }
+            .quick-nav { padding: 15px; margin-top: -20px; }
+            .nav-grid { gap: 8px; }
+            .nav-card { padding: 10px; font-size: 0.85rem; }
+            .section { padding: 16px 12px; }
+            .section h2 { font-size: 1.1rem; }
+            .section > p.intro { font-size: 0.9rem; }
             .tezkire-grid {
                 grid-template-columns: 1fr;
+                gap: 10px;
             }
+            .tezkire-card { min-height: auto; padding: 12px; }
+            .tezkire-actions { flex-wrap: wrap; }
+            .tezkire-actions button { min-width: 70px; }
         }
     </style>
 </head>
