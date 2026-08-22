@@ -124,26 +124,26 @@
         /* Tezkire Alanı */
         .tezkire-layout {
             display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 20px;
+            grid-template-columns: 230px 1fr;
+            gap: 16px;
             align-items: start;
         }
 
         .tezkire-form {
             border: 1px solid #d8f3dc;
             border-radius: 10px;
-            padding: 20px;
+            padding: 14px;
             background-color: #fafffa;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
             position: sticky;
             top: 20px;
         }
 
         .tezkire-form input {
             width: 100%;
-            padding: 14px;
+            padding: 11px 12px;
             border: 1px solid #c8e6c9;
             border-radius: 8px;
             font-size: 1rem;
@@ -157,14 +157,14 @@
         }
 
         .tezkire-form button {
-            padding: 14px;
-            min-height: 46px;
+            padding: 11px;
+            min-height: 42px;
             border: none;
             border-radius: 8px;
             background-color: #1b4332;
             color: white;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: background-color 0.2s ease;
             -webkit-tap-highlight-color: transparent;
@@ -182,8 +182,8 @@
 
         .tezkire-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
             align-content: start;
         }
 
@@ -213,6 +213,7 @@
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            word-break: break-word;
         }
 
         .tezkire-text-link:hover {
@@ -227,17 +228,17 @@
 
         .tezkire-actions {
             display: flex;
-            gap: 6px;
-            margin-top: 4px;
+            gap: 5px;
+            margin-top: 2px;
         }
 
         .tezkire-actions button {
             flex: 1;
             border: none;
-            border-radius: 6px;
-            padding: 10px 6px;
-            min-height: 40px;
-            font-size: 0.8rem;
+            border-radius: 5px;
+            padding: 7px 4px;
+            min-height: 28px;
+            font-size: 0.62rem;
             font-weight: 700;
             cursor: pointer;
             transition: opacity 0.2s ease;
@@ -288,6 +289,18 @@
         }
 
         /* Mobil Uyumluluk */
+        @media (max-width: 900px) {
+            .tezkire-layout {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            .tezkire-form {
+                position: static;
+                width: 100%;
+            }
+            .tezkire-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+
         @media (max-width: 700px) {
             .hero { padding: 30px 16px; }
             .hero h1 { font-size: 1.5rem; }
@@ -297,16 +310,12 @@
             .nav-card { padding: 12px; font-size: 0.9rem; }
             .section { padding: 20px 15px; }
             .section h2 { font-size: 1.2rem; }
-            .tezkire-layout {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-            .tezkire-form {
-                position: static;
-                padding: 16px;
-            }
+            .tezkire-grid { grid-template-columns: repeat(3, 1fr); }
+            .tezkire-card { min-height: 120px; padding: 10px; }
+        }
+
+        @media (max-width: 560px) {
             .tezkire-grid { grid-template-columns: repeat(2, 1fr); }
-            .tezkire-card { min-height: 120px; }
         }
 
         @media (max-width: 480px) {
@@ -324,8 +333,8 @@
                 gap: 10px;
             }
             .tezkire-card { min-height: auto; padding: 12px; }
-            .tezkire-actions { flex-wrap: wrap; }
-            .tezkire-actions button { min-width: 70px; }
+            .tezkire-actions { flex-wrap: nowrap; }
+            .tezkire-actions button { min-width: 0; }
         }
     </style>
 </head>
