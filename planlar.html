@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Haftalık Ders Planları | Muammer Bozer</title>
-    <style>
+    <title>Muammer BOZER - Planlar</title>
+    <script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=wuKLuhfVvsZKs1yDmnxRKHtBKw8tyxBcw6W-6PMg1IQFtlw6Iul4yBuyIscJ3wvEiLYayvNKH0kDg86OcXB3XacbrdjoQsZrP4J5ywtMLv9N-zgic1cv9OnJHUktHNLpiyvoYFvtoUgQZ0Pr0JuaRV1HZZ2JKS8EAmRW3sNpz9Yq0nXrTrnRNLHOINx6EuWVpifUULY-r8xaSRVzOc0K4F1RPZNYW7q5JB6Y6WFE9vb_yVj78h2AdmGU4BAD0bP6HBfbyn5QP552B2sqT66q2FVM-jPUpr2QpToArUwdByCpBhLZtm9-zMgEMrAcp6MGoG5qXIw7NoBv3lKOKajn4w" charset="UTF-8"></script><style>
         * {
             box-sizing: border-box;
             margin: 0;
@@ -22,7 +22,7 @@
             line-height: 1.6;
         }
 
-        /* Header / Banner */
+        /* Header / Banner - Index sayfasıyla birebir aynı orijinal büyüklükte */
         .hero {
             background: linear-gradient(135deg, #1b4332, #2d6a4f);
             color: white;
@@ -47,7 +47,7 @@
             padding: 20px;
         }
 
-        /* Hızlı Erişim Link Alanı (Menü yerine) */
+        /* Hızlı Erişim Link Alanı */
         .quick-nav {
             background-color: white;
             padding: 20px;
@@ -95,176 +95,6 @@
             color: white;
         }
 
-        /* Bölüm Alanları */
-        .section {
-            background: white;
-            padding: 30px 25px;
-            margin-bottom: 25px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            scroll-margin-top: 20px;
-        }
-
-        .section h2 {
-            color: #1b4332;
-            border-bottom: 2px solid #52b788;
-            padding-bottom: 8px;
-            margin-bottom: 15px;
-            font-size: 1.4rem;
-        }
-
-        .section > p.intro {
-            color: #555;
-            margin-bottom: 10px;
-        }
-
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 15px;
-        }
-
-        .card {
-            border: 1px solid #eee;
-            padding: 15px;
-            border-radius: 8px;
-            background-color: #fafafa;
-        }
-
-        .card h3 {
-            color: #2d6a4f;
-            margin-bottom: 8px;
-            font-size: 1.1rem;
-        }
-
-        .card p {
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        /* Accordion (Açılır Kutucuklar) */
-        .accordion-list {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 12px;
-            margin-top: 15px;
-        }
-
-        .accordion-list-wide {
-            grid-template-columns: 1fr;
-            align-items: start;
-        }
-
-        .accordion-list-wide .accordion-content-inner p {
-            font-size: 0.85rem;
-            margin-bottom: 6px;
-        }
-
-        .accordion-item {
-            border: 1px solid #c8e6c9;
-            border-radius: 8px;
-            overflow: hidden;
-            background-color: #fafafa;
-        }
-
-        .accordion-header {
-            width: 100%;
-            background-color: #e8f5e9;
-            color: #1b4332;
-            border: none;
-            padding: 14px;
-            text-align: left;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background-color 0.2s ease;
-        }
-
-        .accordion-header:hover {
-            background-color: #c8e6c9;
-        }
-
-        .accordion-header.open {
-            background-color: #2d6a4f;
-            color: white;
-        }
-
-        .accordion-arrow {
-            transition: transform 0.2s ease;
-            font-size: 0.8rem;
-        }
-
-        .accordion-header.open .accordion-arrow {
-            transform: rotate(180deg);
-        }
-
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.25s ease;
-            background-color: white;
-        }
-
-        .accordion-content-inner {
-            padding: 14px;
-            font-size: 0.9rem;
-        }
-
-        .accordion-content-inner a {
-            color: #2d6a4f;
-            font-weight: 600;
-            text-decoration: none;
-            border-bottom: 1px solid #52b788;
-        }
-
-        .accordion-content-inner a:hover {
-            color: #1b4332;
-            border-bottom-color: #1b4332;
-        }
-
-        /* Haftalık Ders Planı Kartları */
-        .week-plan {
-            border: 1px solid #eee;
-            border-radius: 8px;
-            margin-bottom: 14px;
-            overflow: hidden;
-            scroll-margin-top: 20px;
-        }
-
-        .week-plan-header {
-            background-color: #e8f5e9;
-            color: #1b4332;
-            padding: 12px 16px;
-            font-weight: 700;
-            font-size: 1rem;
-            border-left: 4px solid #52b788;
-        }
-
-        .week-plan-body {
-            padding: 16px;
-            background-color: #fafafa;
-        }
-
-        .week-plan-body p {
-            font-size: 0.9rem;
-            margin-bottom: 6px;
-        }
-
-        .week-plan-body strong {
-            color: #2d6a4f;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-top: 6px;
-            font-size: 0.85rem;
-            color: #2d6a4f;
-        }
-
         /* Footer */
         footer {
             background-color: #1b4332;
@@ -279,8 +109,87 @@
         @media (max-width: 600px) {
             .hero h1 { font-size: 1.5rem; }
             .nav-grid { grid-template-columns: repeat(2, 1fr); }
-            .section { padding: 20px 15px; }
-            .accordion-list { grid-template-columns: 1fr; }
+        }
+
+        /* Buton olarak kullanılan nav-card'lar */
+        button.nav-card {
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        /* Açılır Kutucuk (Modal) */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.55);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 5vh 5vw;
+        }
+        .modal-overlay.open {
+            display: flex;
+        }
+        .modal-box {
+            background: white;
+            width: 90vw;
+            height: 90vh;
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,.3);
+        }
+        .modal-scroll {
+            flex: 1;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 20px;
+        }
+        .modal-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+        .modal-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .modal-scroll::-webkit-scrollbar-thumb {
+            background: #52b788;
+            border-radius: 10px;
+        }
+        #modalTitle {
+            color: #1b4332;
+            font-size: 1.15rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #52b788;
+            padding-bottom: 8px;
+        }
+        #modalBody {
+            font-size: .95rem;
+            color: #333;
+            line-height: 1.7;
+        }
+        .modal-close-btn {
+            border: none;
+            background: #1b4332;
+            color: white;
+            padding: 14px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: background-color .2s ease;
+        }
+        .modal-close-btn:hover {
+            background: #2d6a4f;
+        }
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        .nav-card.future-disabled {
+            display: none;
         }
     </style>
 </head>
@@ -293,6 +202,7 @@
 
     <div class="container">
 
+        <!-- Üst Ana Menü -->
         <nav class="quick-nav">
             <div class="nav-grid">
                 <a href="index.html" class="nav-card">Anasayfa</a>
@@ -304,93 +214,77 @@
             </div>
         </nav>
 
-        <section id="planlar" class="section">
-            <h2>Haftalık Ders Planları</h2>
-            <p class="intro">Her hafta için ders konusu, kazanım, yöntem ve değerlendirme bilgilerini bu alanlara işleyebilirsiniz. Bir haftaya tıklayarak açıp kapatabilirsiniz.</p>
-            <div class="accordion-list accordion-list-wide">
-            <div class="accordion-item">
-                <button class="accordion-header" onClick="toggleAccordion(this)">
-                    <span>1. Hafta</span>
-                    <span class="accordion-arrow">▼</span>
-                </button>
-                <div class="accordion-content" id="hafta-1">
-                    <div class="accordion-content-inner">
-                     <p><strong>5. Sınıf Din Kültürü ve Ahlak Bilgisi</strong> 
-                     <br>5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme çalışmaları yapıldı.</p>
-                     <p><strong>6. Sınıf Din Kültürü ve Ahlak Bilgisi</strong> 
-                     <br>5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme çalışmaları yapıldı.</p>                     
-                     <p><strong>7. Sınıf Din Kültürü ve Ahlak Bilgisi</strong> 
-                     <br>5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme çalışmaları yapıldı.</p>                     
-                     <p><strong>8. Sınıf Din Kültürü ve Ahlak Bilgisi</strong> 
-                     <br>5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme çalışmaları yapıldı.</p>
-                    </div></div></div>
-                    
-            <div class="accordion-item">
-                <button class="accordion-header" onClick="toggleAccordion(this)">
-                    <span>2. Hafta</span>
-                    <span class="accordion-arrow">▼</span>
-                </button>
-                <div class="accordion-content" id="hafta-2">
-                    <div class="accordion-content-inner">
-                     <p><strong>5. Sınıf Din Kültürü ve Ahlak Bilgisi</strong> 
-                     <br>5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme çalışmaları yapıldı.</p>
-                     <p><strong>6. Sınıf Din Kültürü ve Ahlak Bilgisi</strong> 
-                     <br>5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme çalışmaları yapıldı.</p>                     
-                     <p><strong>7. Sınıf Din Kültürü ve Ahlak Bilgisi</strong> 
-                     <br>5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme çalışmaları yapıldı.</p>                     
-                     <p><strong>8. Sınıf Din Kültürü ve Ahlak Bilgisi</strong> 
-                     <br>5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme çalışmaları yapıldı.</p>
-                    </div></div></div>
-
-                
-                    
-
-            <div class="accordion-item">
-                <button class="accordion-header" onClick="toggleAccordion(this)">
-                    <span>36. Hafta</span>
-                    <span class="accordion-arrow">▼</span>
-                </button>
-                <div class="accordion-content" id="hafta-36">
-                    <div class="accordion-content-inner">
-                        <p><strong>Ders / Konu:</strong> [Bu alana haftanın konusunu yazınız]</p>
-                    <p><strong>Kazanımlar:</strong> [Bu alana haftanın kazanımlarını yazınız]</p>
-                    <p><strong>Yöntem ve Teknikler:</strong> [Anlatım, soru-cevap, uygulama vb.]</p>
-                    <p><strong>Değerlendirme:</strong> [Ölçme-değerlendirme yöntemini yazınız]</p>
-                    <a class="back-link" href="dersler.html#dersler">← Dersler sayfasına dön</a>
-                    </div>
-                </div>
+        <!-- Planlar Haftalık Tarih Butonları -->
+        <nav class="quick-nav" style="margin-top: 20px;">
+            <h2>Haftalık Planlar & Kazanımlar</h2>
+            <div class="nav-grid">
+                <button type="button" class="nav-card" data-button-index="0" onClick="openModal(0)">1-14/09/2026</button><button type="button" class="nav-card" data-button-index="1" onClick="openModal(1)">2-14/09/2026</button><button type="button" class="nav-card" data-button-index="2" onClick="openModal(2)">3-14/09/2026</button><button type="button" class="nav-card" data-button-index="3" onClick="openModal(3)">4-14/09/2026</button><button type="button" class="nav-card" data-button-index="4" onClick="openModal(4)">5-14/09/2026</button><button type="button" class="nav-card" data-button-index="5" onClick="openModal(5)">6-14/09/2026</button><button type="button" class="nav-card" data-button-index="6" onClick="openModal(6)">7-14/09/2026</button><button type="button" class="nav-card" data-button-index="7" onClick="openModal(7)">8-14/09/2026</button><button type="button" class="nav-card" data-button-index="8" onClick="openModal(8)">9-14/09/2026</button><button type="button" class="nav-card" data-button-index="9" onClick="openModal(9)">10-14/09/2026</button><button type="button" class="nav-card" data-button-index="10" onClick="openModal(10)">11-14/09/2026</button><button type="button" class="nav-card" data-button-index="11" onClick="openModal(11)">12-14/09/2026</button><button type="button" class="nav-card" data-button-index="12" onClick="openModal(12)">13-14/09/2026</button><button type="button" class="nav-card" data-button-index="13" onClick="openModal(13)">14-14/09/2026</button><button type="button" class="nav-card" data-button-index="14" onClick="openModal(14)">15-14/09/2026</button><button type="button" class="nav-card" data-button-index="15" onClick="openModal(15)">16-14/09/2026</button><button type="button" class="nav-card" data-button-index="16" onClick="openModal(16)">17-14/09/2026</button><button type="button" class="nav-card" data-button-index="17" onClick="openModal(17)">18-14/09/2026</button><button type="button" class="nav-card" data-button-index="18" onClick="openModal(18)">19-14/09/2026</button><button type="button" class="nav-card" data-button-index="19" onClick="openModal(19)">20-14/09/2026</button><button type="button" class="nav-card" data-button-index="20" onClick="openModal(20)">21-14/09/2026</button><button type="button" class="nav-card" data-button-index="21" onClick="openModal(21)">22-14/09/2026</button><button type="button" class="nav-card" data-button-index="22" onClick="openModal(22)">23-14/09/2026</button><button type="button" class="nav-card" data-button-index="23" onClick="openModal(23)">24-14/09/2026</button><button type="button" class="nav-card" data-button-index="24" onClick="openModal(24)">25-14/09/2026</button><button type="button" class="nav-card" data-button-index="25" onClick="openModal(25)">26-14/09/2026</button><button type="button" class="nav-card" data-button-index="26" onClick="openModal(26)">27-14/09/2026</button><button type="button" class="nav-card" data-button-index="27" onClick="openModal(27)">28-14/09/2026</button><button type="button" class="nav-card" data-button-index="28" onClick="openModal(28)">29-14/09/2026</button><button type="button" class="nav-card" data-button-index="29" onClick="openModal(29)">30-14/09/2026</button><button type="button" class="nav-card" data-button-index="30" onClick="openModal(30)">31-14/09/2026</button><button type="button" class="nav-card" data-button-index="31" onClick="openModal(31)">32-14/09/2026</button><button type="button" class="nav-card" data-button-index="32" onClick="openModal(32)">33-14/09/2026</button><button type="button" class="nav-card" data-button-index="33" onClick="openModal(33)">34-14/09/2026</button><button type="button" class="nav-card" data-button-index="34" onClick="openModal(34)">35-14/09/2026</button><button type="button" class="nav-card" data-button-index="35" onClick="openModal(35)">36-14/09/2026</button>
             </div>
-            </div>
-        </section>
+        </nav>
+    </div>
 
+    <!-- Açılır Kutucuk (Modal) -->
+    <div class="modal-overlay" id="modalOverlay" onClick="handleOverlayClick(event)">
+        <div class="modal-box">
+            <div class="modal-scroll" id="modalScrollContent">
+                <h3 id="modalTitle"></h3>
+                <div id="modalBody"></div>
+            </div>
+            <button type="button" class="modal-close-btn" onClick="closeModal()">Tamam</button>
+        </div>
     </div>
 
     <footer>
-        <p>© 2026 Muammer Bozer Öğrenme Köşesi. Tüm hakları saklıdır.</p>
+        <p>&copy; 2026 Muammer Bozer Öğrenme Köşesi. Tüm hakları saklıdır.</p>
     </footer>
 
     <script>
-        function toggleAccordion(btn) {
-            const content = btn.nextElementSibling;
-            const isOpen = btn.classList.contains('open');
-            const list = btn.closest('.accordion-list');
+        const modalContents = [];
+        const AKTIF_BUTON_SAYISI = 30;
 
-            // Aynı listedeki tüm açık kutucukları kapat
-            if (list) {
-                list.querySelectorAll('.accordion-header.open').forEach(otherBtn => {
-                    if (otherBtn !== btn) {
-                        otherBtn.classList.remove('open');
-                        otherBtn.nextElementSibling.style.maxHeight = null;
-                    }
-                });
-            }
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".nav-card[data-button-index]").forEach(function (button) {
+                const index = Number(button.dataset.buttonIndex);
+                if (index < AKTIF_BUTON_SAYISI) {
+                    button.classList.remove("future-disabled");
+                    button.disabled = false;
+                } else {
+                    button.classList.add("future-disabled");
+                    button.disabled = true;
+                }
+            });
+        });
 
-            if (isOpen) {
-                btn.classList.remove('open');
-                content.style.maxHeight = null;
-            } else {
-                btn.classList.add('open');
-                content.style.maxHeight = content.scrollHeight + 'px';
+        for(let i = 0; i < 36; i++) {
+            modalContents[i] = {
+                title: (i+1) + ". Hafta Kazanımları",
+                body: `
+                <p><strong><ins>5. Sınıf Din Kültürü ve Ahlak Bilgisi</ins></strong><br><i>5.1.1. Evrendeki mükemmel düzene ilişkin akıl yürütebilme çalışmaları yapıldı.</i></p>
+                <p><strong><ins>6. Sınıf Din Kültürü ve Ahlak Bilgisi</ins></strong><br><i>6.1.1. Evrendeki mükemmel düzeni gözlem yoluyla fark edip Allah'ın (cc) varlığı ve birliğini gözleme dayalı tahmin edebilme.</i></p>
+                <p><strong><ins>7. Sınıf Din Kültürü ve Ahlak Bilgisi</ins></strong><br><i>7.1.1. Evrendeki mükemmel düzenden hareketle Allah'ın varlığı, birliği ve Tevhit inancına yönelik çıkarımlara devam edildi.</i></p>
+                <p><strong><ins>8. Sınıf Din Kültürü ve Ahlak Bilgisi</ins></strong><br><i>8.1.1. Allah'ın (cc) güzel isimleri hakkında bilgi toplama, Rahman ve Rahim isimlerini araştırma çalışmaları yapıldı.</i></p>
+                `
+            };
+        }
+
+        function openModal(index) {
+            const data = modalContents[index];
+            if (!data) return;
+            document.getElementById('modalTitle').textContent = data.title;
+            document.getElementById('modalBody').innerHTML = data.body;
+            document.getElementById('modalScrollContent').scrollTop = 0;
+            document.getElementById('modalOverlay').classList.add('open');
+            document.body.classList.add('modal-open');
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('open');
+            document.body.classList.remove('modal-open');
+        }
+
+        function handleOverlayClick(event) {
+            if (event.target.id === 'modalOverlay') {
+                closeModal();
             }
         }
     </script>
