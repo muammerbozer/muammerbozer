@@ -20,6 +20,9 @@ h1{text-align:center;margin:4px 0 6px;color:#1f2937;font-size:28px}
 .action-row{display:flex;gap:8px;margin-bottom:14px}
 .action-row button{flex:1;border:0;border-radius:8px;padding:10px 6px;font-size:15px;color:#fff;cursor:pointer;white-space:nowrap}
 .btn-arsiv{background:#6b7280}.btn-yazdir{background:#7c3aed}.btn-tasarruf{background:#059669}
+.backup-row{display:flex;gap:8px;margin-bottom:14px}
+.backup-row button{flex:1;border:0;border-radius:8px;padding:10px 6px;font-size:15px;color:#fff;cursor:pointer;white-space:nowrap}
+.btn-yedekle{background:#2563eb}.btn-guncelle{background:#0891b2}
 .fark-box{text-align:center;padding:12px;border-radius:9px;background:#1f2937;color:#fff;margin-bottom:18px;font-size:17px}
 .fark-box span{font-weight:bold}.fark-pozitif{color:#4ade80}.fark-negatif{color:#f87171}
 .section{display:none;background:#fff;border-radius:10px;padding:16px;margin-bottom:18px;box-shadow:0 2px 6px rgba(0,0,0,.08)}
@@ -67,6 +70,7 @@ canvas{width:100%!important;height:100%!important}
  .box{padding:8px 5px}
  .box .label{font-size:13px}.box .amount{font-size:18px}
  .action-row{gap:6px}.action-row button{padding:8px 4px;font-size:12px}
+ .backup-row{gap:6px}.backup-row button{padding:8px 4px;font-size:12px}
  .section{padding:13px 9px}
  .input-row{gap:5px}
  .input-row input{padding:8px 6px;font-size:12px}
@@ -122,6 +126,12 @@ canvas{width:100%!important;height:100%!important}
  <button class="btn-yazdir" onclick="yazdirAy()">🖨️ Bu Ayı Yazdır</button>
  <button class="btn-tasarruf" onclick="tasarrufSayfasiniAc()">📈 Tasarruf</button>
 </div>
+
+<div class="backup-row" id="backupRow">
+ <button class="btn-yedekle" onclick="yedekAl()">💾 Yedekle</button>
+ <button class="btn-guncelle" onclick="document.getElementById('yedekDosyaInput').click()">⬆️ Güncelle</button>
+</div>
+<input type="file" id="yedekDosyaInput" accept=".json,application/json" style="display:none" onchange="dosyaYuklendi(event)">
 
 <div class="fark-box">Gelir - Gider Farkı: <span id="farkTutar">0 ₺</span></div>
 
@@ -203,6 +213,50 @@ function kaydet(){
  localStorage.setItem('butce_'+currentMonth+'_gelir',JSON.stringify(gelirler));
  localStorage.setItem('butce_'+currentMonth+'_gider',JSON.stringify(giderler));
  localStorage.setItem('butce_aktif_ay',currentMonth);
+}
+
+/* YEDEKLEME / GERİ YÜKLEME (e-posta ile başka cihaza taşıma) */
+function yedekAl(){
+ const yedek={};
+ for(let i=0;i<localStorage.length;i++){
+  const anahtar=localStorage.key(i);
+  if(anahtar&&anahtar.indexOf('butce_')===0)yedek[anahtar]=localStorage.getItem(anahtar);
+ }
+ const tarih=new Date().toISOString().slice(0,10);
+ const dosyaAdi='butce_yedek_'+tarih+'.json';
+ const blob=new Blob([JSON.stringify(yedek,null,2)],{type:'application/json'});
+ const url=URL.createObjectURL(blob);
+ const a=document.createElement('a');
+ a.href=url;a.download=dosyaAdi;document.body.appendChild(a);a.click();document.body.removeChild(a);
+ setTimeout(()=>URL.revokeObjectURL(url),4000);
+
+ const konu=encodeURIComponent('Bütçe Takip Yedeği - '+tarih);
+ const govde=encodeURIComponent('Merhaba,\n\nBu e-postaya, az önce cihazınıza inen "'+dosyaAdi+'" dosyasını EKLEYİP gönderin.\n\n(Tarayıcı güvenliği nedeniyle dosya e-postaya otomatik eklenemiyor; indirilenler klasöründen bu e-postaya sürükleyip bırakmanız yeterli.)\n\nBaşka bir bilgisayarda "Güncelle" butonuna basıp bu dosyayı seçerek verilerinizi oraya taşıyabilirsiniz.');
+ window.location.href='mailto:muammerbozer76@gmail.com?subject='+konu+'&body='+govde;
+}
+function dosyaYuklendi(e){
+ const dosya=e.target.files[0];
+ if(!dosya)return;
+ if(!confirm('Bu cihazdaki mevcut bütçe verileri, seçtiğiniz yedek dosyasındaki verilerle DEĞİŞTİRİLECEK. Devam edilsin mi?')){e.target.value='';return}
+ const okuyucu=new FileReader();
+ okuyucu.onload=function(ev){
+  let veri;
+  try{veri=JSON.parse(ev.target.result)}catch(err){alert('Dosya okunamadı. Lütfen "Yedekle" ile oluşturulmuş geçerli bir .json dosyası seçin.');e.target.value='';return}
+  const silinecek=[];
+  for(let i=0;i<localStorage.length;i++){
+   const k=localStorage.key(i);
+   if(k&&k.indexOf('butce_')===0)silinecek.push(k);
+  }
+  silinecek.forEach(k=>localStorage.removeItem(k));
+  for(const k in veri){
+   if(k.indexOf('butce_')===0)localStorage.setItem(k,veri[k]);
+  }
+  alert('Yedek başarıyla yüklendi. Sayfa yenileniyor.');
+  location.reload();
+ };
+ okuyucu.onerror=function(){alert('Dosya okunurken bir hata oluştu.');};
+ okuyucu.readAsText(dosya,'UTF-8');
+ e.target.value='';
 }
 function loadMonth(){
  gelirler=JSON.parse(localStorage.getItem('butce_'+currentMonth+'_gelir')||'[]');
@@ -289,6 +343,7 @@ function arsivDuzenle(key){
  document.getElementById('arsivDuzenleAdi').textContent=arsivAdi(key);
  document.getElementById('arsivDuzenleBanner').style.display='flex';
  document.getElementById('actionRow').style.display='none';
+ document.getElementById('backupRow').style.display='none';
  render();
  window.scrollTo({top:0,behavior:'smooth'});
 }
@@ -296,6 +351,7 @@ function arsivDuzenlemeyiBitir(){
  editingArchiveKey=null;
  document.getElementById('arsivDuzenleBanner').style.display='none';
  document.getElementById('actionRow').style.display='';
+ document.getElementById('backupRow').style.display='';
  document.getElementById('gelirSection').classList.remove('active');
  document.getElementById('giderSection').classList.remove('active');
  loadMonth();
