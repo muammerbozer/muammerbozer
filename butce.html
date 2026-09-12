@@ -10,6 +10,9 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#f2f4f7;margin:0;padding
 .container{width:100%;max-width:720px;margin:auto}
 h1{text-align:center;margin:4px 0 6px;color:#1f2937;font-size:28px}
 .month-title{text-align:center;color:#6b7280;font-size:22px;margin-bottom:12px}
+.header-row{display:flex;align-items:baseline;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.header-row h1{margin:4px 0 0}
+.header-row .month-title{margin-bottom:0}
 .top-boxes{display:flex;gap:8px;margin-bottom:8px}
 .box{flex:1;padding:10px 7px;border-radius:9px;text-align:center;cursor:pointer;color:#fff;user-select:none}
 .gelir-box{background:#16a34a}.gider-box{background:#dc2626}
@@ -39,7 +42,11 @@ h1{text-align:center;margin:4px 0 6px;color:#1f2937;font-size:28px}
 .archive-name{flex:1;font-size:17px}
 .archive-row button{border:0;border-radius:6px;padding:7px 10px;font-size:13px;cursor:pointer;color:#fff}
 .archive-row button:first-of-type{background:#7c3aed}.delete-archive{background:#6b7280}
+.edit-archive{background:#f59e0b}
 .empty-msg{color:#9ca3af;font-size:13px;padding:8px 0}
+
+.arsiv-duzenle-banner{display:none;position:sticky;top:0;z-index:500;background:#f59e0b;color:#fff;padding:10px 12px;text-align:center;font-size:14px;font-weight:bold;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+.arsiv-duzenle-banner button{border:0;border-radius:7px;padding:8px 12px;font-size:13px;cursor:pointer;background:#1f2937;color:#fff}
 
 /* Tasarruf Sayfası (Modal) Stilleri */
 .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:1000;overflow-y:auto;padding:20px 10px}
@@ -91,9 +98,15 @@ canvas{width:100%!important;height:100%!important}
 </style>
 </head>
 <body>
+<div class="arsiv-duzenle-banner" id="arsivDuzenleBanner">
+ 📝 <span id="arsivDuzenleAdi"></span> arşivini düzenliyorsunuz
+ <button onclick="arsivDuzenlemeyiBitir()">✅ Kaydet &amp; Arşive Dön</button>
+</div>
 <div class="container">
+<div class="header-row">
 <h1>💰 Kişisel Bütçe Takip</h1>
-<div class="month-title" id="monthTitle"></div>
+<div class="month-title" id="monthTitle">Yeni Bütçe Ayı</div>
+</div>
 
 <div class="top-boxes">
  <div class="box gelir-box" onclick="toggleSection('gelir')">
@@ -104,7 +117,7 @@ canvas{width:100%!important;height:100%!important}
  </div>
 </div>
 
-<div class="action-row">
+<div class="action-row" id="actionRow">
  <button class="btn-arsiv" onclick="arsivle()">📦 Arşivle &amp; Yeni Ay</button>
  <button class="btn-yazdir" onclick="yazdirAy()">🖨️ Bu Ayı Yazdır</button>
  <button class="btn-tasarruf" onclick="tasarrufSayfasiniAc()">📈 Tasarruf</button>
@@ -171,13 +184,22 @@ const aylar=['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağusto
 let currentMonth=localStorage.getItem('butce_aktif_ay')||new Date().toISOString().slice(0,7);
 let gelirler=[],giderler=[],duzenlenenIndex={gelir:null,gider:null};
 let arsivler=JSON.parse(localStorage.getItem('butce_arsivler')||'{}');
+let editingArchiveKey=null;
 
 function ayAdi(key){
  const p=key.split('-'); return aylar[Number(p[1])-1]+' '+p[0];
 }
+function arsivAdi(key){
+ return (arsivler[key]&&arsivler[key].ad)?arsivler[key].ad:ayAdi(key);
+}
 function escapeHtml(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function paraFormat(n){return Number(n||0).toLocaleString('tr-TR',{minimumFractionDigits:2,maximumFractionDigits:2})+' ₺';}
 function kaydet(){
+ if(editingArchiveKey){
+  arsivler[editingArchiveKey]={...arsivler[editingArchiveKey],gelirler:[...gelirler],giderler:[...giderler]};
+  localStorage.setItem('butce_arsivler',JSON.stringify(arsivler));
+  return;
+ }
  localStorage.setItem('butce_'+currentMonth+'_gelir',JSON.stringify(gelirler));
  localStorage.setItem('butce_'+currentMonth+'_gider',JSON.stringify(giderler));
  localStorage.setItem('butce_aktif_ay',currentMonth);
@@ -185,7 +207,6 @@ function kaydet(){
 function loadMonth(){
  gelirler=JSON.parse(localStorage.getItem('butce_'+currentMonth+'_gelir')||'[]');
  giderler=JSON.parse(localStorage.getItem('butce_'+currentMonth+'_gider')||'[]');
- document.getElementById('monthTitle').textContent=ayAdi(currentMonth);
  render();renderArsiv();
 }
 function toggleSection(tur){
@@ -233,7 +254,11 @@ function render(){
 }
 function arsivle(){
  if(!gelirler.length&&!giderler.length&&!confirm('Bu ayda kayıt yok. Yine de yeni aya geçilsin mi?'))return;
- arsivler[currentMonth]={gelirler:[...gelirler],giderler:[...giderler]};
+ const varsayilanAd=ayAdi(currentMonth);
+ let ad=prompt('Bu arşiv için bir isim girin:',varsayilanAd);
+ if(ad===null)return;
+ ad=ad.trim()||varsayilanAd;
+ arsivler[currentMonth]={gelirler:[...gelirler],giderler:[...giderler],ad};
  localStorage.setItem('butce_arsivler',JSON.stringify(arsivler));
  const d=new Date(currentMonth+'-01T12:00:00');d.setMonth(d.getMonth()+1);
  currentMonth=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');
@@ -244,17 +269,40 @@ function renderArsiv(){
  const c=document.getElementById('arsivListe'),keys=Object.keys(arsivler).sort().reverse();
  if(!keys.length){c.innerHTML='<div class="empty-msg">Henüz arşivlenmiş ay yok.</div>';return}
  c.innerHTML=keys.map(k=>`<div class="archive-row">
-  <div class="archive-name"><b>${ayAdi(k)}</b></div>
+  <div class="archive-name"><b>${escapeHtml(arsivAdi(k))}</b></div>
+  <button class="edit-archive" onclick="arsivDuzenle('${k}')">✏️ Düzenle</button>
   <button onclick="yazdirAy('${k}')">🖨️ Yazdır</button>
   <button class="delete-archive" onclick="silArsiv('${k}')">Sil</button>
  </div>`).join('');
 }
 function silArsiv(k){
- if(!confirm(ayAdi(k)+' arşivi silinsin mi?'))return;
+ if(!confirm(arsivAdi(k)+' arşivi silinsin mi?'))return;
  delete arsivler[k];localStorage.setItem('butce_arsivler',JSON.stringify(arsivler));renderArsiv();
 }
+function arsivDuzenle(key){
+ const veri=arsivler[key];
+ if(!veri)return;
+ editingArchiveKey=key;
+ gelirler=[...veri.gelirler];
+ giderler=[...veri.giderler];
+ duzenlenenIndex={gelir:null,gider:null};
+ document.getElementById('arsivDuzenleAdi').textContent=arsivAdi(key);
+ document.getElementById('arsivDuzenleBanner').style.display='flex';
+ document.getElementById('actionRow').style.display='none';
+ render();
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+function arsivDuzenlemeyiBitir(){
+ editingArchiveKey=null;
+ document.getElementById('arsivDuzenleBanner').style.display='none';
+ document.getElementById('actionRow').style.display='';
+ document.getElementById('gelirSection').classList.remove('active');
+ document.getElementById('giderSection').classList.remove('active');
+ loadMonth();
+ window.scrollTo({top:0,behavior:'smooth'});
+}
 function yazdirAy(key=null){
- const veri=key?arsivler[key]:{gelirler,giderler},baslik=key?ayAdi(key):ayAdi(currentMonth);
+ const veri=key?arsivler[key]:{gelirler,giderler},baslik=key?arsivAdi(key):ayAdi(currentMonth);
  if(!veri)return;
  const para=n=>Number(n||0).toLocaleString('tr-TR',{minimumFractionDigits:2,maximumFractionDigits:2})+' ₺';
  const gt=veri.gelirler.reduce((t,k)=>t+Number(k.miktar||0),0);
@@ -283,7 +331,7 @@ function tasarrufVerileriniGetir(){
  veriler[currentMonth]={gelir:gt,gider:gd,fark:gt-gd};
 
  const siraliKeys=Object.keys(veriler).sort().slice(-12);
- return siraliKeys.map(k=>({key:k,etiket:ayAdi(k),...veriler[k]}));
+ return siraliKeys.map(k=>({key:k,etiket:arsivAdi(k),...veriler[k]}));
 }
 
 function tasarrufSayfasiniAc(){
