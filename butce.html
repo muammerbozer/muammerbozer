@@ -55,7 +55,7 @@ h1{text-align:center;margin:4px 0 6px;color:#1f2937;font-size:28px}
 .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:1000;overflow-y:auto;padding:20px 10px}
 .modal-content{background:#fff;max-width:720px;margin:20px auto;padding:20px;border-radius:12px;position:relative;box-shadow:0 4px 12px rgba(0,0,0,0.15)}
 .close-btn{position:absolute;top:12px;right:16px;font-size:24px;cursor:pointer;color:#6b7280;font-weight:bold}
-.chart-container{width:100%;height:260px;margin:20px 0 10px}
+.chart-container{width:100%;height:280px;margin:20px 0 10px;overflow-x:auto;overflow-y:hidden}
 canvas{width:100%!important;height:100%!important}
 .tasarruf-table{width:100%;table-layout:fixed;border-collapse:collapse;margin-top:15px;font-size:13px}
 .tasarruf-table th, .tasarruf-table td{border:1px solid #e5e7eb;padding:6px 2px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -393,7 +393,7 @@ function tasarrufVerileriniGetir(){
  const gd=giderler.reduce((t,k)=>t+Number(k.miktar||0),0);
  veriler[currentMonth]={gelir:gt,gider:gd,fark:gt-gd};
 
- const siraliKeys=Object.keys(veriler).sort().slice(-12);
+ const siraliKeys=Object.keys(veriler).sort();
  return siraliKeys.map(k=>({key:k,etiket:arsivAdi(k),...veriler[k]}));
 }
 
@@ -415,27 +415,45 @@ function renderTasarrufTablo(veriListesi){
   return;
  }
  let kumulatif=0;
- tbody.innerHTML=veriListesi.map(v=>{
+ const satirlar=veriListesi.map(v=>{
   kumulatif+=v.fark;
-  return `
+  return {...v,kumulatif};
+ });
+ tbody.innerHTML=satirlar.slice().reverse().map(v=>`
   <tr>
    <td><b>${v.etiket}</b></td>
    <td style="color:#16a34a">${paraFormat(v.gelir)}</td>
    <td style="color:#dc2626">${paraFormat(v.gider)}</td>
    <td style="font-weight:bold;color:${v.fark>=0?'#16a34a':'#dc2626'}">${paraFormat(v.fark)}</td>
-   <td style="font-weight:bold;color:${kumulatif>=0?'#16a34a':'#dc2626'}">${paraFormat(kumulatif)}</td>
-  </tr>`;
- }).join('');
+   <td style="font-weight:bold;color:${v.kumulatif>=0?'#16a34a':'#dc2626'}">${paraFormat(v.kumulatif)}</td>
+  </tr>`).join('');
+}
+
+function niceTicks(min,max,count){
+ const range=(max-min)||1;
+ const rawStep=range/count;
+ const mag=Math.pow(10,Math.floor(Math.log10(rawStep)));
+ const norm=rawStep/mag;
+ let step;
+ if(norm<1.5) step=1*mag; else if(norm<3) step=2*mag; else if(norm<7) step=5*mag; else step=10*mag;
+ const niceMin=Math.floor(min/step)*step;
+ const niceMax=Math.ceil(max/step)*step;
+ const ticks=[];
+ for(let v=niceMin; v<=niceMax+step/2; v+=step) ticks.push(Math.round(v*100)/100);
+ return ticks;
 }
 
 function cizTasarrufGrafik(veriListesi){
  const canvas=document.getElementById('tasarrufGrafik');
  const ctx=canvas.getContext('2d');
  const rect=canvas.parentElement.getBoundingClientRect();
- canvas.width=rect.width||600;
- canvas.height=260;
 
- const padding={top:30,right:20,bottom:50,left:60};
+ const padding={top:20,right:24,bottom:50,left:74};
+ const minPerNokta=58;
+ const gerekliGenislik=padding.left+padding.right+Math.max(1,veriListesi.length-1)*minPerNokta+40;
+ canvas.width=Math.max(rect.width||600,gerekliGenislik);
+ canvas.height=280;
+
  const w=canvas.width-padding.left-padding.right;
  const h=canvas.height-padding.top-padding.bottom;
 
@@ -444,23 +462,39 @@ function cizTasarrufGrafik(veriListesi){
  if(!veriListesi.length) return;
 
  const tumDegerler=veriListesi.flatMap(v=>[v.gelir,v.gider,v.fark]);
- let maxVal=Math.max(...tumDegerler,0);
- let minVal=Math.min(...tumDegerler,0);
-
- if(maxVal===0 && minVal===0){maxVal=100;minVal=-100;}
- const margin=(maxVal-minVal)*0.1||20;
- maxVal+=margin; minVal-=margin;
+ let ticks=niceTicks(Math.min(...tumDegerler,0),Math.max(...tumDegerler,0),5);
+ const minVal=ticks[0], maxVal=ticks[ticks.length-1];
 
  const getX=i=>padding.left+(i/(veriListesi.length-1||1))*w;
  const getY=val=>padding.top+h-((val-minVal)/(maxVal-minVal))*h;
 
- ctx.strokeStyle='#e5e7eb';
- ctx.lineWidth=1;
+ // Y ekseni: yatay ızgara çizgileri + sayısal etiketler
+ ctx.font='11px Arial';
+ ctx.textAlign='right';
+ ticks.forEach(t=>{
+  const y=getY(t);
+  ctx.strokeStyle=t===0?'#9ca3af':'#eef0f2';
+  ctx.lineWidth=t===0?1.5:1;
+  ctx.beginPath();
+  ctx.moveTo(padding.left,y);
+  ctx.lineTo(padding.left+w,y);
+  ctx.stroke();
+  ctx.fillStyle='#6b7280';
+  ctx.fillText(t.toLocaleString('tr-TR'),padding.left-10,y+4);
+ });
+
+ // Y ekseni dikey çizgisi
+ ctx.strokeStyle='#374151';
+ ctx.lineWidth=1.5;
  ctx.beginPath();
- const zeroY=getY(0);
- ctx.strokeStyle='#9ca3af';
- ctx.moveTo(padding.left,zeroY);
- ctx.lineTo(padding.left+w,zeroY);
+ ctx.moveTo(padding.left,padding.top);
+ ctx.lineTo(padding.left,padding.top+h);
+ ctx.stroke();
+
+ // X ekseni yatay çizgisi (alt taban)
+ ctx.beginPath();
+ ctx.moveTo(padding.left,padding.top+h);
+ ctx.lineTo(padding.left+w,padding.top+h);
  ctx.stroke();
 
  function cizgiCiz(deger,renk,noktaRenk,kesikli){
@@ -493,13 +527,16 @@ function cizTasarrufGrafik(veriListesi){
  // Fark çizgisi (kesikli), noktalar işarete göre yeşil/kırmızı
  cizgiCiz(v=>v.fark,'#2563eb',v=>v.fark>=0?'#16a34a':'#dc2626',true);
 
- // Fark değerlerini ve ay etiketlerini yaz
+ // X ekseni: her ay için işaret çizgisi ve etiket
+ ctx.textAlign='center';
  veriListesi.forEach((v,i)=>{
-  const x=getX(i), y=getY(v.fark);
-  ctx.fillStyle='#374151';
-  ctx.font='10px Arial';
-  ctx.textAlign='center';
-  ctx.fillText(Math.round(v.fark).toLocaleString('tr-TR'),x,y-10);
+  const x=getX(i);
+  ctx.strokeStyle='#374151';
+  ctx.lineWidth=1;
+  ctx.beginPath();
+  ctx.moveTo(x,padding.top+h);
+  ctx.lineTo(x,padding.top+h+5);
+  ctx.stroke();
 
   ctx.fillStyle='#6b7280';
   ctx.font='11px Arial';
