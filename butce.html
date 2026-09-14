@@ -419,7 +419,7 @@ function renderTasarrufTablo(veriListesi){
   kumulatif+=v.fark;
   return {...v,kumulatif};
  });
- tbody.innerHTML=satirlar.slice().reverse().map(v=>`
+ tbody.innerHTML=satirlar.map(v=>`
   <tr>
    <td><b>${v.etiket}</b></td>
    <td style="color:#16a34a">${paraFormat(v.gelir)}</td>
