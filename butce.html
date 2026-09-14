@@ -327,7 +327,7 @@ function arsivle(){
  document.getElementById('gelirSection').classList.remove('active');document.getElementById('giderSection').classList.remove('active');
 }
 function renderArsiv(){
- const c=document.getElementById('arsivListe'),keys=Object.keys(arsivler).sort().reverse();
+ const c=document.getElementById('arsivListe'),keys=Object.keys(arsivler).sort();
  if(!keys.length){c.innerHTML='<div class="empty-msg">Henüz arşivlenmiş ay yok.</div>';return}
  c.innerHTML=keys.map(k=>`<div class="archive-row">
   <div class="archive-name"><b>${escapeHtml(arsivAdi(k))}</b></div>
