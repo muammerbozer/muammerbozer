@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kişisel Bütçe Takip</title>
-<script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=KvBsxLmMwv7N4lzuuy5lZuCnZAjLv-xTSDougtUhf7zNn6ZH6jYYUNxtiM3KxZW06v7MoRut9t9-l1OWSoOA-ANDR-_OzSibBAopFek_zpeXD_wruicfYawjqgTqOw30eZ9w1ED00iKsQV1v-GODkTs54qjpXLFu7-mFXJpad_5BiLg6-mKGFwNK3Obb5qzhlD97D1Q1SQ9tlGIYgBAJjtbQImPW0-mdArpa7GWjoaEFPVcaf24BWHLLLMZiJLezvT1D-enKnF1j8-8N1zcbEwHQ4wyZXkWji8mHEemYe0zX0y_ztRu4lfaTFH8DHbav6a6bdiAh_7GpECT3HpxwxZz-Oo9u96Uz6NFXpGHi3FU" charset="UTF-8"></script><style>
+<style>
 *{box-sizing:border-box}
 body{font-family:'Segoe UI',Arial,sans-serif;background:#f2f4f7;margin:0;padding:18px 10px;color:#222}
 .container{width:100%;max-width:720px;margin:auto}
@@ -21,7 +21,7 @@ h1{text-align:center;margin:4px 0 6px;color:#1f2937;font-size:28px}
 .action-row button{flex:1;border:0;border-radius:8px;padding:10px 6px;font-size:15px;color:#fff;cursor:pointer;white-space:nowrap}
 .btn-arsiv{background:#6b7280}.btn-yazdir{background:#7c3aed}.btn-tasarruf{background:#059669}
 .backup-row{display:flex;gap:8px;margin-bottom:14px}
-.backup-row button{flex:1;border:0;border-radius:8px;padding:10px 6px;font-size:15px;color:#fff;cursor:pointer;white-space:nowrap}
+.backup-row button,.backup-row label{flex:1;border:0;border-radius:8px;padding:10px 6px;font-size:15px;color:#fff;cursor:pointer;white-space:nowrap;text-align:center;display:inline-block;box-sizing:border-box}
 .btn-yedekle{background:#2563eb}.btn-guncelle{background:#0891b2}
 .fark-box{text-align:center;padding:12px;border-radius:9px;background:#1f2937;color:#fff;margin-bottom:18px;font-size:17px}
 .fark-box span{font-weight:bold}.fark-pozitif{color:#4ade80}.fark-negatif{color:#f87171}
@@ -57,8 +57,9 @@ h1{text-align:center;margin:4px 0 6px;color:#1f2937;font-size:28px}
 .close-btn{position:absolute;top:12px;right:16px;font-size:24px;cursor:pointer;color:#6b7280;font-weight:bold}
 .chart-container{width:100%;height:260px;margin:20px 0 10px}
 canvas{width:100%!important;height:100%!important}
-.tasarruf-table{width:100%;border-collapse:collapse;margin-top:15px;font-size:14px}
-.tasarruf-table th, .tasarruf-table td{border:1px solid #e5e7eb;padding:8px;text-align:center}
+.tasarruf-table{width:100%;table-layout:fixed;border-collapse:collapse;margin-top:15px;font-size:13px}
+.tasarruf-table th, .tasarruf-table td{border:1px solid #e5e7eb;padding:6px 2px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tasarruf-table th:first-child, .tasarruf-table td:first-child{text-align:left;padding-left:4px}
 .tasarruf-table th{background:#f3f4f6;color:#374151}
 
 #printArea{display:none}
@@ -70,7 +71,7 @@ canvas{width:100%!important;height:100%!important}
  .box{padding:8px 5px}
  .box .label{font-size:13px}.box .amount{font-size:18px}
  .action-row{gap:6px}.action-row button{padding:8px 4px;font-size:12px}
- .backup-row{gap:6px}.backup-row button{padding:8px 4px;font-size:12px}
+ .backup-row{gap:6px}.backup-row button,.backup-row label{padding:8px 4px;font-size:12px}
  .section{padding:13px 9px}
  .input-row{gap:5px}
  .input-row input{padding:8px 6px;font-size:12px}
@@ -81,8 +82,8 @@ canvas{width:100%!important;height:100%!important}
  .archive-section h2{font-size:23px}
  .archive-name{font-size:15px}
  .archive-row button{padding:6px 8px;font-size:12px}
- .tasarruf-table{font-size:12px}
- .tasarruf-table th, .tasarruf-table td{padding:5px 3px}
+ .tasarruf-table{font-size:10.5px}
+ .tasarruf-table th, .tasarruf-table td{padding:4px 1px}
 }
 
 /* A5 dikey: gelir ve gider yan yana */
@@ -114,10 +115,10 @@ canvas{width:100%!important;height:100%!important}
 
 <div class="top-boxes">
  <div class="box gelir-box" onclick="toggleSection('gelir')">
-  <div class="label">Gelir</div><div class="amount" id="gelirToplam">0 ₺</div>
+  <div class="label">Gelir</div><div class="amount" id="gelirToplam">0</div>
  </div>
  <div class="box gider-box" onclick="toggleSection('gider')">
-  <div class="label">Gider</div><div class="amount" id="giderToplam">0 ₺</div>
+  <div class="label">Gider</div><div class="amount" id="giderToplam">0</div>
  </div>
 </div>
 
@@ -129,11 +130,11 @@ canvas{width:100%!important;height:100%!important}
 
 <div class="backup-row" id="backupRow">
  <button class="btn-yedekle" onclick="yedekAl()">💾 Yedekle</button>
- <button class="btn-guncelle" onclick="document.getElementById('yedekDosyaInput').click()">⬆️ Güncelle</button>
+ <label class="btn-guncelle" for="yedekDosyaInput">⬆️ Güncelle</label>
 </div>
 <input type="file" id="yedekDosyaInput" accept=".json,application/json" style="display:none" onchange="dosyaYuklendi(event)">
 
-<div class="fark-box">Gelir - Gider Farkı: <span id="farkTutar">0 ₺</span></div>
+<div class="fark-box">Gelir - Gider Farkı: <span id="farkTutar">0</span></div>
 
 <div class="section" id="gelirSection">
  <h2>Gelir Ekle / Düzenle</h2>
@@ -168,6 +169,11 @@ canvas{width:100%!important;height:100%!important}
  <div class="modal-content">
   <span class="close-btn" onclick="tasarrufSayfasiniKapat()">&times;</span>
   <h2 style="margin-top:0;text-align:center;color:#1f2937">📈 Tasarruf &amp; Aylık Fark Analizi</h2>
+  <div class="tasarruf-legend" style="display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin:4px 0 2px;font-size:13px;color:#374151">
+   <span style="display:inline-flex;align-items:center;gap:5px"><span style="width:12px;height:12px;border-radius:3px;background:#16a34a;display:inline-block"></span>Gelir</span>
+   <span style="display:inline-flex;align-items:center;gap:5px"><span style="width:12px;height:12px;border-radius:3px;background:#dc2626;display:inline-block"></span>Gider</span>
+   <span style="display:inline-flex;align-items:center;gap:5px"><span style="width:12px;height:12px;border-radius:3px;border:2px dashed #2563eb;background:#fff;display:inline-block"></span>Fark</span>
+  </div>
   <div class="chart-container">
    <canvas id="tasarrufGrafik"></canvas>
   </div>
@@ -178,7 +184,8 @@ canvas{width:100%!important;height:100%!important}
       <th>Ay</th>
       <th>Gelir</th>
       <th>Gider</th>
-      <th>Fark (Tasarruf)</th>
+      <th>Fark</th>
+      <th>Kümülatif</th>
      </tr>
     </thead>
     <tbody id="tasarrufTabloBody"></tbody>
@@ -203,7 +210,7 @@ function arsivAdi(key){
  return (arsivler[key]&&arsivler[key].ad)?arsivler[key].ad:ayAdi(key);
 }
 function escapeHtml(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function paraFormat(n){return Number(n||0).toLocaleString('tr-TR',{minimumFractionDigits:2,maximumFractionDigits:2})+' ₺';}
+function paraFormat(n){return Number(n||0).toLocaleString('tr-TR',{minimumFractionDigits:0,maximumFractionDigits:0});}
 function kaydet(){
  if(editingArchiveKey){
   arsivler[editingArchiveKey]={...arsivler[editingArchiveKey],gelirler:[...gelirler],giderler:[...giderler]};
@@ -360,10 +367,10 @@ function arsivDuzenlemeyiBitir(){
 function yazdirAy(key=null){
  const veri=key?arsivler[key]:{gelirler,giderler},baslik=key?arsivAdi(key):ayAdi(currentMonth);
  if(!veri)return;
- const para=n=>Number(n||0).toLocaleString('tr-TR',{minimumFractionDigits:2,maximumFractionDigits:2})+' ₺';
+ const para=n=>Number(n||0).toLocaleString('tr-TR',{minimumFractionDigits:0,maximumFractionDigits:0});
  const gt=veri.gelirler.reduce((t,k)=>t+Number(k.miktar||0),0);
  const gd=veri.giderler.reduce((t,k)=>t+Number(k.miktar||0),0);
- const liste=a=>a.length?a.map(k=>`<div class="print-item"><span>${escapeHtml(k.ad)}</span><span>${para(k.miktar)}</span></div>`).join(''):'<div class="print-item"><span>Kayıt yok</span><span>0,00 ₺</span></div>';
+ const liste=a=>a.length?a.map(k=>`<div class="print-item"><span>${escapeHtml(k.ad)}</span><span>${para(k.miktar)}</span></div>`).join(''):'<div class="print-item"><span>Kayıt yok</span><span>0</span></div>';
  document.getElementById('printArea').innerHTML=`
   <div class="print-title">Kişisel Bütçe - ${escapeHtml(baslik)}</div>
   <div class="print-columns">
@@ -404,17 +411,21 @@ function tasarrufSayfasiniKapat(){
 function renderTasarrufTablo(veriListesi){
  const tbody=document.getElementById('tasarrufTabloBody');
  if(!veriListesi.length){
-  tbody.innerHTML='<tr><td colspan="4">Henüz veri yok.</td></tr>';
+  tbody.innerHTML='<tr><td colspan="5">Henüz veri yok.</td></tr>';
   return;
  }
- tbody.innerHTML=veriListesi.map(v=>`
+ let kumulatif=0;
+ tbody.innerHTML=veriListesi.map(v=>{
+  kumulatif+=v.fark;
+  return `
   <tr>
    <td><b>${v.etiket}</b></td>
    <td style="color:#16a34a">${paraFormat(v.gelir)}</td>
    <td style="color:#dc2626">${paraFormat(v.gider)}</td>
    <td style="font-weight:bold;color:${v.fark>=0?'#16a34a':'#dc2626'}">${paraFormat(v.fark)}</td>
-  </tr>
- `).join('');
+   <td style="font-weight:bold;color:${kumulatif>=0?'#16a34a':'#dc2626'}">${paraFormat(kumulatif)}</td>
+  </tr>`;
+ }).join('');
 }
 
 function cizTasarrufGrafik(veriListesi){
@@ -432,9 +443,9 @@ function cizTasarrufGrafik(veriListesi){
 
  if(!veriListesi.length) return;
 
- const farklar=veriListesi.map(v=>v.fark);
- let maxVal=Math.max(...farklar,0);
- let minVal=Math.min(...farklar,0);
+ const tumDegerler=veriListesi.flatMap(v=>[v.gelir,v.gider,v.fark]);
+ let maxVal=Math.max(...tumDegerler,0);
+ let minVal=Math.min(...tumDegerler,0);
 
  if(maxVal===0 && minVal===0){maxVal=100;minVal=-100;}
  const margin=(maxVal-minVal)*0.1||20;
@@ -452,30 +463,43 @@ function cizTasarrufGrafik(veriListesi){
  ctx.lineTo(padding.left+w,zeroY);
  ctx.stroke();
 
- ctx.beginPath();
- ctx.strokeStyle='#059669';
- ctx.lineWidth=3;
- veriListesi.forEach((v,i)=>{
-  const x=getX(i), y=getY(v.fark);
-  if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
- });
- ctx.stroke();
-
- veriListesi.forEach((v,i)=>{
-  const x=getX(i), y=getY(v.fark);
-  
+ function cizgiCiz(deger,renk,noktaRenk,kesikli){
   ctx.beginPath();
-  ctx.arc(x,y,5,0,Math.PI*2);
-  ctx.fillStyle=v.fark>=0?'#16a34a':'#dc2626';
-  ctx.fill();
-  ctx.lineWidth=2;
-  ctx.strokeStyle='#fff';
+  ctx.strokeStyle=renk;
+  ctx.lineWidth=2.5;
+  ctx.setLineDash(kesikli?[6,4]:[]);
+  veriListesi.forEach((v,i)=>{
+   const x=getX(i), y=getY(deger(v));
+   if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+  });
   ctx.stroke();
+  ctx.setLineDash([]);
 
+  veriListesi.forEach((v,i)=>{
+   const x=getX(i), y=getY(deger(v));
+   ctx.beginPath();
+   ctx.arc(x,y,4,0,Math.PI*2);
+   ctx.fillStyle=noktaRenk?noktaRenk(v):renk;
+   ctx.fill();
+   ctx.lineWidth=1.5;
+   ctx.strokeStyle='#fff';
+   ctx.stroke();
+  });
+ }
+
+ // Gelir ve Gider çizgileri
+ cizgiCiz(v=>v.gelir,'#16a34a');
+ cizgiCiz(v=>v.gider,'#dc2626');
+ // Fark çizgisi (kesikli), noktalar işarete göre yeşil/kırmızı
+ cizgiCiz(v=>v.fark,'#2563eb',v=>v.fark>=0?'#16a34a':'#dc2626',true);
+
+ // Fark değerlerini ve ay etiketlerini yaz
+ veriListesi.forEach((v,i)=>{
+  const x=getX(i), y=getY(v.fark);
   ctx.fillStyle='#374151';
   ctx.font='10px Arial';
   ctx.textAlign='center';
-  ctx.fillText(Math.round(v.fark)+' ₺',x,y-10);
+  ctx.fillText(Math.round(v.fark).toLocaleString('tr-TR'),x,y-10);
 
   ctx.fillStyle='#6b7280';
   ctx.font='11px Arial';
