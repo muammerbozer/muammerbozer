@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ders Yılı Planı</title>
+<style>
+  :root{
+    --bg: #dcdcdc;
+    --card: #ffffff;
+    --ink: #1a1a1a;
+    --ink-soft: #555555;
+    --red: #b22222;
+    --border: #d8d8d8;
+    --row-hover: #f3f3f3;
+  }
+  *{ box-sizing: border-box; }
+  body{
+    margin:0;
+    padding: 24px 12px 60px;
+    background: var(--bg);
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+    color: var(--ink);
+  }
+  .home-btn{
+    display:block;
+    max-width: 640px;
+    margin: 0 auto 14px;
+    text-align: right;
+  }
+  .home-btn a{
+    display:inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ink);
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 6px 14px;
+    text-decoration: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,.12);
+  }
+  .home-btn a:hover{ background: var(--row-hover); }
+  .page-title{
+    text-align:center;
+    margin: 0 0 22px;
+  }
+  .page-title h1{
+    font-size: 22px;
+    letter-spacing: .5px;
+    margin: 0 0 4px;
+    font-weight: 800;
+  }
+  .page-title p{
+    margin:0;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .sheet{
+    max-width: 640px;
+    margin: 0 auto;
+    background: var(--card);
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,.18);
+    padding: 28px 22px 34px;
+  }
+  .month-header{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    margin: 30px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 3px solid var(--ink);
+  }
+  .month-header:first-child{ margin-top: 0; }
+  .month-header .ay{
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .month-header .yil{
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink-soft);
+  }
+  .week{
+    border-bottom: 1px solid var(--border);
+  }
+  .week:last-child{ border-bottom:none; }
+  .week-row{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 6px;
+    cursor: pointer;
+    user-select:none;
+    transition: background .15s ease;
+  }
+  .week-row:hover{ background: var(--row-hover); }
+  .week-row .left{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+  }
+  .dot{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: transparent;
+    flex-shrink:0;
+  }
+  .week.has-note .dot{ background: var(--red); }
+  .hafta-no{
+    font-weight: 800;
+    font-size: 15px;
+    min-width: 78px;
+  }
+  .week.has-note .hafta-no{ color: var(--red); }
+  .week.current .week-row{
+    background: #fff3d6;
+    border-left: 4px solid #c9962c;
+    padding-left: 2px;
+  }
+  .week.current .hafta-no::after{
+    content: "(bu hafta)";
+    margin-left: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #8a6a12;
+  }
+  .tarih{
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .arrow{
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+  .legend{
+    max-width: 640px;
+    margin: 14px auto 0;
+    font-size: 12px;
+    color: var(--ink-soft);
+    text-align:center;
+  }
+  .legend .dot{
+    display:inline-block;
+    vertical-align: middle;
+    background: var(--red);
+    margin-right:4px;
+  }
+
+  /* --- Popup / Modal --- */
+  .overlay{
+    display:none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.45);
+    align-items:center;
+    justify-content:center;
+    z-index: 100;
+  }
+  .overlay.show{ display:flex; }
+  .modal{
+    width: 90%;
+    height: 90%;
+    max-width: 900px;
+    background: var(--card);
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(0,0,0,.35);
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+  }
+  .modal-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .modal-head .baslik{
+    font-size: 18px;
+    font-weight: 800;
+  }
+  .modal-head .tarih{
+    display:block;
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-weight: 400;
+    margin-top: 2px;
+  }
+  .modal-close{
+    border:none;
+    background: transparent;
+    font-size: 22px;
+    line-height:1;
+    cursor:pointer;
+    color: var(--ink-soft);
+    padding: 4px 8px;
+  }
+  .modal-close:hover{ color: var(--ink); }
+  .modal-body{
+    flex: 1;
+    padding: 16px 20px;
+    display:flex;
+  }
+  .modal-body textarea{
+    flex:1;
+    width:100%;
+    height:100%;
+    resize: none;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--ink);
+    background: #fafafa;
+  }
+  .modal-foot{
+    display:flex;
+    gap: 10px;
+    padding: 14px 20px;
+    border-top: 1px solid var(--border);
+  }
+  .modal-foot button{
+    flex:1;
+    padding: 11px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    font-size: 14px;
+    font-weight: 700;
+    cursor:pointer;
+  }
+  .modal-foot button.duzenle{ background:#f0f0f0; color: var(--ink); }
+  .modal-foot button.kaydet{ background: var(--ink); color:#fff; border-color: var(--ink); }
+  .modal-foot button.sil{ background:#fff; color: var(--red); border-color: var(--red); }
+  .modal-foot button:hover{ opacity:.85; }
+</style>
+</head>
+<body>
+
+<div class="home-btn"><a href="index.html">⌂ Anasayfa</a></div>
+
+<div class="page-title">
+  <h1>2026 - 2027 DERS YILI PLANI</h1>
+  <p>Okulun açık olduğu haftalar listelenmiştir</p>
+</div>
+
+<div class="sheet" id="sheet"></div>
+<div class="legend"><span class="dot"></span>Not eklenmiş haftaları gösterir</div>
+
+<div class="overlay" id="overlay" onclick="if(event.target===this) kapat()">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <span class="baslik" id="modal-baslik"></span>
+        <span class="tarih" id="modal-tarih"></span>
+      </div>
+      <button class="modal-close" onclick="kapat()">×</button>
+    </div>
+    <div class="modal-body">
+      <textarea id="modal-textarea" placeholder="Bu haftaya not ekle..."></textarea>
+    </div>
+    <div class="modal-foot">
+      <button class="duzenle" onclick="duzenle()">Düzenle</button>
+      <button class="kaydet" onclick="kaydet()">Kaydet</button>
+      <button class="sil" onclick="sil()">Sil</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const AYLAR = ["OCAK","ŞUBAT","MART","NİSAN","MAYIS","HAZİRAN","TEMMUZ","AĞUSTOS","EYLÜL","EKİM","KASIM","ARALIK"];
+const AYLAR_KUCUK = ["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"];
+
+function addDays(d, n){
+  const r = new Date(d);
+  r.setDate(r.getDate() + n);
+  return r;
+}
+function isoKey(d){
+  return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+}
+function fmt(d){
+  return d.getDate() + " " + AYLAR_KUCUK[d.getMonth()];
+}
+function fmtShort(d){
+  return d.getDate();
+}
+
+// 2026-2027 MEB çalışma takvimine göre ara tatil / yarıyıl tatili haftaları (o haftanın Pazartesi tarihi)
+const ARA_TATIL_HAFTALARI = new Set([
+  "2026-11-16", // 1. dönem ara tatili (16-20 Kasım 2026)
+  "2027-01-25", // yarıyıl tatili 1. hafta (25-30 Ocak 2027)
+  "2027-02-01", // yarıyıl tatili 2. hafta (1-5 Şubat 2027)
+  "2027-03-08"  // 2. dönem ara tatili (8-12 Mart 2027)
+]);
+
+const START = new Date(2026, 8, 14);   // 14 Eylül 2026 Pazartesi - 1. dönem başlangıcı
+const LAST_MONDAY = new Date(2027, 5, 21); // 21 Haziran 2027 Pazartesi - son ders haftası (yıl 25 Haziran 2027 Cuma biter)
+
+const weeks = [];
+let cur = new Date(START);
+let counter = 0;
+while (cur <= LAST_MONDAY) {
+  const key = isoKey(cur);
+  if (!ARA_TATIL_HAFTALARI.has(key)) {
+    counter++;
+    const friday = addDays(cur, 4);
+    weeks.push({ no: counter, monday: new Date(cur), friday: friday });
+  }
+  cur = addDays(cur, 7);
+}
+
+function rangeText(w){
+  return (w.monday.getMonth() === w.friday.getMonth())
+    ? `${fmtShort(w.monday)}-${fmt(w.friday)}`
+    : `${fmt(w.monday)} - ${fmt(w.friday)}`;
+}
+
+// Aya göre grupla ve satırları oluştur
+const sheet = document.getElementById("sheet");
+let lastMonthKey = null;
+
+weeks.forEach(w => {
+  const monthKey = w.monday.getFullYear() + "-" + w.monday.getMonth();
+  if (monthKey !== lastMonthKey) {
+    lastMonthKey = monthKey;
+    const header = document.createElement("div");
+    header.className = "month-header";
+    header.innerHTML = `<span class="ay">${AYLAR[w.monday.getMonth()]}</span><span class="yil">${w.monday.getFullYear()}</span>`;
+    sheet.appendChild(header);
+  }
+
+  const wrap = document.createElement("div");
+  wrap.className = "week";
+  wrap.id = "hafta-" + w.no;
+
+  wrap.innerHTML = `
+    <div class="week-row" onclick="ac(${w.no})">
+      <div class="left">
+        <span class="dot"></span>
+        <span class="hafta-no">${w.no}. Hafta</span>
+        <span class="tarih">${rangeText(w)}</span>
+      </div>
+      <span class="arrow">›</span>
+    </div>
+  `;
+  sheet.appendChild(wrap);
+});
+
+function storageKey(no){ return "plan-hafta-" + no; }
+
+// Kayıtlı notu olan haftaları işaretle
+weeks.forEach(w => {
+  if (localStorage.getItem(storageKey(w.no))) {
+    document.getElementById("hafta-" + w.no).classList.add("has-note");
+  }
+});
+
+// Bugünün haftasını (Pazartesi) bulup işaretle
+function getMonday(d){
+  const day = d.getDay(); // 0=Pazar
+  const diff = day === 0 ? -6 : 1 - day;
+  const m = addDays(d, diff);
+  m.setHours(0,0,0,0);
+  return m;
+}
+const bugununHaftasi = isoKey(getMonday(new Date()));
+weeks.forEach(w => {
+  if (isoKey(w.monday) === bugununHaftasi) {
+    document.getElementById("hafta-" + w.no).classList.add("current");
+  }
+});
+
+// --- Popup mantığı ---
+let acikHafta = null;
+
+function ac(no){
+  acikHafta = no;
+  const w = weeks.find(x => x.no === no);
+  document.getElementById("modal-baslik").textContent = no + ". Hafta";
+  document.getElementById("modal-tarih").textContent = rangeText(w);
+  const ta = document.getElementById("modal-textarea");
+  ta.value = localStorage.getItem(storageKey(no)) || "";
+  document.getElementById("overlay").classList.add("show");
+  setTimeout(() => ta.focus(), 50);
+}
+
+function kapat(){
+  document.getElementById("overlay").classList.remove("show");
+  acikHafta = null;
+}
+
+function duzenle(){
+  const ta = document.getElementById("modal-textarea");
+  ta.focus();
+  ta.setSelectionRange(ta.value.length, ta.value.length);
+}
+
+function kaydet(){
+  if (acikHafta === null) return;
+  const ta = document.getElementById("modal-textarea");
+  const val = ta.value.trim();
+  const el = document.getElementById("hafta-" + acikHafta);
+  if (val) {
+    localStorage.setItem(storageKey(acikHafta), val);
+    el.classList.add("has-note");
+  } else {
+    localStorage.removeItem(storageKey(acikHafta));
+    el.classList.remove("has-note");
+  }
+  kapat();
+}
+
+function sil(){
+  if (acikHafta === null) return;
+  if (!confirm(acikHafta + ". haftanın notu silinsin mi?")) return;
+  localStorage.removeItem(storageKey(acikHafta));
+  document.getElementById("hafta-" + acikHafta).classList.remove("has-note");
+  document.getElementById("modal-textarea").value = "";
+  kapat();
+}
+</script>
+
+</body>
+</html>
